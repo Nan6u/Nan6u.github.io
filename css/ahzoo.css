@@ -1,0 +1,76 @@
+/* 文章页背景 */
+.layout_post>#post {
+    /* 以下代表透明度为0.7 可以自行修改*/
+    background: rgba(0, 0, 0, 0.7);
+}
+ 
+/* 所有页面背景 */
+#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
+    /* 以下代表透明度为0.7 */
+    background: rgba(0, 0, 0, 0.7);
+}
+/*侧边卡片的透明度 */
+:root {
+  --card-bg: rgba(0, 0, 0, 0.7);
+}
+
+
+/* 首页文章 */
+#recent-posts>.recent-post-item:hover .recent-post-info .content {
+    opacity: 1;
+    line-height: 2;
+    transition: all .3s;
+}
+
+#recent-posts>.recent-post-item>.recent-post-info>.content {
+    opacity: 0;
+    line-height: .7;
+    transition: all .3s;
+}
+
+#recent-posts>.recent-post-item .post_cover img.post_bg {
+    border-radius: 30px;
+    padding: 15px
+}
+
+#recent-posts>.recent-post-item:hover img.post_bg {
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -o-transform: scale(.9);
+    -ms-transform: scale(.9);
+    transform: scale(.9);
+}
+
+#aside-content #card-toc .toc-content .toc-link.active {
+    border-left-color: #2962ff;
+    background: var(--btn-bg);
+    border-radius: 7px;
+    box-shadow: 0 8px 12px -3px rgba(73,177,245,0.2);
+}
+
+/* 页脚 */
+#footer {
+    background: var(--card-bg);
+}
+
+#footer-wrap {
+    padding-top: 12px;
+    height: 90px;
+    box-shadow: var(--card-box-shadow);
+    border-radius: 18px 18px 0 0;
+    color: var(--font-color);
+    position: relative;
+    text-align: center
+}
+
+#footer-wrap a {
+    color: var(--font-color)
+}
+
+#footer-wrap .icp-icon {
+    padding: 0 4px;
+    vertical-align: text-bottom;
+    max-height: 1.4em;
+    width: auto
+}
+
