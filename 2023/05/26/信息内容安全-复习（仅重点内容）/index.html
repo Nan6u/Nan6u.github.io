@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>信息内容安全-复习（仅重点内容） | Nonbliss's blog</title><meta name="author" content="Nonbliss"><meta name="copyright" content="Nonbliss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="标记类型 斜体：看看就行 正常：正常掌握 粗体&#x2F;emoji❗：重点掌握  此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲第一章信息安全技术架构❗注意有一个图，四层，信息安全金三角：CIA架构 信息安全四要素：CACA 信息安全层次划分❗❗❗ 内容安全 数据安全 运行安全 物理安全  存在一个三级框架，每个夹在两层中间  信息对抗 信息安全 系统安全  信息安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息内容安全-复习（仅重点内容）">
+<meta property="og:url" content="https://nonbliss.github.io/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/index.html">
+<meta property="og:site_name" content="Nonbliss&#39;s blog">
+<meta property="og:description" content="标记类型 斜体：看看就行 正常：正常掌握 粗体&#x2F;emoji❗：重点掌握  此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲第一章信息安全技术架构❗注意有一个图，四层，信息安全金三角：CIA架构 信息安全四要素：CACA 信息安全层次划分❗❗❗ 内容安全 数据安全 运行安全 物理安全  存在一个三级框架，每个夹在两层中间  信息对抗 信息安全 系统安全  信息安">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nonbliss.github.io/img/tag.png">
+<meta property="article:published_time" content="2023-05-26T11:15:31.000Z">
+<meta property="article:modified_time" content="2023-06-03T12:11:07.755Z">
+<meta property="article:author" content="Nonbliss">
+<meta property="article:tag" content="Nonbliss">
+<meta property="article:tag" content="楠布蕾丝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nonbliss.github.io/img/tag.png"><link rel="shortcut icon" href="/img/logow_t.png"><link rel="canonical" href="https://nonbliss.github.io/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '信息内容安全-复习（仅重点内容）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-03 20:11:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/ahzoo.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tag.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nonbliss's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">信息内容安全-复习（仅重点内容）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-26T11:15:31.000Z" title="发表于 2023-05-26 19:15:31">2023-05-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-03T12:11:07.755Z" title="更新于 2023-06-03 20:11:07">2023-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">学习资料</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="信息内容安全-复习（仅重点内容）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="标记类型"><a href="#标记类型" class="headerlink" title="标记类型"></a>标记类型</h2><ul>
+<li>斜体：看看就行</li>
+<li>正常：正常掌握</li>
+<li>粗体&#x2F;emoji❗：重点掌握</li>
+</ul>
+<h1 id="此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲"><a href="#此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲" class="headerlink" title="此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲"></a>此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲</h1><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="信息安全技术架构❗"><a href="#信息安全技术架构❗" class="headerlink" title="信息安全技术架构❗"></a>信息安全技术架构❗</h2><p>注意有一个图，四层，信息安全金三角：CIA架构</p>
+<p>信息安全四要素：CACA</p>
+<h2 id="信息安全层次划分❗❗❗"><a href="#信息安全层次划分❗❗❗" class="headerlink" title="信息安全层次划分❗❗❗"></a>信息安全层次划分❗❗❗</h2><ul>
+<li>内容安全</li>
+<li>数据安全</li>
+<li>运行安全</li>
+<li>物理安全</li>
+</ul>
+<p>存在一个三级框架，每个夹在两层中间</p>
+<ul>
+<li>信息对抗</li>
+<li>信息安全</li>
+<li>系统安全</li>
+</ul>
+<h2 id="信息安全的诱因与威胁❗❗"><a href="#信息安全的诱因与威胁❗❗" class="headerlink" title="信息安全的诱因与威胁❗❗"></a>信息安全的诱因与威胁❗❗</h2><p>根本原因：冯诺伊曼结构<br>直接原因：自身缺陷+开放性+黑客攻击<br>常见攻击：就是漏洞类型随便写几个</p>
+<p>网络安全的任务<br>信息安全的任务<br>内容安全的任务<br>信息对抗的任务</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="整体框架❗❗"><a href="#整体框架❗❗" class="headerlink" title="整体框架❗❗"></a>整体框架❗❗</h2><p>5个问题，及问题的解决方法<br>互联网络信息内容安全识别引擎架构</p>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="搜索引擎架构❗❗❗"><a href="#搜索引擎架构❗❗❗" class="headerlink" title="搜索引擎架构❗❗❗"></a>搜索引擎架构❗❗❗</h2><p>那个图</p>
+<p>七页逻辑图看一下不会考默写啥的❗</p>
+<p>三个步骤</p>
+<ol>
+<li>爬行与抓取</li>
+<li>预处理</li>
+<li>排名</li>
+</ol>
+<h3 id="爬行与抓取"><a href="#爬行与抓取" class="headerlink" title="爬行与抓取"></a>爬行与抓取</h3><p>网页为节点，hyperlink为有向边，深度优先|广度优先<br>从种子url提取待抓取url，待抓取url进行预处理分析后放入网页库并将这些url放入已抓取url中，同时从这些url中可以得到下一步的待抓取url</p>
+<p>问题</p>
+<ul>
+<li>网页爆炸性增长——需要高效率</li>
+<li>服务器陷阱，法律问题，重复url，停电等</li>
+</ul>
+<p>服务器保护：<br>robot.txt是crawer需要遵守的文件，但是也可以不遵守，君子协定<br>服务器陷阱，64k的NULL或嵌套重复url，超深路径</p>
+<p>解决：<br>没有完美的解决，需要经常分析历史数据<br>太长url不爬，只爬静态内容，清除非文本的url等</p>
+<p>爬虫需要：❗</p>
+<ul>
+<li>快</li>
+<li>可扩展性</li>
+<li>友好性</li>
+<li>健壮</li>
+<li>持续搜集</li>
+<li>时新性</li>
+</ul>
+<p>高性能爬虫</p>
+<p>爬虫架构<br>那个大图抽象一下即可</p>
+<p>典型的DNS请求是异步的，若不采取措施，DNS地址解析会是爬虫的一个瓶颈<br>解决：</p>
+<ul>
+<li>缓存服务器<br>大缓存容量，跨DNS系统的刷新保持内容，不同于普通DNS定期刷新，这里面向爬虫进行缓存的刷新</li>
+<li>预取client<br>为了减少等待查找涉及新主机的地址的时间：尽早将主机名投给DNS系统<br>提前拿url并给DNS，解析完之后方cache中等待使用<br>通常用UDP实现，用不着等待解析的完成</li>
+</ul>
+<p>网页抓取慢<br>并发抓取——瓶颈在处理器和硬盘</p>
+<ol>
+<li>多线程&#x2F;进程<br>通常用阻塞的系统调用<br>问题：<br>内存地址空间不够<br>互斥<br>磁盘访问代价</li>
+<li>异步非阻塞socket<br>更高效的存储管理，不需要等网络操作的完成，网页抓取的完成不相互影响</li>
+</ol>
+<p>Bloom filter——消除访问过的url❗<br>用来检测一个元素是不是集合中的一个成员。如果检测结果为是，该元素不一定在集合中；但如果检测结果为否，该元素一定不在集合中<br>牺牲了正确率和时间以节省空间</p>
+<p>检测重复网页<br>完全重复网页可以md5<br>近似网页不能md5——Shingling</p>
+<p>负载均衡：</p>
+<ul>
+<li>持续性负载<br>通过提高服务器能力解决</li>
+<li>临时性负载<br>使用缓存代理技术</li>
+</ul>
+<p>分布式计算</p>
+<ul>
+<li>主从模式</li>
+<li>p2p模式（一个圈）</li>
+</ul>
+<p>任务如何划分？——一致性哈希❗<br>简单划分，直接把buckets给机器<br>问题：机器数目变化<br>一致性哈希——无需集中目录，也无需担心节点失效的一种查找元素位置的方法<br>目标：将item均匀的分布在不同的BUCKET中——负载均衡<br>使用cache机制的规则——3个<br>哈希值组成一个圈，计算出来的哈希值可以放在圈上，cache服务器也放在圈上。对象使用哈希值增大方向遇到的第一个服务器，若服务器减少，则有关的请求直接搜寻下一个服务器，若服务器增加，则只需要在圈上增加一个节点，仅需变动部分对象，比简单划分的几乎变动所有对象简单很多</p>
+<h2 id="网页排序"><a href="#网页排序" class="headerlink" title="网页排序"></a>网页排序</h2><h3 id="PageRank❗❗❗"><a href="#PageRank❗❗❗" class="headerlink" title="PageRank❗❗❗"></a>PageRank❗❗❗</h3><p>每个节点给一个1&#x2F;N的初始值（也可以是1）<br>排名泄露：存在节点没有出度，则最终所有PR趋向0<br>排名下沉：没有入度，PR趋于0<br>排名上升：形成圈，则成圈的几个网页PR只增不减</p>
+<p>解决排名上升公式<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/2.png"><br>a&#x3D;0.85(一般)</p>
+<p>Markov过程收敛，需要</p>
+<ol>
+<li>A为随机矩阵</li>
+<li>A是不可约的</li>
+<li>A是非周期的</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/3.png"><br>先别急，我真忘了这玩意考不考，我十分希望不考，这明显就不是给大学生学的东西，应该是给高中生学的！</p>
+<p>现象<br>链入链接从根本上决定PageRank大小<br>链入链接相同情况下，链出链接也影响PageRank的大小<br>评价：<br>总体：什么影响PR值<br>局部：链入相同时看链出，看最多，看最少</p>
+<p>PR算法应用困难</p>
+<ol>
+<li>现实世界与假想模型不同</li>
+<li>实际计算中需要计算80亿网页</li>
+</ol>
+<p>计算难点：</p>
+<ol>
+<li>计算机容量限制</li>
+<li>收敛问题-硬计算会很慢</li>
+</ol>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>一个搜索引擎需要做的几件事</p>
+<ol>
+<li>自动下载尽可能多的网页</li>
+<li>建立快速有效的索引</li>
+<li>根据相关性对网页进行公平准确的排序</li>
+</ol>
+<p>信息检索模型<br>四元组[D, Q, F, R(qi, dj)]<br>– D: 文档集的机内表示——关键词<br>– Q: 用户需求的机内表示——查询式<br>– F: 文档表示、查询表示和它们之间的关系的模型框架(Frame)</p>
+<ul>
+<li>R(qi, dj): 排序函数，给query qi 和document dj评分</li>
+</ul>
+<h3 id="布尔模型"><a href="#布尔模型" class="headerlink" title="布尔模型"></a>布尔模型</h3><p>Q：与或非<br>F：二值判断标准</p>
+<p>正排索引<br>对于一个文档，所有的关键词排成一行，有的置1，没有的置0<br>目标文档所需关键词做一个类似的行，要的词置1不要的词置0，其他不管<br>然后这两行&amp;一下，如果等于目标文档的行，则通过</p>
+<p>倒排索引<br>对每个关键词建一行，行对应是文档，文档中有的对应位置1，没有的置0<br>目标需要关键词的行做bool运算，最后得到一行，行中置1对应的文档是结果<br>过程</p>
+<ol>
+<li>找词</li>
+<li>取地址列表</li>
+<li>计算标识符</li>
+</ol>
+<p>索引储存</p>
+<ul>
+<li>动态语料库</li>
+<li>静态收集<br>  -索引压缩<br>  &lt;前缀长度，后缀&gt;<br>  数字保存与上一数字的插值</li>
+</ul>
+<p>布尔模型优点</p>
+<ol>
+<li>查询简单易于理解</li>
+<li>方便控制查询结果</li>
+</ol>
+<p>布尔模型问题</p>
+<ol>
+<li>不支持部分匹配</li>
+<li>很难控制被检索的文档数量</li>
+<li>很难对输出排序</li>
+<li>很难自动反馈——提示用户如何更改查询式</li>
+</ol>
+<h3 id="向量空间模型"><a href="#向量空间模型" class="headerlink" title="向量空间模型"></a>向量空间模型</h3><p>文档D(Document)<br>索引项t（Term）——检索词<br>特征项权重Wk（Term Weight）<br>相似度S（Similarity）</p>
+<p>根据相似度对输出结果进行排序<br>支持自动的相关反馈</p>
+<p>tf-idf<br>– tfij &#x3D; 词项j在文档i中的频率——有除N和不除N两种<br>反应这个词对这篇文章是否更重要——越多越重要<br>– df j &#x3D; 词项j的文档频率&#x3D; 包含词项j的文档数量<br>– idfj &#x3D; 词项j的反文档频率&#x3D; log2 (N&#x2F; df j)——不一定2也可以是10<br>反映这个词在总体上是否重要——越多越不重要<br>TF-IDF &#x3D; TF x IDF</p>
+<p>查询式的词项权重</p>
+<p>相似度计算<br>最佳的相似度计算方法并不存在</p>
+<p>作用</p>
+<ol>
+<li>排序</li>
+<li>反馈</li>
+<li>控制数量</li>
+</ol>
+<p>计算方式</p>
+<ol>
+<li>内积<br>内积值没有界限<br>对长文档有利</li>
+<li>余弦<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/4.png"></li>
+</ol>
+<p>向量空间优点：</p>
+<ol>
+<li>提高搜索性能</li>
+<li>输出更合理</li>
+<li>可以排序</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>标引词之间被认为是相互独立</li>
+<li>随着Web页面信息量的增大，查询结果会逐渐偏离用户需求</li>
+<li>隐含语义索引模型是向量空间模型的延申</li>
+</ol>
+<h3 id="扩展布尔模型"><a href="#扩展布尔模型" class="headerlink" title="扩展布尔模型"></a>扩展布尔模型</h3><p>先用布尔模型的出满足条件的文档，然后用向量空间法排序</p>
+<p>如果“与”应用于布尔查询，结果集可能太窄，如果”或“应用于布尔查询时，就和纯向量查询没有区别——提出扩展布尔模型</p>
+<p>扩展布尔模型的或关系<br>用到（0，0）的距离作为我的评价，越大越好<br>平方和除以二在开方</p>
+<p>扩展布尔模型的与关系<br>用到（1，1）的距离作为我的评价，越小越好<br>用1减去与1的距离的平方和除以二再开方</p>
+<p>忽略布尔关系的话，向量空间查询式和布尔查询式是相同的</p>
+<p>p-norm模型</p>
+<p>p&#x3D;1时和向量空间中的内积相似<br>p&#x3D;∞时模糊逻辑模型</p>
+<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="网络流监控模式"><a href="#网络流监控模式" class="headerlink" title="网络流监控模式"></a>网络流监控模式</h2><ul>
+<li>串联监控模式<br>  通过网关监控<ul>
+<li>需要改变现有网络架构</li>
+<li>有延时</li>
+<li>故障直接断网</li>
+</ul>
+</li>
+<li>旁路监控模式<br>  通过交换机的端口镜像实现监控<ul>
+<li>部署方便，不影响现有网络架构</li>
+<li>不会造成延时</li>
+<li>故障不影响正常运行</li>
+<li>局限性<ul>
+<li>数据获取<br>  需要交换机支持端口镜像</li>
+<li>数据管控<br>  采用发送RST来断开TCP，不能禁止UDP，UDP需要镜像设备通知防火墙管理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="旁路检测技术"><a href="#旁路检测技术" class="headerlink" title="旁路检测技术"></a>旁路检测技术</h2><ul>
+<li>数据分流<ul>
+<li>分光器</li>
+<li>路由交换</li>
+<li>HUB</li>
+</ul>
+</li>
+<li>数据汇聚</li>
+<li>报文抓取<ul>
+<li>这个图很重要</li>
+<li>影响性能因素<ul>
+<li>系统调用</li>
+<li>数据拷贝</li>
+<li>计算校验和</li>
+<li>网卡中断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>报文抓取过程优化<ul>
+<li>报文捕获后直接给用户态专用协议栈抽取，而不是过机器的协议栈走系统调用再解码，这样做可以由原来的三次拷贝编程一次拷贝，并且只用了一个缓冲空间</li>
+</ul>
+</li>
+<li>协议还原</li>
+<li>内容抽取</li>
+<li>数据耦合方法</li>
+</ul>
+<h2 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h2><p>他上课说没什么用，喜欢出原理性东西，代码啥的不用，进程通信是重点</p>
+<h3 id="进程通信技术——UNIX"><a href="#进程通信技术——UNIX" class="headerlink" title="进程通信技术——UNIX"></a>进程通信技术——UNIX</h3><p>进程通信方法（IPC）<br>Unix IPC包括：管道、FIFO、信号<br>System V IPC包括：System V消息队列、System V信号灯、System V共享内存区<br>Posix IPC包括：Posix消息队列、Posix信号灯、Posix共享内存区</p>
+<p>进程通信技术：<br>管道，命名管道，信号，报文队列，共享内存，信号量，套接口</p>
+<p>linux进程要素：<br>一段可执行程序，专用系统堆栈空间，进程控制块，独立存储空间</p>
+<p>内存映射技术<br>共享内存：最有效的进程间通信方式，也是最快的IPC方式<br>一块物理内存被映射到进程AB各自的进程地址空间<br>需要同步机制，互斥锁或信号量都可以</p>
+<p>mmap()系统调用<br>将文件映射到进程地址空间</p>
+<ol>
+<li>page cache和swap cache<br>一个被访问文件的物理页面都驻留在这两个里面</li>
+<li>文件与address_space的对应<br>address_space中一个偏移量能确定上面两个的一个页面</li>
+<li>调用mmap<br>只是再进程空间中新增一块缓冲区，但没有建立进程空间到物理页面的映射。因此第一次访问这个空间时引发一次缺页异常</li>
+<li>缺页异常处理<br>现在swapcache中找页面，要是没找到则看这个页面是不是在swaparea里，要是还没有就建立一个页面更新页表<br>对于普通文件映射情况则在pagecache里找页面</li>
+<li>多进程映射同一个共享内存区域<br>建立线性地址与物理地址的映射后，进程实际访问的一定是同一个共享内存区域的物理页面</li>
+</ol>
+<p>使用mmap的两种共享内存方式</p>
+<ol>
+<li>使用普通文件提供的内存映射<ul>
+<li>使用于任何进程</li>
+<li>打开或创建一个文件，再调用mmap</li>
+</ul>
+</li>
+<li>使用特殊文件创建匿名内存映射<ul>
+<li>适用于有亲缘关系的进程</li>
+<li>父进程先mmap再fork</li>
+</ul>
+</li>
+</ol>
+<p>Linux设备<br>字符设备，块设备，网络设备</p>
+<p>设备文件与设备号<br>用户通过设备文件访问设备，每个设备用一个主设备号和次设备号标识</p>
+<p>设备驱动的功能<br>管理IO设备<br>上层软件的抽象操作与设备操作的转换<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/5.png"><br>VFS是虚拟文件系统</p>
+<p>内核模块<br>Linux内核运行时动态扩展的一种技术<br>Linux设备驱动以内核模块形式实现<br>一组可以加载&#x2F;卸载的代码</p>
+<p>设备驱动的结构</p>
+<ul>
+<li>驱动与内核的接口<ul>
+<li>注册&#x2F;卸载</li>
+<li>VFS接口</li>
+<li>数据交互</li>
+<li>中断注册</li>
+</ul>
+</li>
+<li>硬件设备接口<ul>
+<li>硬件探测</li>
+<li>初始化</li>
+<li>读写访问</li>
+<li>设备控制</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/6.png"></p>
+<p>Linux数据包接受过程<br>物理层-&gt;链路层-&gt;网络层-&gt;传输层</p>
+<p>TCP&#x2F;IP与以太网<br>以太网和TCP&#x2F;IP可以说是相辅相成的<br>以太网提供MAC地址连线<br>TCP&#x2F;IP提供32位IP地址</p>
+<p>载波监听，冲突检测</p>
+<p>以太网的广播通讯<br>在以太网中，所有的通讯都是广播的<br>通常在同一个网段的所有网络接口都可以访问在物理媒体上传输的所有数据</p>
+<p>网卡的MAC地址是唯一的48位</p>
+<p>网络接口应该响应的两种数据帧</p>
+<ul>
+<li>与自己MAC匹配的数据帧</li>
+<li>广播数据帧</li>
+</ul>
+<p>数据接受过程</p>
+<ol>
+<li>网卡收到数据，单片程序判断自己是否该收</li>
+<li>若该收则向CPU中断，然后把包给驱动程序分析，驱动程序分析完将数据交付操作系统</li>
+<li>若不该收则直接丢弃，CPU根本不知道</li>
+</ol>
+<p>网卡的四种接收模式：</p>
+<ol>
+<li>广播模式：能接受网络中广播信息</li>
+<li>组播模式：网卡能接收组播数据</li>
+<li>直接模式：只有目的网卡能接受数据</li>
+<li>混杂模式：能接受一切通过他的数据</li>
+</ol>
+<h3 id="Libpcap"><a href="#Libpcap" class="headerlink" title="Libpcap"></a>Libpcap</h3><p>不是很重点</p>
+<p>Libpcap (Packet Capture library)，即数据包捕获函数库，可用于捕获经过网络接口(只要经过该接口，目标地址不一定为本机)的数据包，采用libpcap可以捕获本地网络数据链路层上的数据</p>
+<p>基于BPF系统<br>BPF主要由两部分组成：Network tap和Packet Filter</p>
+<h3 id="Libnet"><a href="#Libnet" class="headerlink" title="Libnet"></a>Libnet</h3><p>libnet提供的接口函数主要用于实现数据包的构造和发送<br>libpcap提供的接口函数主要用于实现数据包截获(接收)<br>libnids提供的接口函数主要实现了开发网络入侵监测系统(nids)所必须的一些结构框架<br>libicmp封装的是ICMP数据包的主要处理过程(构造、发送、接收等)</p>
+<p>Libnet概述<br>功能:数据包构造和发送<br>可以不用程序员去整解析报文啥的，可以方便快速简单的完成报文组装工作</p>
+<h3 id="Libnids"><a href="#Libnids" class="headerlink" title="Libnids"></a>Libnids</h3><p>在libnet和libpcap的基础上开发的，封装了开发NIDS所需的许多通用型函数<br>linids提供的接口函数监视流经本地的所有网络通 信，检查数据包等</p>
+<p>Libnids原理，一个大图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/7.png"></p>
+<p>libnids的每级回调函数可以是多个<br>    可以有多个ip&#x2F;tcp&#x2F;udp_callback<br>libnids的IP回调函数已经进行分片重组<br>    ip_callback不会存在ip分片</p>
+<p>数据结构<br>tuple4：用于描述一个地址端口对，它表示发送方IP和端口以及接收方IP和端口<br>half_stream：此数据结构用来描述在tcp连接中一端的所有信息，可以使客户端也可以是服务端<br>tcp_stream:描述的是一个TCP连接的所有信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/8.png"></p>
+<p>开发示例<br>jflow，tcp.c</p>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h2 id="串匹配概念"><a href="#串匹配概念" class="headerlink" title="串匹配概念"></a>串匹配概念</h2><p>尤其是信息检索和生物计算领域中的许多共同需求</p>
+<ol>
+<li>文本：由若干个字符组成的有限序列</li>
+<li>模式：也称为关键字，由若干个字符组成的有限序列</li>
+<li>模式集：指所有需要匹配的模式形成的集合</li>
+<li>最小模式长度：假设模式集中各个模式长度分别为l1,l2,…lr,那么最小模式长度是指所有模式长度的最小值</li>
+<li>前缀：两个字符串 p和x，若存在字符串v（v可为空串），使得p&#x3D;xv成立，称x为p的前缀</li>
+<li>后缀：两个字符串p和x,若存在字符串u（u可为空串）,使得p&#x3D;ux成立，称x为p的后缀</li>
+<li>子串：两个字符串p和x,若存在字符串u,v（u,v可以为空串），使得p&#x3D;uxv成立，称x为p的子串</li>
+<li>字符集：在模式或文本中所有可能出现的字符形成的集合，记为Σ ，其大小记为|Σ|。</li>
+</ol>
+<p>单模匹配<br>在一个文本text(设长度为n)中查找某个特定的子串pattern(设长度为m)。如果在text中找到等于pattern的子串，则称匹配成功，函数返回pattern在text中出现的位置(或序号)，否则匹配失败</p>
+<p>多模匹配<br>在一个文本text(设长度为n)中查找某些特定的子串patterns(设长度为m)。如果在text中找到等于patterns中的某些子串，则称匹配成功，函数返回pattern在text中出现的位置(或序号)，否则匹配失败</p>
+<h3 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h3><p>简单，时间复杂度差</p>
+<h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><p>KMP算法根据前缀模式可以使模式向前推进若干字符位置（依前缀模式长度而定），而不只是一个字符，避免了重复比较，同时也实现了文本指针的无回朔</p>
+<p>“前缀”指除了最后一个字符以外，一个字符串的全部头部组合</p>
+<p>移动位数 &#x3D; 已匹配的字符数 - 对应的部分匹配值</p>
+<h4 id="next数组求解方法"><a href="#next数组求解方法" class="headerlink" title="next数组求解方法"></a>next数组求解方法</h4><p>第一位的next值为0，第二位的next值为1，后面求解每一位的next值时，根据前一位进行比较。<br>首先将前一位与其next值对应的内容进行比较，如果相等，则该位的next值就是前一位的next值加上1；如果不等，向前继续寻找next值对应的内容来与前一位进行比较，直到找到某个位上内容的next值对应的内容与前一位相等为止，则这个位对应的值加上1即为需求的next值；如果找到第一位都没有找到与前一位相等的内容，那么需求的位上的next值即为1</p>
+<p>KMPnext可以把next中全部减一，如果当前位于首位相同还能再减一<br>每次不匹配时可以右移i-kmpNext[i]位</p>
+<h3 id="BM"><a href="#BM" class="headerlink" title="BM"></a>BM</h3><p>速度最快算法<br>算法对模式从最右端自右向左扫描。在不匹配（或完全匹配）时，用两个预先计算的函数bad character和good suffix 来确定指针在正文中移动的距离</p>
+<p>只要尾部不匹配，则在模式串中找一样的坏字符对齐，否则将整个匹配串移到坏字符后面<br>后移位数 &#x3D; 坏字符的位置 - 搜索词中的上一次出现位置<br>如果”坏字符”不包含在搜索词之中，则上一次出现位置为 -1<br>后移位数 &#x3D; 好后缀的位置 - 搜索词中的上一次出现位置<br>如果”好后缀”在搜索词中没有重复出现，则它的上一次出现位置为 -1</p>
+<p>移动是坏字符和好后缀的最大值</p>
+<p>计算出<strong>字符集</strong>中每个字符的偏移值bmBC[i],对于未在模式中出现的字符，偏移为m,否则取m-i-1,(其中i为字符在模式中的位置)</p>
+<p>我是真没看懂那两个东西是咋算的</p>
+<h3 id="AC算法"><a href="#AC算法" class="headerlink" title="AC算法"></a>AC算法</h3><p>多模式匹配问题在生物计算、信息检索及信号处理领域有着非常广泛的应用</p>
+<p>自动机（Automata）：确定型有限自动机DFA(Deterministic finite automata)是一个五元组M &#x3D; {S,Σ,δ,s0,S1}</p>
+<ol>
+<li>拆分关键字，生成状态图</li>
+<li>使用状态机</li>
+</ol>
+<p>时间复杂度为O(n)</p>
+<h3 id="树形有限自动机"><a href="#树形有限自动机" class="headerlink" title="树形有限自动机"></a>树形有限自动机</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/9.png"></p>
+<h1 id="笔记-考点"><a href="#笔记-考点" class="headerlink" title="笔记-考点"></a>笔记-考点</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/1.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io">Nonbliss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/">https://nonbliss.github.io/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nonbliss.github.io" target="_blank">Nonbliss's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/tag.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/20/%E5%B7%A5%E6%8E%A7%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">工控网络安全-复习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nonbliss</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/28605906"><i class="/img/bilibili.ico"></i><span>我的B站主页~</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">标记类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A4%E5%A4%84%E4%BB%85%E7%BD%97%E5%88%97%E5%A4%A7%E7%BA%B2%EF%BC%8C%E5%9B%A0%E4%B8%BA%E5%BE%80%E5%B9%B4%E5%AD%A6%E9%95%BF%E6%80%BB%E7%BB%93%E5%BE%88%E5%A5%BD%EF%BC%8C%E8%BF%99%E9%87%8C%E5%B0%B1%E4%B8%8D%E9%87%8D%E6%96%B0%E6%80%BB%E7%BB%93%E4%BA%86%EF%BC%8C%E4%BB%85%E4%B8%AA%E4%BA%BA%E5%A4%8D%E4%B9%A0%E4%BD%BF%E7%94%A8%E5%A4%A7%E7%BA%B2"><span class="toc-number"></span> <span class="toc-text">此处仅罗列大纲，因为往年学长总结很好，这里就不重新总结了，仅个人复习使用大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E2%9D%97"><span class="toc-number">1.</span> <span class="toc-text">信息安全技术架构❗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B1%82%E6%AC%A1%E5%88%92%E5%88%86%E2%9D%97%E2%9D%97%E2%9D%97"><span class="toc-number">2.</span> <span class="toc-text">信息安全层次划分❗❗❗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%9A%84%E8%AF%B1%E5%9B%A0%E4%B8%8E%E5%A8%81%E8%83%81%E2%9D%97%E2%9D%97"><span class="toc-number">3.</span> <span class="toc-text">信息安全的诱因与威胁❗❗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%E2%9D%97%E2%9D%97"><span class="toc-number">1.</span> <span class="toc-text">整体框架❗❗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第三章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E2%9D%97%E2%9D%97%E2%9D%97"><span class="toc-number">1.</span> <span class="toc-text">搜索引擎架构❗❗❗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%A1%8C%E4%B8%8E%E6%8A%93%E5%8F%96"><span class="toc-number">1.1.</span> <span class="toc-text">爬行与抓取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">网页排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PageRank%E2%9D%97%E2%9D%97%E2%9D%97"><span class="toc-number">2.1.</span> <span class="toc-text">PageRank❗❗❗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">3.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">布尔模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">向量空间模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">扩展布尔模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第四章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">网络流监控模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%81%E8%B7%AF%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">旁路检测技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">关键技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E2%80%94%E2%80%94UNIX"><span class="toc-number">3.1.</span> <span class="toc-text">进程通信技术——UNIX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Libpcap"><span class="toc-number">3.2.</span> <span class="toc-text">Libpcap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Libnet"><span class="toc-number">3.3.</span> <span class="toc-text">Libnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Libnids"><span class="toc-number">3.4.</span> <span class="toc-text">Libnids</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">第五章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8C%B9%E9%85%8D%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">串匹配概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BF%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">BF算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KMP"><span class="toc-number">1.2.</span> <span class="toc-text">KMP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#next%E6%95%B0%E7%BB%84%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">next数组求解方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BM"><span class="toc-number">1.3.</span> <span class="toc-text">BM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">AC算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.5.</span> <span class="toc-text">树形有限自动机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0-%E8%80%83%E7%82%B9"><span class="toc-number"></span> <span class="toc-text">笔记-考点</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/" title="信息内容安全-复习（仅重点内容）">信息内容安全-复习（仅重点内容）</a><time datetime="2023-05-26T11:15:31.000Z" title="发表于 2023-05-26 19:15:31">2023-05-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/20/%E5%B7%A5%E6%8E%A7%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/" title="工控网络安全-复习">工控网络安全-复习</a><time datetime="2023-05-20T11:41:23.000Z" title="发表于 2023-05-20 19:41:23">2023-05-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/%E5%B0%8F%E5%B0%8F%E9%AD%94%E6%B3%95-for-UOOC/" title="小小魔法 for UOOC">小小魔法 for UOOC</a><time datetime="2023-05-15T11:47:05.000Z" title="发表于 2023-05-15 19:47:05">2023-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/" title="网络安全-复习">网络安全-复习</a><time datetime="2023-05-15T11:08:45.000Z" title="发表于 2023-05-15 19:08:45">2023-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95-%E5%A4%8D%E4%B9%A0/" title="计算机网络-自顶向下方法-复习">计算机网络-自顶向下方法-复习</a><time datetime="2023-05-12T01:51:02.000Z" title="发表于 2023-05-12 09:51:02">2023-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Nonbliss</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script defer src="/live2d-widget/autoload.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="给我狠狠的学,熬熬熬,肝爆！" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

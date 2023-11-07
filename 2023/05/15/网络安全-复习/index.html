@@ -1,0 +1,1501 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网络安全-复习 | Nonbliss's blog</title><meta name="author" content="Nonbliss"><meta name="copyright" content="Nonbliss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="标记类型 斜体：看看就行 正常：正常掌握 粗体&#x2F;emoji❗：重点掌握  暂时没有完全标记，第一遍没法全部标记，第二遍会完整标记 注意我的疏忽从第一章到第三章ppt用的是往年的，这里可以看看你们亲爱的刘教官的总结，他用的是新ppt 1-1 典型网络安全事件剖析事件分析 不知道是啥但也是事件，没有下面的重要 某航空公司数据被境外间谍情报机关网络犯罪窃取案 疫情期间多个组织对我国政府部门发起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全-复习">
+<meta property="og:url" content="https://nonbliss.github.io/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Nonbliss&#39;s blog">
+<meta property="og:description" content="标记类型 斜体：看看就行 正常：正常掌握 粗体&#x2F;emoji❗：重点掌握  暂时没有完全标记，第一遍没法全部标记，第二遍会完整标记 注意我的疏忽从第一章到第三章ppt用的是往年的，这里可以看看你们亲爱的刘教官的总结，他用的是新ppt 1-1 典型网络安全事件剖析事件分析 不知道是啥但也是事件，没有下面的重要 某航空公司数据被境外间谍情报机关网络犯罪窃取案 疫情期间多个组织对我国政府部门发起">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nonbliss.github.io/img/tag.png">
+<meta property="article:published_time" content="2023-05-15T11:08:45.000Z">
+<meta property="article:modified_time" content="2023-06-03T02:36:40.581Z">
+<meta property="article:author" content="Nonbliss">
+<meta property="article:tag" content="Nonbliss">
+<meta property="article:tag" content="楠布蕾丝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nonbliss.github.io/img/tag.png"><link rel="shortcut icon" href="/img/logow_t.png"><link rel="canonical" href="https://nonbliss.github.io/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全-复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-03 10:36:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/ahzoo.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tag.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nonbliss's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络安全-复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-15T11:08:45.000Z" title="发表于 2023-05-15 19:08:45">2023-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-03T02:36:40.581Z" title="更新于 2023-06-03 10:36:40">2023-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">学习资料</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络安全-复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="标记类型"><a href="#标记类型" class="headerlink" title="标记类型"></a>标记类型</h2><ul>
+<li>斜体：看看就行</li>
+<li>正常：正常掌握</li>
+<li>粗体&#x2F;emoji❗：重点掌握</li>
+</ul>
+<p>暂时没有完全标记，第一遍没法全部标记，第二遍会完整标记</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>我的疏忽从第一章到第三章ppt用的是往年的，这里可以看看你们亲爱的刘教官的总结，他用的是新ppt</p>
+<h1 id="1-1-典型网络安全事件剖析"><a href="#1-1-典型网络安全事件剖析" class="headerlink" title="1-1 典型网络安全事件剖析"></a>1-1 典型网络安全事件剖析</h1><h2 id="事件分析"><a href="#事件分析" class="headerlink" title="事件分析"></a><em>事件分析</em></h2><ul>
+<li>不知道是啥但也是事件，没有下面的重要<ul>
+<li>某航空公司数据被境外间谍情报机关网络犯罪窃取案</li>
+<li>疫情期间多个组织对我国政府部门发起攻击</li>
+<li>蔓灵花组织对我国政府及教育科研机构发动钓鱼邮件攻击</li>
+<li>多地高校数万学生隐私遭泄漏</li>
+<li>疑似5.38亿条微博用户信息泄露</li>
+<li>800万条公民个人信息被售卖</li>
+<li>疑似超2亿国内个人信息在国外暗网论坛兜售</li>
+<li>台积电生产工厂和营运总部中勒索病毒</li>
+<li>多个行业感染incaseformat病毒</li>
+<li>易到用车服务器遭攻击，黑客勒索巨额比特币</li>
+<li>拼多多现优惠券漏洞，遭黑产团伙盗取数千万</li>
+<li>SolarWinds遭攻击</li>
+<li>美国医疗机构数据泄露造成130亿美元损失</li>
+<li>Colonial Pipeline遭勒索软件攻击</li>
+</ul>
+</li>
+<li>淘宝9900万账户信息遭窃<ul>
+<li>不同的网站采用不同的用户名和密码</li>
+</ul>
+</li>
+<li>OpenSSL水牢漏洞</li>
+<li>国内部分网站存在Rammit恶意代码攻击<ul>
+<li>禁止执行不明来源的ActiveX控件</li>
+</ul>
+</li>
+<li>跨境冒充公检法1.17亿电信诈骗案<ul>
+<li>诈骗分子重点在于掌握了被骗者的重要信息，再利用这些实信息实施精心策划的骗局，获取被骗者的充分信任</li>
+</ul>
+</li>
+<li>2.7亿Gmail、雅虎和Hotmail账号遭泄露<ul>
+<li>服务提供商没有很好的考虑用户数据安全问题</li>
+</ul>
+</li>
+<li>全美互联网瘫痪<ul>
+<li>DDoS攻击又称为分布式拒绝服务攻击。最基本的DDoS就是黑客利用合理的服务请求去占用尽可能多的服务资源，从而使得用户无法得到服务响应</li>
+</ul>
+</li>
+<li>5家俄罗斯银行遭遇DDoS攻击<ul>
+<li>今天，DDoS攻击已转化为一个完善的产业链，从攻击肉鸡的贩卖，到发动攻击，无论是敲诈勒索，还是雇凶攻打，背后都是利益的驱动</li>
+</ul>
+</li>
+<li>希拉里邮件门影响美国大选<ul>
+<li>希拉里在2009年至2013年担任国务卿的四年里，没有政府电子邮件账户，<br>只使用个人电子邮件账户来处理政府事务</li>
+</ul>
+</li>
+<li>电信诈骗导致高中生徐玉玉身亡<ul>
+<li>短信和电话是不安全的</li>
+<li>电信诈骗分类<ol>
+<li>电话诈骗</li>
+<li>网络诈骗</li>
+<li>短信诈骗</li>
+<li>传统媒介诈骗</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>黑客利用恶意软件Mirai导致德国90万台路由器瘫痪<ul>
+<li>由被恶意软件感染的路由器和网络摄像头发起</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络安全趋势分析"><a href="#网络安全趋势分析" class="headerlink" title="网络安全趋势分析"></a><em>网络安全趋势分析</em></h2><ul>
+<li>网络安全法律体系将加速形成<ul>
+<li>《网络安全法》的出台</li>
+</ul>
+</li>
+<li>关键信息基础设施面临的网络安全风险不断攀升<ul>
+<li>针对关键信息基础设施的攻击频率将进一步增加，产生的后果将更加严重</li>
+</ul>
+</li>
+<li>物联网智能终端引发的安全事件进一步升级<ul>
+<li>2017年随着物联网智能设备的进一步应用，智能设备漏洞导致的网络威胁范围更广，后果也将更加严重</li>
+</ul>
+</li>
+<li>精准化的网络诈骗现象将更加突出<ul>
+<li>通过大数据和社会工程学分析用户购物数据、社交数据、位置数据、物流数据的精准网络诈骗逐渐成为趋势，传统“撒网”式电信诈骗逐渐退出舞台</li>
+</ul>
+</li>
+<li>移动支付面临的安全形势更加严峻<ul>
+<li>随着移动设备和移动支付用户的继续“爆炸式”增长，移动支付面临的安全问题也将更加凸显</li>
+</ul>
+</li>
+<li>网络可信身份的互联互通加速实现<ul>
+<li>我国势必会加强网络可信身份体系建设，积极推动已有的网络身份认证体系的互联互通，建立跨平台的网络可信身份体系</li>
+</ul>
+</li>
+<li>安全可控信息产业将得到爆发式增长<ul>
+<li>随着《网络安全法》的出台，党政军等重要部门网络安全审查力度将进一步加大</li>
+</ul>
+</li>
+<li>优秀人才脱颖而出的环境将逐步具备<ul>
+<li>建立灵活的网络安全人才激励机制，如技术入股、股权期权激励、分红奖励等</li>
+</ul>
+</li>
+<li>网络战威胁风险显著增加<ul>
+<li>网络空间“军备竞赛”持续升温</li>
+<li>美国重大项目<ul>
+<li>棱镜项目——监视互联网以收集海量个人信息</li>
+<li>主干道项目——对亿兆计的通信数据进行存储和分析</li>
+<li>核子项目——截获海量电话通话者对话内容及关键词</li>
+<li>码头项目——截取电子邮件，获取民众互联网元数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>双边和多边网络安全合作将持续深化</li>
+</ul>
+<h2 id="网络空间安全形势"><a href="#网络空间安全形势" class="headerlink" title="网络空间安全形势"></a>网络空间安全形势</h2><p>威胁政治，经济，文化，社会安全</p>
+<p>网络空间内容面与资源面、用户侧与行为侧的治理成为维护我国网络空间安全与主权的最重要工作之一</p>
+<p>国际上：世界各国通过加大网络空间安全的财政投入、颁布网络空间安全相关法律法规、引导技术创新方向等举措，夯实网络安全产业基础。</p>
+<h2 id="网络空间典型特点"><a href="#网络空间典型特点" class="headerlink" title="网络空间典型特点"></a>网络空间典型特点</h2><p>1-5有</p>
+<h2 id="四大特征"><a href="#四大特征" class="headerlink" title="四大特征"></a>四大特征</h2><ul>
+<li>复杂多元网络结构</li>
+<li>海量动态互联网内容服务</li>
+<li>形势多样的传播方式与入口</li>
+<li>动态海量易变网络资源生态体系</li>
+</ul>
+<h2 id="四大问题"><a href="#四大问题" class="headerlink" title="四大问题"></a>四大问题</h2><ul>
+<li>实体间物理、逻辑业务关联关系建立</li>
+<li>数据获取的及时性、有效性、准确性</li>
+<li>数据获取的全面性、实体追踪的有效性</li>
+<li>实体运营内容面与资源面生态图谱建立的全面性、准确性</li>
+</ul>
+<h2 id="两大现状"><a href="#两大现状" class="headerlink" title="两大现状"></a>两大现状</h2><ul>
+<li>难以建立网络空间治理的全局视图</li>
+<li>无法改变治理被动的局面</li>
+</ul>
+<h1 id="1-2-网络与信息安全体系结构介绍"><a href="#1-2-网络与信息安全体系结构介绍" class="headerlink" title="1-2 网络与信息安全体系结构介绍"></a>1-2 网络与信息安全体系结构介绍</h1><h2 id="网络与信息安全概述"><a href="#网络与信息安全概述" class="headerlink" title="网络与信息安全概述"></a>网络与信息安全概述</h2><h3 id="安全技术"><a href="#安全技术" class="headerlink" title="安全技术"></a><em>安全技术</em></h3><ul>
+<li>基于主机的入侵检测、弱点评估、风险评估、访问控制、配置日志、防病毒软件、防火墙、异常检测</li>
+<li>黑洞路由、访问控制列表、负载均衡、数据分流、数据清洗、应急响应、预警通报</li>
+<li>基于网络的入侵检测、数据流分析、异常检测、网络状态分析、性能测量、蜜网、抗D、恶意代码检测</li>
+<li>网络风险评估、网络安全态势预测与分析、动态风险评估、网络安全态势感知、网络拓扑测量、大数据分析</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/1.png" alt="网络与信息安全模型"></p>
+<h3 id="什么是信息安全"><a href="#什么是信息安全" class="headerlink" title="什么是信息安全"></a>什么是信息安全</h3><ul>
+<li>国内<ul>
+<li>沈昌祥<br>  实体安全，运行安全，数据安全，管理安全</li>
+<li>教科书<br>  实体安全，软件安全，运行安全，数据安全</li>
+<li>等级保护条例<br>  实体安全，运行安全，信息安全，人员安全维护</li>
+</ul>
+</li>
+<li>国外<ul>
+<li>BS7799<br>  机密性，完整性，可用性</li>
+<li>教课书<br>  机密性，完整性，可用性</li>
+<li>信息安全重点实验室<br>  信息的机密性，完整性，可用性，可控性，就是要保障电子信息的有效性</li>
+</ul>
+</li>
+<li>两种主要论点<ul>
+<li>国内<ul>
+<li>内容安全，数据安全，运行安全，实体安全</li>
+</ul>
+</li>
+<li>国外<ul>
+<li>机密性，完整性，可用性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络与信息安全涵盖范围❗"><a href="#网络与信息安全涵盖范围❗" class="headerlink" title="网络与信息安全涵盖范围❗"></a><strong>网络与信息安全涵盖范围</strong>❗</h3><ul>
+<li>机密性<br>保证系统不已电磁等方式向外泄露信息</li>
+<li>可用性<br>保证系统至少能提供基本的服务</li>
+<li>可控性<br>保证系统的机密性，使系统任何时候不被非授权的人恶意使用</li>
+<li>可用性<br>保障网络的正常运行，确保系统时刻能为授权人提供基本服务</li>
+<li>真实性<br>保证数据的发送源头不被伪造<ul>
+<li>来源伪造：路由欺骗，域名欺骗</li>
+</ul>
+</li>
+<li>机密性<br>保证数据在传输，储存过程中不被获取并解析<ul>
+<li>内容解析：对传递信息进行捕获和解析</li>
+</ul>
+</li>
+<li>完整性<br>保证数据在传输、存储等过程中不被非法修改<ul>
+<li>进行修改：删除局部内容或附加特定内容</li>
+</ul>
+</li>
+<li>抗否认性<br>保证系统的可用性，使得发布者无法否认所发布的信息内容<ul>
+<li>阻断传播：阻断信息传输系统，使得被传播的内容不能送达目的地</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/2.png" alt="网络与信息安全涵盖范围"></p>
+<p>左半边(真实性与完整性)具有相同性质，可以归并为真实性，完整性是真实性的子集<br><br>主要防范技术是校验与认证技术</p>
+<p>右上角（机密性，可控性）都反映出机密性，其中可控性是机密性的子集<br>主要防范技术是密码技术</p>
+<p>右下角（可用性，抗否认性）都反映出可用性的性质，抗否认性可以看作可用性的子集<br>主要防护措施是确保信息与信息系统处于一个可信的环境之下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/3.png" alt="金三角"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/4.png" alt="网络与信息安全框架"></p>
+<h3 id="什么是信息安全技术❗"><a href="#什么是信息安全技术❗" class="headerlink" title="什么是信息安全技术❗"></a><strong>什么是信息安全技术</strong>❗</h3><p>信息安全技术是指在信息系统的<strong>物理层、运行层</strong>，以及对信息自身的保护（<strong>数据层</strong>）及攻击（<strong>内容层</strong>）的层面上，所反映出的对信息自身与信息系统在<strong>可用性、机密性与真实性</strong>方面的保护与攻击的技术。</p>
+<h3 id="未来新技术"><a href="#未来新技术" class="headerlink" title="未来新技术"></a>未来新技术</h3><p>从总体角度来看，安全技术不会有大变化</p>
+<ul>
+<li>安全策略（Policy）<ul>
+<li>风险分析、安全评估</li>
+<li>漏洞扫描技术</li>
+<li>网络拓扑结构的发现，尤其是Peer to Peer 网络拓扑结构的发现</li>
+<li>态势预测与分析</li>
+</ul>
+</li>
+<li>系统防护（Protection）<ul>
+<li>病毒防护，侧重于网络制导、移动终端防护</li>
+<li>隔离技术</li>
+<li>拒绝服务攻击的防护</li>
+<li>访问控制技术</li>
+</ul>
+</li>
+<li>入侵检测（Detection）<ul>
+<li>基于IPv6的入侵检测系统</li>
+<li>向操作系统、应用系统中进行封装</li>
+<li>分布式入侵检测</li>
+<li>特洛伊木马检测技术</li>
+<li>预警技术</li>
+</ul>
+</li>
+<li>应急响应（Response）<ul>
+<li>快速判定、事件隔离、证据保全</li>
+<li>企业网内部的应急处理</li>
+<li>蜜罐技术</li>
+<li>僚机技术</li>
+</ul>
+</li>
+<li>灾难恢复（Restore）<ul>
+<li>基于structure-free的备份技术</li>
+<li>容侵（intrusion-tolerant）技术</li>
+<li>生存（容忍）技术</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/5.png" alt="PPDRR"><br>记一下这个图叫PPDRR，20年考过这个图的大体结构和各小点具体项。</p>
+<h1 id="1-3-大型网络应用剖析"><a href="#1-3-大型网络应用剖析" class="headerlink" title="1-3 大型网络应用剖析"></a>1-3 大型网络应用剖析</h1><h2 id="百度搜索引擎分析"><a href="#百度搜索引擎分析" class="headerlink" title="百度搜索引擎分析"></a>百度搜索引擎分析</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>抓取建库<ul>
+<li>抓取友好性<br> 要求抓取系统尽可能的高效利用带宽，在有限的硬件和带宽资源下尽可能多的抓取到有价值资源<br> 进行一定的抓取压力控制，达到既不影响网站的正常用户访问又能尽量多的抓取到有价值资源的目的<br> 对同一个站点的抓取速度控制一般分为两类：其一，一段时间内的抓取频率；其二，一段时间内的抓取流量。同一站点不同的时间抓取速度也会不同</li>
+<li>常用抓取返回码示意<ul>
+<li>404 网页失效</li>
+<li>503 网页临时不可访问</li>
+</ul>
+</li>
+<li>多种url重定向识别<ul>
+<li>301 网页永久转移另一个地址</li>
+<li>302 暂时跳转另一个网址</li>
+<li>304 原来缓冲的文档还可以使用</li>
+<li>305 文档应通过Location头指明的代理服务器获取</li>
+<li>307 只能跟随GET的重定向</li>
+<li>meta refresh重定向 使用content属性表示刷新或跳转的开始时间与跳转的网址</li>
+<li>js重定向 replace直接将url替换 href为点击跳转</li>
+</ul>
+</li>
+<li>抓取优先级调配<br>  互联网资源规模的巨大以及迅速的变化，对于搜索引擎来说全部抓取到并合理的更新保持一致性几乎是不可能的事情</li>
+<li>重复URL过滤<br>  快速查找并对比</li>
+<li>暗网数据获取<br>  通过开放平台采用数据提交的方式来解决</li>
+<li>抓取反作弊</li>
+<li>抓取频次原则及调整方法<br>  根据什么确定对一个网站的抓取频次<ul>
+<li>网站更新频率</li>
+<li>网站更新质量</li>
+<li>联通度</li>
+<li>站点评价</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检索排序<br> emm，信息内容安全讲得更好</li>
+<li>外部投票<br> 超链已经逐渐失去作为投票的重要意义，无论是谷歌还是百度，对超链数据的依赖程度都越来越低</li>
+<li>结果展示<ul>
+<li>结构化展现</li>
+<li>摘要式展现</li>
+</ul>
+</li>
+</ol>
+<h2 id="大型网络应用技术发展历程"><a href="#大型网络应用技术发展历程" class="headerlink" title="大型网络应用技术发展历程"></a>大型网络应用技术发展历程</h2><ol>
+<li>最开始的架构<br> 服务器+文件+数据库</li>
+<li>应用、数据、文件分离</li>
+<li>利用缓存改善网站性能</li>
+<li>使用集群改善应用服务器性能——负载均衡</li>
+<li>数据库读写分离和分库分表</li>
+<li>使用CDN和反向代理提高网站性</li>
+<li>使用分布式文件系统</li>
+<li>使用NoSql和搜索引擎</li>
+<li>将应用服务器进行业务拆分</li>
+<li>搭建分布式服务</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/44.png"></p>
+<h2 id="大型网络应用系统设计要点"><a href="#大型网络应用系统设计要点" class="headerlink" title="大型网络应用系统设计要点"></a>大型网络应用系统设计要点</h2><p>数据如何传输？传输的负载如何来衡量？<br>数据区域获取？区域分析？区域存储？整体整合？<br>数据分析加速<br>区域内部的存储空间分配方案？<br>计算与存储所用资源间的关系？<br>地址空间管理？Ip地址？平面地址？虚地址？<br>网络连接与管理？</p>
+<p>虽然这道题没有直接这样问，但是可以照应着看一下<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/45.png"></p>
+<h2 id="分布式系统的网络问题"><a href="#分布式系统的网络问题" class="headerlink" title="分布式系统的网络问题"></a>分布式系统的网络问题</h2><p>性能：等待时间和点到点间的传输率</p>
+<p>等待时间：<br>执行发送之后到数据到目标地的时间<br>可以用传输一个空消息的时间度量<br>软件开销＋路由延迟＋源于争夺传输信道的依赖负载的统计因素<br>分布式系统在进程之间传送的消息很多很小，因此等待时间在决定性能上与数据传输率有相同或更重要的意义</p>
+<p>数据传输率：<br>数据在网络上两台计算机间的传输速度</p>
+<p>消息传输时间＝等待时间＋length&#x2F;数据传输率</p>
+<p>网络传输率：由网络的物理特性决定总量</p>
+<p>系统总带宽：吞吐量的度量，在给定的时间内网络可以传输的数据总量</p>
+<p>可扩展性：</p>
+<ul>
+<li>规模增长，结构变化</li>
+<li>协议改变，寻址和路由机制的变化</li>
+<li>移动性</li>
+</ul>
+<p>可靠性：</p>
+<ul>
+<li>大多数物理介质</li>
+<li>错误，软件故障，缓冲区溢出</li>
+<li>校验和纠错，重传</li>
+</ul>
+<p>安全性</p>
+<ul>
+<li>防火墙 VPN</li>
+<li>端到端：认证，私密性，安全性</li>
+</ul>
+<h2 id="分布式系统通信协议"><a href="#分布式系统通信协议" class="headerlink" title="分布式系统通信协议"></a>分布式系统通信协议</h2><p>双方实体完成通信或服务所必须遵循的规则和约定，需要规定交流什么、怎样交流及何时交流</p>
+<p>三要素：<br>“如何讲”，数据的格式、编码和信号等级<br>“讲什么”，数据内容、含义以及控制信息<br>定时规则（时序）：明确通信的顺序、速率匹配和排序。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/45.png"></p>
+<h1 id="1-4-互联网发展热点剖析"><a href="#1-4-互联网发展热点剖析" class="headerlink" title="1-4 互联网发展热点剖析"></a>1-4 互联网发展热点剖析</h1><p>新ppt里没有可以不看</p>
+<h2 id="互联网接下来的七个爆发点"><a href="#互联网接下来的七个爆发点" class="headerlink" title="互联网接下来的七个爆发点"></a>互联网接下来的七个爆发点</h2><p>20年最后一个大题可以写这个，但并不重点，因为可以写别的</p>
+<ol>
+<li>连接一切<br>人与设备，设备与设备，人与服务之间都有联系</li>
+<li>互联网+创新涌现<br>传统行业+互联网，各行各业都产生变化，冲击很大</li>
+<li>开放的协作</li>
+<li>消费者参与决策</li>
+<li>数据成为资源</li>
+<li>顺应潮流的勇气</li>
+<li>链接一切的风险</li>
+</ol>
+<h2 id="2018年中国互联网产业发展6个新趋势"><a href="#2018年中国互联网产业发展6个新趋势" class="headerlink" title="2018年中国互联网产业发展6个新趋势"></a><em>2018年中国互联网产业发展6个新趋势</em></h2><p>暂时没看出来会怎么考</p>
+<ol>
+<li>新技术<ol>
+<li>下一代网络建设带动5G产业崛起</li>
+<li>工业互联网促进制造业集成创新</li>
+<li>大数据、人工智能将加速推进产业深度融合</li>
+<li>技术创新推动金融信用体系趋于完善</li>
+</ol>
+</li>
+<li>新动能<ol>
+<li>产业互联网推动新旧动能加速转换</li>
+<li>“互联网+先进制造业”成为振兴实体经济的重要途径</li>
+<li>制造业与互联网融合的行业解决方案将继续突破</li>
+<li>制造业与互联网融合的行业解决方案将继续突破智能制造的网络安全保障将成为关键一环</li>
+<li>农业全产业链信息化升级将加速</li>
+</ol>
+</li>
+<li>新场景<ol>
+<li>数据与服务开辟消费新场景</li>
+<li>共享服务更加智能化和全球化</li>
+<li>智能化赋能更多平台场景</li>
+</ol>
+</li>
+<li>新体验<ol>
+<li>智能交互催生消费新体验</li>
+<li>车联网、智能家电促进“住行”新体验</li>
+<li>AR有望重新定义移动交互体验</li>
+</ol>
+</li>
+<li>新挑战<ol>
+<li>勒索病毒类攻击或将成为常态</li>
+<li>个人信息保护将面临严峻挑战</li>
+<li>关键信息基础设施的安全风险将不断攀升</li>
+<li>网络空间安全防护能力将大幅加强</li>
+<li>企业拓展国际化市场将面临激烈竞争</li>
+</ol>
+</li>
+<li>新生态<ol>
+<li>物联网和工业互联网安全生态建设将日益完善</li>
+<li>平台经济创新与协同治理的需求将更加迫切</li>
+<li>数据权属关系受到广泛关注</li>
+<li>网络综合治理体系将加快完善</li>
+<li>全球互联网治理体系将深度变革</li>
+</ol>
+</li>
+</ol>
+<h2 id="2020年中国互联网十大趋势预测"><a href="#2020年中国互联网十大趋势预测" class="headerlink" title="2020年中国互联网十大趋势预测"></a>2020年中国互联网十大趋势预测</h2><p>为啥是2020？</p>
+<ol>
+<li>一超多强局面将更加清晰</li>
+<li>互联网公司做起硬件不手软<br>从软件到硬件，从做应用到做终端</li>
+<li>视频社交的新创业风口到来</li>
+<li>外卖行业遭受彻底整顿</li>
+<li>金融科技公司迎来上市大潮</li>
+<li>开放一家世界互联网巨头到中国运营</li>
+<li>运营商的内容和应用重新崛起</li>
+<li>旅游出行等领域面临一场大战</li>
+<li>游戏市场变得更加均衡</li>
+<li>越来越多的内容生产来自机器人</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本质：技术，设施，创新，数据的发展<br>产生的现象：安全意识提升，市场环境变化，引领市场需求<br>产生：环境，应用，数据变化的事件</p>
+<p>环境由：网络，主机，基础服务组成<br>应用由：软件，需求，数据组成<br>两者相互作用产生数据变化发展</p>
+<p>数据关键技术：汇聚，存储，分析，融合，共享</p>
+<h1 id="1-5-负载均衡策略与算法剖析"><a href="#1-5-负载均衡策略与算法剖析" class="headerlink" title="1-5 负载均衡策略与算法剖析"></a>1-5 负载均衡策略与算法剖析</h1><h2 id="为什么要负载均衡"><a href="#为什么要负载均衡" class="headerlink" title="为什么要负载均衡"></a>为什么要负载均衡</h2><h3 id="关键点：怎样保持业务的连续性"><a href="#关键点：怎样保持业务的连续性" class="headerlink" title="关键点：怎样保持业务的连续性"></a>关键点：怎样保持业务的连续性</h3><h3 id="网络空间典型特点-1"><a href="#网络空间典型特点-1" class="headerlink" title="网络空间典型特点"></a>网络空间典型特点</h3><ul>
+<li>内容复杂性<br>互联网信息广泛种类繁多</li>
+<li>结构复杂性<br>目前互联网节奏十分复杂</li>
+<li>服务复杂性<br>互联网存在关系复杂的服务链条</li>
+</ul>
+<p>三者存在互相继承关系</p>
+<h3 id="需要原因分析"><a href="#需要原因分析" class="headerlink" title="需要原因分析"></a>需要原因分析</h3><p>应用背景：</p>
+<ul>
+<li>访问流量快速增长</li>
+<li>业务量不点提高</li>
+</ul>
+<p>用户需求：</p>
+<ul>
+<li>希望不间断可用性及响应速度快</li>
+</ul>
+<p>存在问题的节点：</p>
+<ul>
+<li>服务器端</li>
+<li>传输链路</li>
+</ul>
+<h3 id="本地负载均衡"><a href="#本地负载均衡" class="headerlink" title="本地负载均衡"></a>本地负载均衡</h3><p>有效解决数据流量过大、网络负荷过重的问题，不需购置性能卓越的服务器，充分利用现有设备</p>
+<p>特点：</p>
+<ul>
+<li><p>不用买服务器</p>
+</li>
+<li><p>把数据流量合理地分配给服务器群内的服务器共同负担</p>
+</li>
+<li><p>扩充升级方便，不需改变现有网络结构</p>
+</li>
+<li><p>流量导向<br>Cyclic，Least Users，Least Traffic，SNMP，Hashing，Response Time</p>
+</li>
+<li><p>检测链接<br>Ping，TCP or UDP Port，HTTP Page，Page Content，Radius，RTSP</p>
+</li>
+<li><p>页面检测</p>
+</li>
+<li><p>健康检查</p>
+</li>
+</ul>
+<h3 id="全局负载均衡"><a href="#全局负载均衡" class="headerlink" title="全局负载均衡"></a>全局负载均衡</h3><p>在一个多区域拥有自己服务器的站点，为了使全球用户只以一个IP地址或域名就能访问到离自己最近的服务器</p>
+<p>特点：</p>
+<ul>
+<li>地理位置无关</li>
+<li>避免单点失效出现整体问题</li>
+<li>解决网络拥塞问题</li>
+</ul>
+<p>部署方式：</p>
+<ul>
+<li>路由方式<br>灵活<br>所有流量经过负载均衡，对网络改动小</li>
+<li>桥接方式<br>不改变当前网络架构<br>负载均衡WAN和LAN链接上行设备和下行服务器，使其存在同一逻辑网络中<br>容错性差</li>
+<li>服务直接返回<br>适合吞吐量大网络应用<br>客户端接WAN口，WAN口直接给服务器，服务器直接给客户端<br>返回流量不过均衡，使用流量大的网络应用</li>
+</ul>
+<h2 id="负载均衡主要策略"><a href="#负载均衡主要策略" class="headerlink" title="负载均衡主要策略"></a>负载均衡主要策略</h2><h3 id="基于DNS的负载均衡"><a href="#基于DNS的负载均衡" class="headerlink" title="基于DNS的负载均衡"></a>基于DNS的负载均衡</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>一个域名绑定多个IP，用DNS的转发（不知道为啥ppt里写的是随机域名，不过DNS基本原理就是转发重定向）来实现负载均衡</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>实现简单、实施容易、成本低、适用于大多数TCP应用</p>
+<p><del>这里的成本低指的不是DNS服务器便宜，指的是你办TCP服务就得弄个DNS，既然你都弄了DNS了那就再配置一下就完了</del></p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>一个服务器出现故障就需要等恢复</p>
+<h4 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h4><p>DNS无法得知服务器间的差异，不能为性能较好的服务器分配更多请求（所以原理用的是随机域名转发，<del>这就是理解</del>）</p>
+<h3 id="基于反向代理的负载均衡"><a href="#基于反向代理的负载均衡" class="headerlink" title="基于反向代理的负载均衡"></a>基于反向代理的负载均衡</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><p>自带高速缓冲，减轻服务器负担</p>
+<h4 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h4><p>并发链接请求非常多，代理负载巨大（一个代理需要开两个链接）</p>
+<h4 id="缺陷-1"><a href="#缺陷-1" class="headerlink" title="缺陷"></a>缺陷</h4><p>必须要为每一种应用服务专门开发一个反向代理服务器</p>
+<h3 id="基于特定服务器软件的负载均衡"><a href="#基于特定服务器软件的负载均衡" class="headerlink" title="基于特定服务器软件的负载均衡"></a>基于特定服务器软件的负载均衡</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>利用网络协议重定向实现<br>HTTP协议请求直接跳转别的url减轻服务器压力</p>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><p>服务可定制</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>需要改服务器软件，成本高</p>
+<h3 id="基于NAT的负载均衡❗"><a href="#基于NAT的负载均衡❗" class="headerlink" title="基于NAT的负载均衡❗"></a>基于NAT的负载均衡❗</h3><p>我记得上课这里讲的挺多的，那我就贴个图吧</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/6.png"></p>
+<h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><p>技术完善，算法灵活</p>
+<h4 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h4><p>伸缩能力有限，若服务器节点数目过多，调度器本身会成为系统新瓶颈</p>
+<h3 id="基于CDN的负载均衡"><a href="#基于CDN的负载均衡" class="headerlink" title="基于CDN的负载均衡"></a>基于CDN的负载均衡</h3><h4 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4><p>网络架构中加一层定位，可以定位到用户最优CDN服务</p>
+<h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><p>速度快</p>
+<h2 id="负载均衡主要算法"><a href="#负载均衡主要算法" class="headerlink" title="负载均衡主要算法"></a>负载均衡主要算法</h2><h3 id="轮询算法"><a href="#轮询算法" class="headerlink" title="轮询算法"></a>轮询算法</h3><p>轮流分配用户请求</p>
+<h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><p>简洁，无状态调度</p>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><p>不能很好的分配各个服务器的负载，容易导致服务器间负载不均衡</p>
+<h4 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h4><p>适用于服务器组内配置相似且平均服务请求相对均衡</p>
+<h3 id="Hash散列算法"><a href="#Hash散列算法" class="headerlink" title="Hash散列算法"></a>Hash散列算法</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/7.png"></p>
+<h3 id="最少链接算法"><a href="#最少链接算法" class="headerlink" title="最少链接算法"></a>最少链接算法</h3><h4 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h4><p>将请求分配给当前链接最少的服务器</p>
+<h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><p>简洁，大多数情况有效</p>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><p>若各个服务器处理能力不同，该算法不理想</p>
+<h4 id="适用-1"><a href="#适用-1" class="headerlink" title="适用"></a>适用</h4><p>使用需要长时间的处理请求</p>
+<h3 id="最快链接算法"><a href="#最快链接算法" class="headerlink" title="最快链接算法"></a>最快链接算法</h3><h4 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h4><p>均衡器记录自身到每一个集群节点的响应，并将下一个链接请求分配给响应时间最短的节点</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>基于拓扑结构重定向的高级均衡策略<br><del>这句话我完全看不懂</del></p>
+<h3 id="健康性检查算法"><a href="#健康性检查算法" class="headerlink" title="健康性检查算法"></a>健康性检查算法</h3><p>负载均衡产品中的关键指标</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>检测服务器集群的健康程度，避免将流量转发给存在问题的服务器</p>
+<h1 id="2-1-防火墙基础"><a href="#2-1-防火墙基础" class="headerlink" title="2-1 防火墙基础"></a>2-1 防火墙基础</h1><h2 id="下一代防火墙"><a href="#下一代防火墙" class="headerlink" title="下一代防火墙"></a><em>下一代防火墙</em></h2><ol>
+<li>拥塞、允许<br>基于应用的黑白名单</li>
+<li>多种条件的限制</li>
+<li>安全扫描</li>
+<li>威胁的主动防御<br>特征识别，用户行为分析等</li>
+<li>流量整形</li>
+</ol>
+<h2 id="防火墙概论"><a href="#防火墙概论" class="headerlink" title="防火墙概论"></a>防火墙概论</h2><h3 id="防火墙定义"><a href="#防火墙定义" class="headerlink" title="防火墙定义"></a>防火墙定义</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>设置在不同网络或网络公共域之间的一系列部件的组合<br>是不同网络或网络安全域之间信息的唯一出入口<br>提供信息安全服务，实现网络与信息安全的基础设施</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ul>
+<li>隔离风险区域与安全区域且不妨碍用户对风险区域的访问</li>
+<li>监控通信</li>
+<li>抵制对安全区域构成威胁的数据</li>
+</ul>
+<p>防止不希望的和未授权的信息进出被保护的网络</p>
+<p>逻辑上，防火墙为</p>
+<ul>
+<li>分离器<br>分离两个不同网络</li>
+<li>限制器<br>限制非法访问</li>
+<li>分析器<br>数据分析</li>
+</ul>
+<h4 id="三大要素"><a href="#三大要素" class="headerlink" title="三大要素"></a>三大要素</h4><p>安全、管理、速度</p>
+<h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a><strong>优点</strong></h4><ol>
+<li>防火墙是网络安全的屏障</li>
+<li>控制对主机系统的访问</li>
+<li>监控和审计网络访问</li>
+<li>防止内部信息外泄</li>
+<li>部署网络地址翻译机制（NAT）</li>
+</ol>
+<h4 id="弱点"><a href="#弱点" class="headerlink" title="弱点"></a><strong>弱点</strong></h4><ol>
+<li>防火墙不能防范来自内部网络的攻击</li>
+<li>防火墙不能防范不经由防火墙的攻击</li>
+<li>防火墙不能防范感染病毒的软件或文件的传输</li>
+<li>防火墙不能防范数据驱动式攻击</li>
+<li>防火墙不能防范利用标准网络协议中的缺陷进行的攻击</li>
+<li>防火墙不能防范利用服务器漏洞进行的攻击</li>
+<li>防火墙不能防范新的网络安全问题</li>
+<li>防火墙可能限制有用的网络服务</li>
+</ol>
+<h2 id="防火墙基本结构"><a href="#防火墙基本结构" class="headerlink" title="防火墙基本结构"></a><strong>防火墙基本结构</strong></h2><h3 id="屏蔽路由器"><a href="#屏蔽路由器" class="headerlink" title="屏蔽路由器"></a>屏蔽路由器</h3><p>屏蔽路由器作为内外连接的唯一通道，要求所有的报文都必须在此通过检查<br>路由器上可以安装基于IP层的报文过滤软件，实现报文过滤功能</p>
+<p>危险区域包括路由器本身及路由器允许访问的主机</p>
+<p>缺点是，路由器一旦被控制后很难发现，而且不能识别不同的用户</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/8.png"></p>
+<h3 id="双重宿主主机防火墙"><a href="#双重宿主主机防火墙" class="headerlink" title="双重宿主主机防火墙"></a>双重宿主主机防火墙</h3><p>用一台装有两块网卡的堡垒主机做防火墙<br>两块网卡分别与内部网和外部网相连，<strong>内部网和外部网之间的直接通信被完全阻止</strong></p>
+<p>双宿主机防火墙优于屏蔽路由器的方面</p>
+<ul>
+<li>堡垒主机的系统软件可用于维护系统日志、硬件复制日志或远程日志</li>
+<li>日志对于日后的检查很有用，但不能帮助网络管理者确认内网中哪些主机可能已被黑客人侵</li>
+</ul>
+<p>致命弱点<br>入侵者控制壁垒机会造成网上用户任意访问内网</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/9.png"></p>
+<h3 id="屏蔽主机防火墙"><a href="#屏蔽主机防火墙" class="headerlink" title="屏蔽主机防火墙"></a>屏蔽主机防火墙</h3><p>容易实现且安全，应用广泛<br>路由器链接外网，内网放一个壁垒主机，壁垒主机是外网唯一可以直接到达的机器。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/10.png"></p>
+<h3 id="屏蔽子网防火墙"><a href="#屏蔽子网防火墙" class="headerlink" title="屏蔽子网防火墙"></a>屏蔽子网防火墙</h3><p>外网内网间建立一个被隔离的子网，两台路由器在外网和子网及子网和内网间隔开<br>危险区域：壁垒主机，子网主机，所有连接内网、外网和屏蔽子网的路由器</p>
+<p>若尝试破坏屏蔽子网防火墙，则需要重新配置三个网的路由器</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/11.png"></p>
+<h3 id="其他防火墙结构"><a href="#其他防火墙结构" class="headerlink" title="其他防火墙结构"></a>其他防火墙结构</h3><ul>
+<li>一个堡垒主机和一个非军事区</li>
+<li>两个堡垒主机和两个非军事区</li>
+<li>两个堡垒主机和一个非军事区</li>
+</ul>
+<h2 id="防火墙的模型与分类"><a href="#防火墙的模型与分类" class="headerlink" title="防火墙的模型与分类"></a>防火墙的模型与分类</h2><h3 id="防火墙模型"><a href="#防火墙模型" class="headerlink" title="防火墙模型"></a>防火墙模型</h3><p>可以在OSI&#x2F;RM模型总的五层设置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/12.png"></p>
+<h3 id="防火墙分类"><a href="#防火墙分类" class="headerlink" title="防火墙分类"></a>防火墙分类</h3><h4 id="包过滤防火墙"><a href="#包过滤防火墙" class="headerlink" title="包过滤防火墙"></a>包过滤防火墙</h4><p>检查每一个通过的网络包</p>
+<h4 id="状态-动态检测防火墙"><a href="#状态-动态检测防火墙" class="headerlink" title="状态&#x2F;动态检测防火墙"></a>状态&#x2F;动态检测防火墙</h4><p>为了跟踪包的状态，防火墙还记录有用的信息以帮助识别包，例如已有的网络连接、数据的传出请求等</p>
+<h4 id="应用程序代理防火墙"><a href="#应用程序代理防火墙" class="headerlink" title="应用程序代理防火墙"></a>应用程序代理防火墙</h4><p>接受来自内部网络特定用户应用程序的通信（基于代理），然后建立与公共网络服务器单独的连接</p>
+<h4 id="个人防火墙"><a href="#个人防火墙" class="headerlink" title="个人防火墙"></a>个人防火墙</h4><p>通常是应用程序级的，个人防火墙安装在计算机网络接口的较低级别上，使其可以监视传入传出网卡的所有网络通信</p>
+<h2 id="攻击方式与防火墙防御"><a href="#攻击方式与防火墙防御" class="headerlink" title="攻击方式与防火墙防御"></a>攻击方式与防火墙防御</h2><h3 id="认识黑客"><a href="#认识黑客" class="headerlink" title="认识黑客"></a>认识黑客</h3><p>踩点-&gt;扫描-&gt;攻击</p>
+<p>踩点收集信息，如DNS，SNMP等</p>
+<p>扫描进行漏洞侦测，SATAN</p>
+<p>攻击这没啥说的</p>
+<h3 id="网络攻击的基本手段"><a href="#网络攻击的基本手段" class="headerlink" title="网络攻击的基本手段"></a>网络攻击的基本手段</h3><h4 id="非法权限类"><a href="#非法权限类" class="headerlink" title="非法权限类"></a>非法权限类</h4><ul>
+<li>特洛伊木马<br>合法程序包含恶意行为<ul>
+<li>陷阱入口类</li>
+<li>信息窃取类</li>
+<li>功能欺骗类</li>
+<li>逻辑炸弹类</li>
+</ul>
+</li>
+<li>系统欺骗（提权）<ul>
+<li>外部欺骗类</li>
+<li>本机欺骗类</li>
+</ul>
+</li>
+<li>拒绝服务<br>利用计算机协议处理的漏洞来攻击网上计算机使之死机为目的的网络程序</li>
+<li>入侵<br>扫描器是常规入侵工具，法律上禁止使用</li>
+<li>窃取<br>搭线窃听</li>
+</ul>
+<h4 id="传染类"><a href="#传染类" class="headerlink" title="传染类"></a>传染类</h4><ul>
+<li>源码类<br>宏命令，通过应用程序留下的接口达到目的</li>
+<li>目标码类</li>
+</ul>
+<h4 id="侵占资源类"><a href="#侵占资源类" class="headerlink" title="侵占资源类"></a>侵占资源类</h4><ul>
+<li>一对一式攻击<br>大量的链接请求阻碍信道</li>
+<li>兑变式攻击<br>让对方接收并运行</li>
+</ul>
+<h2 id="防火墙发展"><a href="#防火墙发展" class="headerlink" title="防火墙发展"></a><em>防火墙发展</em></h2><ul>
+<li><p>第一代防火墙<br>只有分组过滤功能</p>
+</li>
+<li><p>第二代防火墙<br>代理服务器，可提供应用服务级的控制，起到外部网络向被保护的内部网申请服务时中间转接作用<br>可以实现代理转发</p>
+</li>
+<li><p>第三代防火墙<br>建立在通用操作系统上的商用防火墙产品</p>
+</li>
+<li><p>第四代防火墙<br>安全操作系统+动态网络安全技术</p>
+</li>
+</ul>
+<h1 id="2-2-防火墙技术"><a href="#2-2-防火墙技术" class="headerlink" title="2-2 防火墙技术"></a>2-2 防火墙技术</h1><h2 id="包过滤技术"><a href="#包过滤技术" class="headerlink" title="包过滤技术"></a>包过滤技术</h2><h3 id="包过滤原理"><a href="#包过滤原理" class="headerlink" title="包过滤原理"></a>包过滤原理</h3><p>通过检测网络数据包的信息头决定是否将数据包发往目的地址<br>大多数过滤型防火墙只针对性分析最有用的数据域</p>
+<p>核心：包检查模块<br>包过滤检查模块深入到系统的传输层（TCP）和网络层（IP）之间，在操作系统或路由器的TCP层对IP包处理以前对IP包进行处理</p>
+<p>防火墙检查模块验证每个包是否符合过滤规则，不管是否符合过滤规则，防火墙一般都要记录数据包情况</p>
+<ul>
+<li>不符合规则的包要进行报警或通知管理员</li>
+<li>被过滤或丢弃的数据包看自己配置的策略</li>
+</ul>
+<p>包过滤规则（访问控制列表）<br>只有满足访问控制列表的数据才会被转发<br>为了保证所有流入和流出的网络的数据包都被监控和检测，包过滤器必须被放在网络单点访问的位置</p>
+<h4 id="配置访问控制列表"><a href="#配置访问控制列表" class="headerlink" title="配置访问控制列表"></a>配置访问控制列表</h4><p>包过滤防火墙由</p>
+<ul>
+<li>一个脏端口</li>
+<li>一个净端口</li>
+<li>一组访问控制规则</li>
+</ul>
+<p>两种访问控制列表方式</p>
+<ul>
+<li>限制策略<br>接受受信任的IP包（白名单）</li>
+<li>宽松策略<br>拒绝不受信任的IP包（黑名单）<br><strong>列表顺序很重要，可以看2-3的具体配置方法</strong></li>
+</ul>
+<h4 id="动态访问控制列表"><a href="#动态访问控制列表" class="headerlink" title="动态访问控制列表"></a>动态访问控制列表</h4><p>实现指定用户的IP数据流临时通过防火墙，进行会话连接，从而实现对数据包的动态过滤，在会话结束后，将接口配置恢复到原来的状态<br>一般结合身份认证机制实现<br>如果用户通过身份验证，则激活动态访问控制列表，在防火墙开放一个数据通道，此时，用户可以暂时通过防火墙访问内部网络目标主机</p>
+<h4 id="状态包检查（反射访问控制列表）"><a href="#状态包检查（反射访问控制列表）" class="headerlink" title="状态包检查（反射访问控制列表）"></a>状态包检查（反射访问控制列表）</h4><p>动态建立访问控制列表条目，包含必要的包过滤信息，还包含了网络会话的状态信息，这些临时条目在新会话开始（如内部主机向外部主机发起连接请求）时创建，并在会话结束时被删除</p>
+<p>防火墙检查每一个通过的数据包，看这些数据包是否属于一个已经建立的通过防火墙的会话的延续，或者能否通过预设定包过滤规则集的检查</p>
+<p>会话结束的判定和临时条目的删除</p>
+<ul>
+<li>两组FIN</li>
+<li>RST</li>
+<li>超时</li>
+<li>UDP只有超时</li>
+</ul>
+<h3 id="包过滤技术优缺点"><a href="#包过滤技术优缺点" class="headerlink" title="包过滤技术优缺点"></a>包过滤技术优缺点</h3><h4 id="优点-8"><a href="#优点-8" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>包过滤防火墙是两个网络之间访问的惟一途径，防火墙可对每个传入和传出网络的数据包实行低水平控制</li>
+<li>每个IP包的字段都被检查，如源地址、目的地址、协议、端口等。防火墙将基于这些信息应用过滤规则</li>
+<li>防火墙可以识别、丢弃带欺骗性源IP地址的包</li>
+<li>包过滤通常被包含在路由器中，不需要额外的系统来处理</li>
+</ul>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>访问控制列表配置和维护困难</li>
+<li>包过滤防火墙难以详细了解主机之间的会话关系，容易受到欺骗</li>
+<li>基于网络层和传输层实现的包过滤防火墙难以实现对应用层服务的过滤</li>
+</ul>
+<h2 id="网络地址翻译技术"><a href="#网络地址翻译技术" class="headerlink" title="网络地址翻译技术"></a><strong>网络地址翻译技术</strong></h2><p>IANA规定了私有IP地址空间<br>NAT用来增加私有组织的可用地址空间和解决将现有的私有TCP&#x2F;IP网络连接到互联网上的IP地址编号问题</p>
+<h3 id="NAT技术原理"><a href="#NAT技术原理" class="headerlink" title="NAT技术原理"></a>NAT技术原理</h3><p>NAT把内部IP转换为外部IP<br>通信通常由内部网络发起<br>NAT具有一些性质可以为防火墙提供支持</p>
+<h3 id="NAT相关术语"><a href="#NAT相关术语" class="headerlink" title="NAT相关术语"></a>NAT相关术语</h3><ul>
+<li>内部局部地址（Inside Local Address）<br>内部网络中标识主机，内部网络私有IP</li>
+<li>内部全局地址（Inside Global Address）<br>在外部网络中使用，标识内部网络主机，是互联网中一个虚拟的主机<br>内部主机与外部主机通信地址，通常为公有地址</li>
+<li>外部全局地址（Outside Global Address）<br>在外部网络中使用，是从全球统可寻址空间中分配的</li>
+<li>外部局部地址（Outside Local Address）<br>外部网络表现在内部网络中的地址，从私有IP中分配的<br>能够被内部主机识别的外部主机的地址，对内部主机可见的地址</li>
+</ul>
+<h3 id="静态网络地址翻译技术"><a href="#静态网络地址翻译技术" class="headerlink" title="静态网络地址翻译技术"></a>静态网络地址翻译技术</h3><p>网络地址翻译技术完全依赖于人工指定内部局部地址和内部全局地址之间的映射关系来运行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/13.png"></p>
+<p>如果NAT映射表中存在匹配项，则使用内部局部地址替换数据包的目的IP地址，并将数据包转发到内部网络主机。防火墙使用10.1.1.1替换202.168.2.2并进行转发；如果NAT映射表中不存在匹配项，则拒绝数据包。</p>
+<h3 id="动态网络地址翻译技术"><a href="#动态网络地址翻译技术" class="headerlink" title="动态网络地址翻译技术"></a>动态网络地址翻译技术</h3><p>NAT映射表由防火墙动态建立，对网络管理员和用户透明</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/14.png"></p>
+<p>对于内部数据包若没有对应NAT表项则创建新表项<br>对于外部数据包若没有对应NAT表项则丢弃不进行转发</p>
+<h3 id="网络地址翻译技术实现负载均衡"><a href="#网络地址翻译技术实现负载均衡" class="headerlink" title="网络地址翻译技术实现负载均衡"></a>网络地址翻译技术实现负载均衡</h3><p>这种地址转换是以连接为单位按循环方式(round-robin)进行，只有当建立一个由外部发起到内部的新连接时才执行</p>
+<p>外部访问时给不同的内部局部地址对应主机进行响应</p>
+<h3 id="网络地址翻译技术处理网络地址交迭"><a href="#网络地址翻译技术处理网络地址交迭" class="headerlink" title="网络地址翻译技术处理网络地址交迭"></a>网络地址翻译技术处理网络地址交迭</h3><p>NAT可用于解决内部网络地址与外部网络地址交迭的情况</p>
+<h3 id="网络地址翻译技术优缺点"><a href="#网络地址翻译技术优缺点" class="headerlink" title="网络地址翻译技术优缺点"></a>网络地址翻译技术优缺点</h3><p>然而最新的PPT并没有优点，只有缺点</p>
+<h4 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h4><ol>
+<li>一些应用层协议的特点导致他们无法使用网络地址翻译技术<br>数据包的数据域部分很有源，目的IP地址的数据流不支持</li>
+<li>静态和动态网络地址映射安全问题<br>静态NAT屏蔽了内部网络的拓扑结构，但并未提供额外的保护功能，动态NAT在内部主机主动建立链接之前完全安全，但建立连接后NAT没有任何保护</li>
+<li>对内部主机的引诱和特洛伊木马攻击<br>内部用户主动连接黑客主机</li>
+<li>状态表超时问题<br>动态NAT映射表超时或链接关闭会删除</li>
+</ol>
+<h2 id="网络代理技术"><a href="#网络代理技术" class="headerlink" title="网络代理技术"></a>网络代理技术</h2><p>具有访问因特网能力的主机才可以作为那些无权访问因特网的主机的代理，使其可以完成因特网访问工作</p>
+<h3 id="应用层代理"><a href="#应用层代理" class="headerlink" title="应用层代理"></a>应用层代理</h3><h4 id="应用层代理简介"><a href="#应用层代理简介" class="headerlink" title="应用层代理简介"></a>应用层代理简介</h4><p>针对特定应用实现，外部网络主机通过应用层代理访问内部网络主机，内部网络主机只接受应用层代理提出的服务请求，拒绝外部网络节点的直接请求</p>
+<p>外部网只能见到代理服务器，应用层代理会对用户身份进行验证，验证合法可以转发请求。且时刻监视用户，拒绝非法用户访问，拒绝用户非法操作。</p>
+<h4 id="应用层代理的实现"><a href="#应用层代理的实现" class="headerlink" title="应用层代理的实现"></a>应用层代理的实现</h4><p>通过双宿主机或堡垒主机实现，且为防止威胁，禁止用户在代理主机上注册。<br>应用层代理一般只向单个或部分主机提供网络服务，具有访问能力的主机可作为那些没有访问权限的主机的代理而形成多层代理模式<br>代理服务器起到外部网络与内部网络进行通信时的中间转接、监控、限制和审计等作用</p>
+<h4 id="代理服务程序"><a href="#代理服务程序" class="headerlink" title="代理服务程序"></a>代理服务程序</h4><p>要求有合适的代理服务器软件，需要针对不同服务的代理功能开发不同的代理服务程序</p>
+<h4 id="应用层代理技术的优缺点分析"><a href="#应用层代理技术的优缺点分析" class="headerlink" title="应用层代理技术的优缺点分析"></a>应用层代理技术的优缺点分析</h4><h5 id="优点-9"><a href="#优点-9" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>有能力支持可靠的用户认证并提供详细的注册信息</li>
+<li>用于应用层的过滤规则，相对于包过滤路由器来说更容易配置和测试</li>
+<li>应用层代理工作在客户机和真实服务器之间可以完全控制网络会话，可提供详细的日志和安全审计功能</li>
+<li>提供代理服务的防火墙可以被配置成惟一的可被外部看见的主机，这样可以隐藏内部网的IP地址</li>
+<li>解决合法的IP地址不够的问题</li>
+</ol>
+<h5 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>有限的连接性<br>解释应用层命令，这种代理服务器只能用于某一种服务</li>
+<li>技术有限</li>
+<li>造成明显性能下降</li>
+<li>维护相对复杂</li>
+<li>应用层代理要求用户改变自己的行为，或在访问代理服务器的每个系统上安装特殊的软件</li>
+</ol>
+<p>应用层代理对操作系统和应用层的漏洞是脆弱的</p>
+<h3 id="电路级代理"><a href="#电路级代理" class="headerlink" title="电路级代理"></a>电路级代理</h3><h4 id="电路级代理概述"><a href="#电路级代理概述" class="headerlink" title="电路级代理概述"></a>电路级代理概述</h4><p>电路级代理（通常也称为电路级网关或回路级代理）也是一种代理，但只是建立起一个回路，对数据包只起转发的作用</p>
+<p>工作于TCP层</p>
+<h4 id="电路级网关的工作原理"><a href="#电路级网关的工作原理" class="headerlink" title="电路级网关的工作原理"></a>电路级网关的工作原理</h4><p>优点：<br>可以针对不同协议提供服务</p>
+<p>电路级网关依赖于TCP连接，并不进行任何附加的包处理或过滤</p>
+<h4 id="SOCKS代理技术"><a href="#SOCKS代理技术" class="headerlink" title="SOCKS代理技术"></a>SOCKS代理技术</h4><p>客户请求建立一个链接，将应用服务器地址、端口号和认证信息给SOCKS代理服务器，代理通过安全策略验证目标合法性和有效性并建立链接，这一步对用户完全透明。</p>
+<p>SOCKS代理可以使那些运行在防火墙后面的主机充分地访问Internet而无须直接与外部主机建立连接</p>
+<p>可以实现管理员明确地控制一个组织内部如何与Internet通信</p>
+<p>由两部分组成：</p>
+<ul>
+<li>SOCKS服务端程序<br>同Internet和内部网络通信的程序</li>
+<li>SOCKS客户端程序<br>使运行客户程序的主机同运行服务程序的主机通信，而不是直接与Internet通信</li>
+</ul>
+<h4 id="SOCKS代理的实现"><a href="#SOCKS代理的实现" class="headerlink" title="SOCKS代理的实现"></a><em>SOCKS代理的实现</em></h4><p>SOCKS客户程序替换了UNIX中的一些套接字函数<br>当一个经SOCKS修改的客户程序连接到Internet上时，SOCKS<br>库中的子程序就截获这个连接，并连接到运行SOCKS代理服务器的主机上，而不是的Internet<br>SOCKS代理服务进程将检查访问控制表，判断应该接受还是拒绝这个连接</p>
+<h1 id="2-3-防火墙安全策略及其配置"><a href="#2-3-防火墙安全策略及其配置" class="headerlink" title="2-3 防火墙安全策略及其配置"></a>2-3 防火墙安全策略及其配置</h1><h2 id="防火墙如何开发安全策略"><a href="#防火墙如何开发安全策略" class="headerlink" title="防火墙如何开发安全策略"></a>防火墙如何开发安全策略</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>安全策略： 一个列出必须满足的特定需求或规则的文档</p>
+<p>防火墙的设计依赖于安全策略，设计安全系统应先考虑安全策略后考虑防火墙</p>
+<p>这里的审计是指专门的机构和人员对企事业组织的财政、财务收支等真实性、合法性、效益性进行审查<br><del>我觉得这个别看，容易误导</del></p>
+<p>信息系统由于复杂度变高，自身策略的系统脆弱性隐患越发严重<br>对信息系统的错误操作，滥用，不正当使用等</p>
+<p>任何技术都是双刃剑，应引入一种新的管理机制来对信息系统的安全性、投资效果、实施进程和实施效果进行评估指导和改进——IT审计</p>
+<p>为什么进行网络审计</p>
+<ul>
+<li>了解网络中发生的事件</li>
+<li>事后追踪</li>
+<li>监控网络</li>
+<li>改进安全策略</li>
+</ul>
+<p>网络审计技术内容<br>网络连接审计，协议审计，端口审计，拨号连接审计，个人账户审计，文件访问审计，数据审计，流量统计审计， 数据库审计，WEB服务器审计，安全事件再现审计，键盘审计，屏幕审计，系统统计分析审计</p>
+<h3 id="审计产品部署"><a href="#审计产品部署" class="headerlink" title="审计产品部署"></a>审计产品部署</h3><p>优势</p>
+<ol>
+<li>网络应用识别全</li>
+<li>审计粒度记得细</li>
+<li>敏感文件检测准</li>
+<li>加密流量看的透</li>
+</ol>
+<p>旁路部署<br>最常见，不影响原网络结构<br>解决的问题</p>
+<ul>
+<li>安全稳定可靠运行</li>
+<li>使用中小网络环境，不改变网络结构</li>
+<li>审计内容精细，时候追根溯源</li>
+</ul>
+<p>级联部署<br>每台审计系统都是一台独立运行的设备，上级设备可下发策略，也可查看下级设备的结果<br>解决的问题</p>
+<ul>
+<li>保证总部和各分支机构策略的统一性</li>
+<li>解决客户分级控制和审计的需求</li>
+<li>威胁分析系统联动响应</li>
+</ul>
+<p>分布式部署<br>管理中心进行策略下发<br>解决的问题<br>适应用户网络结构<br>联动预警响应机制<br>解决客户分级控制和审计需求</p>
+<h3 id="确定有效的安全策略所需要达到的目标"><a href="#确定有效的安全策略所需要达到的目标" class="headerlink" title="确定有效的安全策略所需要达到的目标"></a>确定有效的安全策略所需要达到的目标</h3><ol>
+<li>清楚描述一个安全的网络计算环境</li>
+<li>灵活适应公司结构的任何改动</li>
+<li>保证在整个公司中一致的交流和执行</li>
+<li>要明确雇员对网络的使用权限</li>
+<li>要对雇员和管理人员关于隐私和安全的合理和不合理的表现进行明确定义</li>
+</ol>
+<h3 id="构建安全策略的7步"><a href="#构建安全策略的7步" class="headerlink" title="构建安全策略的7步"></a>构建安全策略的7步</h3><ol>
+<li>组建一个团队</li>
+<li>执行公司的整体安全策略</li>
+<li>确定被保护的资产</li>
+<li>决定安全策略审核的内容</li>
+<li>确定安全风险</li>
+<li>定义可接受的使用范围</li>
+<li>提供远程访问</li>
+</ol>
+<h3 id="考虑防火墙的不足"><a href="#考虑防火墙的不足" class="headerlink" title="考虑防火墙的不足"></a>考虑防火墙的不足</h3><ol>
+<li>超出防火墙所能处理的过多的网络访问量，及其防火墙崩溃的蛮力攻击</li>
+<li>在网络中将一个加密的带有病毒的电子邮件消息发送给某人，加密的消息将会通过防火墙，这样病毒就会传染给系统</li>
+<li>若雇员将远程访问号码泄漏，则未经授权的用户就能够访问公司网络</li>
+<li>雇员将密码泄露</li>
+<li>防火墙属于静态防护</li>
+<li>防火墙难于防内</li>
+<li>防火墙难于管理和配置，易造成安全漏洞</li>
+<li>防火墙的安全控制主要是基于IP地址的，难于为用户在防火墙内提供一致的安全策略</li>
+<li>防火墙实现了粗粒度的访问控制</li>
+<li>任何一个系统（尤其是底层系统和应用系统）中可能存在安全漏洞，造成绕过防火墙的攻击</li>
+</ol>
+<p>其实这里写的跟其他几科对防火墙的描述是一样的，稍微联系一下就能记住，其他科也能用上</p>
+<h3 id="违反安全规则响应方式"><a href="#违反安全规则响应方式" class="headerlink" title="违反安全规则响应方式"></a>违反安全规则响应方式</h3><ol>
+<li>记录数据</li>
+<li>响应处理联系人</li>
+<li>响应策略</li>
+</ol>
+<h2 id="Cisco-IOS-防火墙特征集"><a href="#Cisco-IOS-防火墙特征集" class="headerlink" title="Cisco IOS 防火墙特征集"></a>Cisco IOS 防火墙特征集</h2><p>接口类型、端口密度、性能以及形态元素（即大小、形式和容量）方面巨大的灵活性</p>
+<p>基于上下文的访问控制</p>
+<h2 id="配置Cisco-IOS防火墙包过滤功能"><a href="#配置Cisco-IOS防火墙包过滤功能" class="headerlink" title="配置Cisco IOS防火墙包过滤功能"></a>配置Cisco IOS防火墙包过滤功能</h2><p>两类访问控制列表</p>
+<ul>
+<li>标准访问控制列表</li>
+<li>拓展访问控制列表</li>
+</ul>
+<p>功能和特点分类</p>
+<ul>
+<li>静态访问控制列表</li>
+<li>动态访问控制列表</li>
+<li>反射访问控制列表</li>
+</ul>
+<p>配置步骤</p>
+<ol>
+<li>创建访问控制列表</li>
+<li>访问控制列表绑定某个端口</li>
+</ol>
+<p>需要给一个唯一的编号<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/15.png"></p>
+<p>创建访问控制列表<br>Router(config)#access-list access-list-number [permit|deny] 测试条件</p>
+<p>删除访问控制列表<br>Router(config)#no access-list access-list-number</p>
+<p>注意：<br>可以向同一个访问控制列表写入多条语句<br>删除访问控制列表时，在标准和扩展访问控制列表中只能删除一整个表</p>
+<p>绑定到网络接口命令<br>Router(config-if)# protocol access-group access-list-number [in|out]</p>
+<p>反转掩码<br>子网掩码反过来</p>
+<h3 id="配置标准访问控制列表"><a href="#配置标准访问控制列表" class="headerlink" title="配置标准访问控制列表"></a>配置标准访问控制列表</h3><p>创建标准访问控制列表<br>Router(config)#access-list [access-list-number] [permit|deny]source-ip wildmask</p>
+<p>访问控制列表绑定端口<br>Router(config-if)#ip access-group [access-list-number] [in|out]</p>
+<p>查看访问控制列表<br>Router#show access-list [access-list-number]</p>
+<p>查看某个接口是否绑定了访问控制列表<br>Router#show ip interface [interface]</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/16.png"><br>Router(config)#access-list 1 peimit 172.16.0.0 0.0.255.255<br>Router(config)#interface E0<br>Router(config-if)#ip access-group 1 out<br>Router(config)#interface E1<br>Router(config-if)#ip access-group 1 out</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/17.png"><br>Router(config)#access-list 1 deny 172.16.4.13 0.0.0.0<br>Router(config)#access-list 1 permit any<br>Router(config)#interface E0<br>Router(config-if)#ip access-group 1 out</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/18.png"><br>Router(config)#access-list 1 deny 172.16.4.0 0.0.0.255<br>Router(config)#access-list 1 permit any<br>Router(config)#interface E0<br>Router(config-if)#ip access-group 1 out</p>
+<h3 id="配置拓展访问控制列表"><a href="#配置拓展访问控制列表" class="headerlink" title="配置拓展访问控制列表"></a>配置拓展访问控制列表</h3><p>扩展访问控制列表对数据包的控制比标准访问控制列表粒度更细，因而运用更广<br>扩展访问控制列表可以检查源地址和目标地址、特定的协议、端口号，以及其他的参数</p>
+<p>创建一个扩展访问控制列表<br>Router(config)#access-list access-list-number [permit | deny] protocol source source-mask [operator port] destination destination-mask [operator port]</p>
+<p>绑定访问控制列表到某个网络接口上<br>Router(config-if)#ip access-group access-list-number [in | out]</p>
+<p>显示访问控制列表包含的命令语句<br>Router#show access-list [access-list-number]</p>
+<p>查看是否为某个接口绑定了访问控制列表<br>Router#show ip interface [interface]</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/19.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/20.png"><br>Router(config)#access-list 101 permit TCP 172.16.1.1 0.0.0.0 192.168.1.0 0.0.0.255 ep 20<br>Router(config)#interface E2<br>Router(config-if)#ip access-group 101 out</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/21.png"><br>Router(config)#access-list 101 deny TCP 172.16.0.0 0.0.255.255 any eq 23<br>Router(config)#access-list 101 permit IP any any<br>Router(config)#interface E1<br>Router(config-if)#ip access-group in</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/22.png"><br>Router(config)#access-list 101 deny icmp 192.168.1.0 0.0.0.255 172.16.0.0 0.0.255.255<br>Router(config)#access-list 101 permit IP any any<br>Router(config)#interface E2<br>Router(config-if)#ip access-group 101 in</p>
+<p>Ping程序使用的是ICMP协议，ICMP不像http，FTP应用层有传输层的端口号。 ICMP直接封装在IP包内。不需要指定端口号</p>
+<h3 id="配置标识访问控制列表"><a href="#配置标识访问控制列表" class="headerlink" title="配置标识访问控制列表"></a><em>配置标识访问控制列表</em></h3><p>对于配置号码，若超过了99个标准列表或100个扩展列表则使用命名访问控制列表</p>
+<p>优点</p>
+<ul>
+<li>可以用有含义的字符串直观标识一个访问控制列表</li>
+<li>修改访问控制列表中的某一条语句时，可以在不删除整个访问控制列表的情况下修改它</li>
+</ul>
+<p>注意事项</p>
+<ul>
+<li>版本不兼容</li>
+<li>命名访问控制列表可包含标准和扩展访问控制列表</li>
+<li>名字不能重复</li>
+</ul>
+<p>命令<br>创建一个命名访问控制列表<br>Router(config)#ip access-list [standard |extended] name</p>
+<p>向命名访问控制列表中写入命令语句<br>Router(config-[std|ext]-nacl)# [permit | deny]</p>
+<p>删除命名访问控制列表中的某一条语句<br>Router(config-[std|ext]-nacl)#no [permit | deny]<br>注意：该访问控制列表仍然存在，这与用数字标识的访问控制列表不同</p>
+<p>绑定命名访问控制列表<br>Router(config-if)#ip access-group name [in|out]</p>
+<h3 id="配置动态访问控制列表"><a href="#配置动态访问控制列表" class="headerlink" title="配置动态访问控制列表"></a><em>配置动态访问控制列表</em></h3><p>可以实现访问控制列表的动态改变</p>
+<p>命令<br>配置动态访问控制列表，作为临时访问控制列表条目的模板和占位符<br>access-list access-list-number [dynamic dynamic-name[timeout minutes]] {permit | deny} telnet source source-wildcard destination destination-wildcard [precedenceprecedence] [tos tos] [established] [log]</p>
+<p>配置接口<br>interface type number</p>
+<p>在接口配置模式下，将访问控制列表用于接口<br>ip access-group access-list-number [in | out]</p>
+<p>在全局模式下，定义一个或多个虚拟终端（VTY）端口<br>line VTY line-number [ending- line-number]</p>
+<p>配置用户身份验证<br>username name password secret<br>login trcacs<br>password password login local</p>
+<p>启用创建临时访问列表条目功能<br>autocommand access-enable [host] [timeout minutes]</p>
+<h3 id="访问控制列表配置要点❗"><a href="#访问控制列表配置要点❗" class="headerlink" title="访问控制列表配置要点❗"></a><strong>访问控制列表配置要点</strong>❗</h3><p>对于某个协议，可能有多个访问控制列表。通常，一个端口的一个协议，只能够指定一个访问控制列表<br>对于某些协议，一个端口可以指定两个访问控制列表：一个负责收到的数据，一个负责发出的数据。而某些协议，需要把这两个访问控制列表组合成一个负责进出该端口的数据</p>
+<p>尽量将扩展访问控制列表放置在靠近被拒绝的数据源。标准访问控制列表不能指定目标地址，故需要把标准访问控制列表放置在尽量靠近目标的地方。</p>
+<h1 id="3-1-入侵检测技术概述"><a href="#3-1-入侵检测技术概述" class="headerlink" title="3-1 入侵检测技术概述"></a>3-1 入侵检测技术概述</h1><p>基于主机的入侵检测技术：审计数据的获取、用于入侵检测的统计模型、入侵检测的专家系统等<br>基于网络的入侵检测技术：分层协议模型与TCP&#x2F;IP协议、网络数据包的截获等</p>
+<p>IDS存在必然性</p>
+<ul>
+<li>网络攻击造成的破坏性和损失日益严重</li>
+<li>网络安全威胁日益增长</li>
+<li>单纯的防火墙无法防范复杂多变的攻击</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/23.png"></p>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>这个愿意看看看吧，不总了，我直接赌不会出这里的题</p>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p>定义<br>CIA：机密性完整性可用性<br>安全策略用于将抽象的安全目标和概念映射为现实世界中的具体安全规则，通常定义为一组用于保护系统计算资源和信息资源的目标、过程和管理规则的集合</p>
+<p>威胁来源：</p>
+<ul>
+<li>外部入侵者</li>
+<li>内部入侵者</li>
+<li>违法者</li>
+</ul>
+<p>入侵：表示系统内部发生的任何违反安全策略的事件<br>入侵是对信息系统的非授权访问以及（或者）未经许可在信息系统内进行的操作</p>
+<h3 id="IDS基本结构"><a href="#IDS基本结构" class="headerlink" title="IDS基本结构"></a>IDS基本结构</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/24.png"></p>
+<p>数据收集器（探测器）：主要负责收集数据<br>检测器（分析器&#x2F;检测引擎）：负责分析和检测入侵的任务，并发出报警信号<br>知识库：提供必要的数据信息支持<br>控制器：根据报警信号，人工或自动做出反应动作<br>用户接口组件</p>
+<p>三个功能部件</p>
+<ol>
+<li>信息收集<br>收集内容包括系统、网络、数据及用户活动的状态和行为<br>在计算机网络系统中的若干不同关键点收集信息，尽可能扩大检测范围<br>入侵检测的效果很大程度上依赖于收集信息的可靠性和正确性，保证用来检测网络系统的软件的完整性，入侵检测系统软件本身应具有相当强的坚固性，防止被篡改而收集到错误的信息<br> <strong>来源</strong><ul>
+<li>系统或网络的日志文件</li>
+<li>网络流量</li>
+<li>系统目录和文件的异常变化</li>
+<li>程序执行中的异常行为</li>
+</ul>
+</li>
+<li>分析引擎<ul>
+<li>模式匹配<br> 将收集到的信息与已知的网络入侵和系统误用模式数据库进行比较，从而发现违背安全策略的行为</li>
+<li>统计分析<br> 统计正常使用时的一些测量属性，当观察值在正常值以外时，就认为有入侵发生</li>
+<li>完整性分析，常用于事后分析<br> 关注某个文件或对象是否被更改</li>
+</ul>
+</li>
+<li>响应部件<ul>
+<li>简单报警</li>
+<li>切断连接</li>
+<li>封锁用户</li>
+<li>改变文件属性</li>
+<li>最强烈反应：回击攻击者</li>
+</ul>
+</li>
+</ol>
+<h3 id="PPDR模型"><a href="#PPDR模型" class="headerlink" title="PPDR模型"></a>PPDR模型</h3><p>特点是动态性和时效性<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/25.png"><br>狠狠的记！这个在第一章也出现过，这里是就着入侵检测给赋予了新含义<br>其实现在再想想好像当年那个题是让写这里的内容，不是第一章那些技术</p>
+<ul>
+<li>Policy（策略）<br>PPDR的核心。规定系统所要达到的安全目标和为达到安全目标所采取的各种具体安全措施及实施强度</li>
+<li>Protection（防护）<br>具体包括制定安全管理规则、进行系统安全配置工作以及安装各种安全防护设备</li>
+<li>Detection（检测）<br>采用各种安全措施后，根据系统运行情况的变化，对系统安全状态进行实时的动态监控</li>
+<li>Response（响应）<br>当发现入侵活动或入侵结果后，需要系统做出及时的反应并采取措施</li>
+<li>结论<br>安全的目标实际上就是尽可能的增大保护时间，尽量减少检测时间和响应时间</li>
+</ul>
+<h2 id="入侵检测的信息源"><a href="#入侵检测的信息源" class="headerlink" title="入侵检测的信息源"></a>入侵检测的信息源</h2><p>这里感觉是把上面的信息收集的信息来源内容扩展来说了</p>
+<p>入侵检测不同类型需要不同的数据，同时输出结果很大程度取决于输入数据的质量</p>
+<p>几种数据类型</p>
+<ul>
+<li>操作系统审计记录</li>
+<li>操作系统日志</li>
+<li>应用程序日志</li>
+<li>基于网络数据的信息源</li>
+<li>其他数据来源<br>就上面的来源来说这里应该指的是文件访问删除记录，系统调用对象和发起人这样的，但是这些又能包含在操作系统审计记录里面，有点难说</li>
+</ul>
+<p>操作系统审计记录<br>最早的入侵检测输入数据，且是首选数据，因为其审计数据规整且附有保护措施，并且可以提供系统底层的相关信息</p>
+<p>操作系统日志<br>是操作系统生成的日志文件的总称，此质量相对上一个质量较差，因为产生日志的软件位于用户级，易受攻击，且日志文件不受保护</p>
+<p>应用程序日志<br>用户及的系统活动抽象信息，且因网络化计算环境普及，入侵攻击目标越来越集中于提供网络服务的各种特定应用程序<br>但是这个日志更容易被攻击，对于审计没有提供详细信息，且一些软件是否可以相信也是问题</p>
+<p>基于网络数据的信息源<br>优势</p>
+<ul>
+<li>对目标监控系统的运行性能几乎没有任何影响</li>
+<li>可以对用户透明，降低了本身遭到入侵的概率</li>
+<li>可以发现许多基于主机无法发现的攻击手段</li>
+<li>网络数据包的标准化程度高</li>
+</ul>
+<p>信息源的选择问题</p>
+<ul>
+<li>根据检测目标选择输入数据源</li>
+<li>在不影响目标系统运行性能情况下最少需要多少信息</li>
+</ul>
+<h2 id="入侵检测技术分类"><a href="#入侵检测技术分类" class="headerlink" title="入侵检测技术分类"></a>入侵检测技术分类</h2><h3 id="按照信息源分类"><a href="#按照信息源分类" class="headerlink" title="按照信息源分类"></a>按照信息源分类</h3><ol>
+<li>基于主机的入侵检测</li>
+<li>基于网络的入侵检测</li>
+</ol>
+<p>基于主机入侵检测<br>优点：能较准确的检测到发生在主机系统高层的复杂攻击行为<br>缺点：无法移植，影响主机性能，无法反应网络攻击</p>
+<p>基于网络入侵检测<br>优点：实时监控网络流量，对潜在攻击做出迅速响应，可移植，不影响主机性能<br>缺点：准确率低，不能完成发生在应用进程级别的侦测</p>
+<h3 id="按照检测方法分类"><a href="#按照检测方法分类" class="headerlink" title="按照检测方法分类"></a>按照检测方法分类</h3><ol>
+<li>滥用入侵检测</li>
+<li>异常入侵检测</li>
+</ol>
+<p>滥用有更好的确定解释能力，较高的检测率和较低的虚警率，但只能用已知的攻击模式<br>异常可以检测未知的攻击行为</p>
+<h1 id="3-2-基于主机的入侵检测技术"><a href="#3-2-基于主机的入侵检测技术" class="headerlink" title="3-2 基于主机的入侵检测技术"></a>3-2 基于主机的入侵检测技术</h1><h2 id="审计数据的获取"><a href="#审计数据的获取" class="headerlink" title="审计数据的获取"></a>审计数据的获取</h2><ol>
+<li>确定审计数据的来源和类型</li>
+<li>审计数据的预处理工作，其中包括记录标准格式的设计、过滤和映射操作等</li>
+<li>审计数据的获取方式，包括审计数据获取模块的结构设计和传输协议等</li>
+</ol>
+<h3 id="审计数据类型和来源"><a href="#审计数据类型和来源" class="headerlink" title="审计数据类型和来源"></a>审计数据类型和来源</h3><p>主机类型不同和审计的不同要求，审计数据收集的类型也不相同</p>
+<p>审计数据：</p>
+<ul>
+<li>文件访问</li>
+<li>系统访问</li>
+<li>资源消耗</li>
+<li>进程创建命令的调用</li>
+</ul>
+<h3 id="审计数据的预处理"><a href="#审计数据的预处理" class="headerlink" title="审计数据的预处理"></a>审计数据的预处理</h3><p>映射、过滤、格式转化</p>
+<p>映射过滤消除无用审计记录<br>格式转化将审计记录转换为单一格式</p>
+<p>审计记录格式设计<br>通用程度足够高<br>对于机器最有效的格式<br>考虑系统通用性，从不同机器都可以接收输入<br>一个审计记录中应尽可能提供更多信息</p>
+<h3 id="审计数据获取模块设计"><a href="#审计数据获取模块设计" class="headerlink" title="审计数据获取模块设计"></a>审计数据获取模块设计</h3><ul>
+<li>处理负荷的平衡问题</li>
+<li>传输协议</li>
+<li>多路复用成为一条单一审计记录数据流的问题</li>
+<li>延时、遗漏等问题</li>
+</ul>
+<h2 id="用于入侵检测的统计模型"><a href="#用于入侵检测的统计模型" class="headerlink" title="用于入侵检测的统计模型"></a>用于入侵检测的统计模型</h2><p>1 .操作模型<br>系统中所发生事件的计数度量情况，将所关心的特定事件计数值与某个阈值进行比较，如果超过，则指示发生了异常情况<br>2. 均值和标准偏差模型<br>采用数据的均值和标准偏差，当前用户行为超出了可信任的区间范围，则表示为异常行为<br>3. 多元模型<br>在多个参数度量之间进行相关分析<br>4. 马尔可夫过程模型<br>将每个审计记录中不同类型事件的出现视为随机变量的不同取值，采用状态转移矩阵来表示不同事件序列出现的概率值，如果当前审计事件按照正常的状态转移矩阵所计算出的发生概率小于某个阈值，则指示为异常行为</p>
+<p>IDES策略<br>当前系统的活动状态采用一组测量值参数变量来表示，称为“入侵检测向量”<br>IDES定义了3种不同类型的测量值，分别针对用户主体、目标系统主体和远程主机主体</p>
+<p>不同类型的单独测量值分为以下4个类别<br>活动强度测量值<br>审计记录分布测量值<br>类别测量值<br>序数测量值</p>
+<h2 id="入侵检测的专家系统"><a href="#入侵检测的专家系统" class="headerlink" title="入侵检测的专家系统"></a>入侵检测的专家系统</h2><p>专家系统在知识库的基础上，根据所获得的事实和已知的规则进行推导<br>对于超出已有规则范围的事实，它无法得出有用的结论<br>每个规则具有“IF条件THEN 动作”的形式<br>专家系统可以自动地解释系统的审计记录<br>专家系统规则表示一系列的活动不具有直观性<br>专家系统规则很难检测出对系统的协同攻击</p>
+<h2 id="基于状态转移分析的入侵检测技术"><a href="#基于状态转移分析的入侵检测技术" class="headerlink" title="基于状态转移分析的入侵检测技术"></a>基于状态转移分析的入侵检测技术</h2><p>特点：<br>脱离了单纯进行主机入侵检测的结构，实现了分布式的入侵检测框架、</p>
+<p>原理：<br>基于状态分析的检测模型，将攻击者的入侵行为描绘为一系列的特征操作及其引起的一系列系统状态转换过程</p>
+<p>优点：</p>
+<ol>
+<li>采用状态转移法标识攻击过程，使攻击行为直观可见</li>
+<li>STAT可以很好的分别不同的审计记录序列</li>
+<li>可以检测协同攻击和跨进程的攻击行为</li>
+<li>在攻击行为未造成危害时及时检测并采取响应措施</li>
+<li>可以较好处理已知攻击的变种行为</li>
+</ol>
+<p>状态转移图：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/26.png"></p>
+<p>构建状态转移图步骤</p>
+<ol>
+<li>分析具体攻击</li>
+<li>抽象攻击行为关键行为点</li>
+<li>确定初始状态和最终状态</li>
+<li>从最终状态出发逐步确定中间各个状态及其满足的状态断言组</li>
+</ol>
+<p><strong>STAT推理原理</strong><br>一行对一个攻击实例，一列对一个步骤<br>推理引擎工作时先找到对应的状态转移图，找到后复制一个新行到现有的推理引擎表中，因为原来的表象仍可以代表某次部分完成的具体攻击实例<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/27.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/28.png"></p>
+<p>推理引擎的最重要的功能就是判断状态断言的真假</p>
+<h2 id="文件完整性检查"><a href="#文件完整性检查" class="headerlink" title="文件完整性检查"></a>文件完整性检查</h2><p>目的：发现潜在的针对文件系统的有意或无意的修改</p>
+<p>必要性：</p>
+<ol>
+<li>攻击者入侵后常安装后门程序</li>
+<li>可能安装非授权的程序替换系统程序</li>
+<li>可能删除审计记录</li>
+<li>修改配置文件或数据库数据等</li>
+</ol>
+<p>思想：<br>目标文件生成唯一标识符，检查时生成新的标识符与旧的标识符比较，确定文件是否更改</p>
+<h3 id="检查列表技术"><a href="#检查列表技术" class="headerlink" title="检查列表技术"></a>检查列表技术</h3><p>特点：<br>用一个列表储存文件标识信息<br>方法：<br>检查时系统取得文件的属性信息并于列表中储存的比较<br>优点：<br>快<br>缺点：<br>无法保证文件内容，仅能保证文件属性</p>
+<h3 id="TripWire"><a href="#TripWire" class="headerlink" title="TripWire"></a>TripWire</h3><p>最著名完整性检查工具</p>
+<p>基本思想：<br>单项消息摘要，将文件校验和信息存储到可靠的安全存储介质上，系统定时验证</p>
+<p>完整性检查为什么是主机入侵检测的技术？：<br>因为许多针对主机系统的攻击会体现在文件上，针对文件的完整性，属于事后入侵检测技术</p>
+<h2 id="系统配置分析技术"><a href="#系统配置分析技术" class="headerlink" title="系统配置分析技术"></a>系统配置分析技术</h2><p>目标是检查系统是否已经受到入侵活动的侵害，或者存在有可能被入侵的危险<br>之所以称为“静态”，是因为该技术只检查系统的静态特征，并不分析系统的活动情况</p>
+<p>此技术可以在入侵发生之前用，也可以在潜在的攻击活动之后用。针对入侵产生的痕迹以及人员初始对系统的错误配置从而导致的入侵风险<br>所以可以纳入入侵检测范围</p>
+<p><em>COPS系统</em></p>
+<ul>
+<li>检查文件、目录和设备的访问权限模式</li>
+<li>脆弱的口令设置</li>
+<li>检查口令文件和组用户文件的安全性、格式、内容</li>
+<li>检查在&#x2F;etc&#x2F;rc*目录和cron中指定运行的文件和程序</li>
+<li>具有root SUID属性的文件，检查它们是否可写，以及是否脚本程序</li>
+<li>对重要的二进制文件和其他文件计算CRC校验和，检查是否发生更改</li>
+<li>检查用户主目录下文件是否可写</li>
+<li>是否具有匿名FTP登录服务账户</li>
+<li>是否存在TFTP服务，Sendmail中别名情况以及在inetd conf文件中隐藏的启动脚本程序等</li>
+<li>各种类型的根权限检查</li>
+<li>按照CERT安全报告的发布日期，检查关键文件是否已经及时进行了升级或打上补丁</li>
+</ul>
+<h1 id="3-3-基于网络的入侵检测技术"><a href="#3-3-基于网络的入侵检测技术" class="headerlink" title="3-3 基于网络的入侵检测技术"></a>3-3 基于网络的入侵检测技术</h1><h2 id="协议分层模型与TCP-IP协议"><a href="#协议分层模型与TCP-IP协议" class="headerlink" title="协议分层模型与TCP&#x2F;IP协议"></a>协议分层模型与TCP&#x2F;IP协议</h2><p>我记得她当时说这里不咋考，因为你们计网都学过</p>
+<p>协议采用分层方式，低层对高层采用透明服务，相邻层之间采用原语交互<br>同层协议在不同机器上实现可能不同，但要保证：</p>
+<ul>
+<li>正确实现上下层交互原语</li>
+<li>提供一致的服务</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/29.png"></p>
+<p>IP层<br>为IP数据报分配一个全网唯一的IP地址</p>
+<p>传输层<br>传输层作为应用程序提供端到端通信功能，保证通信连接的可靠性</p>
+<p>应用层：<br>位于传输层之上的应用层包含所有的高层协议</p>
+<p>网络接口层<br>TCP&#x2F;IP协议并不包括物理层和数据链路层协议</p>
+<p>ARP&#x2F;RARP<br>为了使TCP&#x2F;IP协议与具体的物理网络无关，将物理地址隐藏而统一使用IP地址进行网际通信，就必须提供一种在IP地址和物理地址之间进行映射的机制</p>
+<p>IP<br>IP协议是TCP&#x2F;IP协议族的核心协议之一，它提供了无连接数据包传输和网际路由服务，不可靠<br>IP协议首先要根据物理网络所允许的最大报文长度对上层协议的数据进行长度检查，必要时将数据报分成若干段后再发送</p>
+<p>ICMP<br>差错报告，为所有控制报文和信息报文提供了一个统一的机制，采用路由器向源主机报告模式</p>
+<p>TCP<br>建立可靠的端对端连接，并提供虚电路服务和面向数据流的传输服务</p>
+<p>UDP<br>UDP主要用于直接使用数据报服务的应用程序，这些应用程序自己提供误码校验以及拥塞控制机制</p>
+<h2 id="网络数据包截获❗"><a href="#网络数据包截获❗" class="headerlink" title="网络数据包截获❗"></a>网络数据包截获❗</h2><p>网络数据包的截获是基于网络的入侵检测技术的工作基石</p>
+<p>截获方法；</p>
+<ul>
+<li>利用以太网广播特性</li>
+<li>设置路由器监听口或镜像口</li>
+<li>分光器复制</li>
+<li>光交换机</li>
+</ul>
+<p>以太网环境下数据包截获方法；<br>将网卡工作模式置于混杂模式，直接访问数据链路层截获相关数据，有响应应用程序解析TCP&#x2F;IP，截获所有流经网卡的数据</p>
+<p>伯克利抓包过滤器</p>
+<ul>
+<li>能够尽早丢弃不需要的数据包</li>
+<li>避免必须将所有的数据包从内核中复制到用户空间再进行处理这种重复的复制（无效工作）</li>
+<li>节约了大量的CPU时间</li>
+</ul>
+<p>交换网络环境下的数据包截获方法<br>利用交换机或路由器上设置监听口或镜像口<br>问题：</p>
+<ul>
+<li>交换带宽增长导致并非所有网络流量都会反映在镜像口上</li>
+<li>不是所有设备都有镜像口</li>
+</ul>
+<p>Libpcap<br>不同操作系统提供接口功能不同，所以提出了libpcap<br>作用</p>
+<ul>
+<li>捕获</li>
+<li>过滤</li>
+<li>分析</li>
+<li>存储</li>
+</ul>
+<p>又一个重复的知识点，狠狠的背吧，内容安全也能用上</p>
+<h2 id="检测引擎设计❗"><a href="#检测引擎设计❗" class="headerlink" title="检测引擎设计❗"></a>检测引擎设计❗</h2><p>两大类</p>
+<ul>
+<li>嵌入式规则检测引擎<br>代码实现对于终端用户隐藏不可见，用户可以从既定规则中选择子集</li>
+<li>可编程检测引擎<br>允许用户采用特定的编程语言或脚本语言，来实现具体的检测模块，灵活</li>
+</ul>
+<h3 id="嵌入式规则检测引擎❗Snort"><a href="#嵌入式规则检测引擎❗Snort" class="headerlink" title="嵌入式规则检测引擎❗Snort"></a>嵌入式规则检测引擎❗Snort</h3><p>规则的两个逻辑部分</p>
+<ul>
+<li>规则头<br>IP地址，端口号，方向操作符</li>
+<li>规则选项<br>警报信息，用于确定是否触发规则响应动作而需检查的数据包区域位置信息</li>
+</ul>
+<p>这里有一堆规则代码啥的，但她自己说不考编程</p>
+<p>系统结构</p>
+<ul>
+<li>协议解析器</li>
+<li>规则检测引擎</li>
+<li>日志&#x2F;警报系统</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/30.png"></p>
+<p>协议解析器<br>解析Packet<br>Packet数据结构主要分为三类</p>
+<ul>
+<li>指示原始数据包截获信息的字段</li>
+<li>用于存放当前数据包进行协议解析后所得信息的字段</li>
+<li>各种标识字段</li>
+</ul>
+<p>规则检测引擎</p>
+<ul>
+<li>规则链表构造模块<br>是读入配置文件，逐条解析检测规则，并最终形成内存中的二维规则链表结构<br>同一个规则链表头的下面可以链接多个规则链表选项结点<ul>
+<li>链表头</li>
+<li>链表选项<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/31.png"></li>
+</ul>
+</li>
+<li>预处理器模块<ul>
+<li>数据包分片重组及数据流重组功能</li>
+<li>协议规范化&#x2F;解码功能</li>
+</ul>
+</li>
+<li>规则匹配模块<br>对于每一个当前数据包，遍历整个规则链表结构，并调用对应的插件模块进行各种处理。一旦规则匹配模块搜索到一个与解析后的数据包匹配的则，则触发定义好的规则动作并返回</li>
+</ul>
+<p>日志&#x2F;警报系统<br>规则匹配模块所触发的规则动作，具体功能实现由日志&#x2F;警报系统完成，可通过各种插件模块来实现<br>三种日志模式：</p>
+<ul>
+<li>关闭：获取更好的运行性能</li>
+<li>以可读格式记录数据包：有利于快速分析</li>
+<li>以Tcpdump二进制形式记录数据包：提高系统运行性能</li>
+</ul>
+<h3 id="可编程的检测引擎"><a href="#可编程的检测引擎" class="headerlink" title="可编程的检测引擎"></a>可编程的检测引擎</h3><p>要点就在于用于实现入侵检测功能的脚本语言的定义及其与引擎架构的接口设计</p>
+<h3 id="特征分析与协议分析❗"><a href="#特征分析与协议分析❗" class="headerlink" title="特征分析与协议分析❗"></a>特征分析与协议分析❗</h3><p>特征分析<br>在最初的特征分析技术工作过程中，每次输入检测引擎的数据包，将会与单个特征进行逐个字符的匹配操作<br>将输入数据包视为一个无序无结构的随机数据流，仅依靠简单的字符串匹配操作完成所有的检测任务</p>
+<p>协议分析<br>将输入数据包视为具有严格定义格式的数据流，并将输入数据包按照各层协议报文封装的反向顺序，层层解析出来。<br>协议分析技术利用预先定义好的关于协议字段的期望值或合理值的详细信息，来判断是否出现了恶意的网络流量。</p>
+<p>特征分析优点：</p>
+<ul>
+<li>在小规则集合情况下工作速度快</li>
+<li>检测规则易于编写、理解并且容易进行定制</li>
+<li>对新出现的攻击手段具备快速升级支持能力</li>
+<li>对底层的简单脚本攻击，具备良好的检测性能</li>
+<li>对所发生的攻击类型，具备确定性的解释能力<br>特征分析缺点：</li>
+<li>随着规则集合规模的扩大，检测速度迅速下降</li>
+<li>各种变种的攻击行为，易于造成过度膨胀的规则集合</li>
+<li>较易产生虚警信息</li>
+<li>仅能检测到已知的攻击类型</li>
+</ul>
+<p>协议分析优点：</p>
+<ul>
+<li>具备良好的性能可扩展性</li>
+<li>具备发现最新的未知安全漏洞的能力</li>
+<li>较少出现虚警信息</li>
+</ul>
+<p><del>我比较不理解的是发现新漏洞和虚警率低真的可以共存吗？</del></p>
+<p>协议分析缺点：</p>
+<ul>
+<li>在小规模集合情况下，初始的检测速度相对较慢</li>
+<li>检测规则比较复杂，难以编写和理解并且通常是由特定厂商实现</li>
+<li>协议复杂性的扩展以及实际实现的多样性，容易导致规则扩展的困难</li>
+<li>对发现的攻击行为类型，缺乏明确的解释信息</li>
+</ul>
+<p>怎么快速记？</p>
+<ul>
+<li>小规则情况</li>
+<li>编写难度</li>
+<li>增加规则难度，扩展性</li>
+<li>解释能力</li>
+<li>虚警率</li>
+<li>检测未知攻击</li>
+</ul>
+<h1 id="4-互联网基础设施安全"><a href="#4-互联网基础设施安全" class="headerlink" title="4 互联网基础设施安全"></a>4 互联网基础设施安全</h1><p>十分建议这里看ppt，很多东西都是图，完事我上课也没咋听，没有思路，就记着个DNS的威胁探测</p>
+<p>我觉得这一章怎么考，我觉得会让你说几个DNS评估的算法名字，不会考具体的点，要不谁能说上来</p>
+<p>前言？<br>可以通过公开渠道获得信息，但属于事中和事后<br>通过对关基提前监测和分析，对网络资源画像，可以实现提前预警</p>
+<h2 id="研究的目的与意义"><a href="#研究的目的与意义" class="headerlink" title="研究的目的与意义"></a>研究的目的与意义</h2><p>关键信息基础设施是指公共通信和信息服务、能源、交通、水利、金融、公共服务、电子政务等重要行业和领域，以及其他一旦遭到破坏、丧失功能或者数据泄露，可能严重危害国家安全、国计民生、公共利益的信息设施</p>
+<p>国外现状：<br>美国全面领先<br>俄罗斯自成一体<br>欧盟跟随创新</p>
+<p>研究思路：<br>实现事前、事中、事后的全链条、全过程的识别、监测、分析、预警与处置，保障重点目标防护的及时性、全面性和准确性<br>静动结合，知己知彼，实现目标</p>
+<h2 id="DNS安全与域名安全"><a href="#DNS安全与域名安全" class="headerlink" title="DNS安全与域名安全"></a>DNS安全与域名安全</h2><p>域名系统已成为互联网重要的基础设施，是保障互联网稳定运行的“基石“</p>
+<p>研究背景与意义</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/32.png"></p>
+<p>域名解析器作为用户与域名服务器间数据传输的“桥梁”，决定广大互联网用户最终的网络访问体验</p>
+<p>域名系统：<br>域名空间与资源记录<br>名称服务器（域名服务器）<br>解析器（域名解析器）</p>
+<ul>
+<li>国家层面<br>发布网络安全法及关基安全保护条例</li>
+<li>行业层面<br>开放域名服务器对互联网可用性的消极影响已成共识</li>
+<li>用户层面<br>意识到域名解析器对于网络访问的重要性</li>
+</ul>
+<p>DNS科学研究体系<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/33.png"></p>
+<h3 id="测绘"><a href="#测绘" class="headerlink" title="测绘"></a>测绘</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/34.png"></p>
+<p>这图看着多少有点恐怖了</p>
+<h4 id="全球根和顶级域服务器测量及异常解析分析"><a href="#全球根和顶级域服务器测量及异常解析分析" class="headerlink" title="全球根和顶级域服务器测量及异常解析分析"></a>全球根和顶级域服务器测量及异常解析分析</h4><ul>
+<li>停服异常<br>  观测时间内域名在DNS服务器上因DNS服务器原因无法获取解析结果</li>
+<li>断服异常<br>  观测时间内域名在DNS服务器上因DNS服务器原因时断时续的获取解析结果</li>
+<li>篡改异常<br>  域名在DNS服务器上的解析记录被篡改</li>
+</ul>
+<p>国内外研究存在的问题</p>
+<ol>
+<li>停服和断服：<br>针对具体情况缺乏具体分析，对未返回解析结果没有细化分析，依据单节点解析判断是否在线</li>
+<li>篡改异常和可信资源记录维护：<br>缺乏可信资源记录的动态更新</li>
+<li>域名解析主动检测<br>检测DNS服务器全面性不足，数据采集和简单统计，未进一步分析解析结果</li>
+</ol>
+<h4 id="停服异常评估模型"><a href="#停服异常评估模型" class="headerlink" title="停服异常评估模型"></a>停服异常评估模型</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/35.png"></p>
+<p>基于决策树的停服异常判断模型构建</p>
+<ul>
+<li>无解析结果分析<ol>
+<li>请求超时<br>  网络拥塞，政策限制，DNS服务器不可达</li>
+<li>返回非NoError<br>  请求格式你，内容，IP地址出错，DNS服务器原因</li>
+<li>返回NoError<br>  未配置某资源记录，DNS服务器原因</li>
+</ol>
+</li>
+<li>可疑DNS原因导致的无解析结果情况</li>
+</ul>
+<h4 id="断服异常评估模型"><a href="#断服异常评估模型" class="headerlink" title="断服异常评估模型"></a>断服异常评估模型</h4><p>在停服异常评估之后对感知重点域名在不同层级DNS服务器上的解析结果分析，判断是否发生断服异常。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/36.png"></p>
+<p>层次分析法：<br>根据返回的不同结果一层一层找原因</p>
+<ol>
+<li>请求超时，同时网络良好</li>
+<li>返回五类RFV码</li>
+</ol>
+<h4 id="篡改异常评估方法"><a href="#篡改异常评估方法" class="headerlink" title="篡改异常评估方法"></a>篡改异常评估方法</h4><p>篡改异常评估是基于可信资源记录维护</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/37.png"></p>
+<p>pre_rr：可信资源记录中未出现在某探测结果中的资源记录<br>new_rr：某次探测结果中新增加的资源记录</p>
+<p>基于判别模型的可信资源记录维护——数据采集（可信中A集合）<br>一个样本&#x3D;域名+需要判断的A记录+相关A记录集合+样本标签</p>
+<h4 id="全球根和顶级域服务器的测量及异常解析分析"><a href="#全球根和顶级域服务器的测量及异常解析分析" class="headerlink" title="全球根和顶级域服务器的测量及异常解析分析"></a>全球根和顶级域服务器的测量及异常解析分析</h4><ul>
+<li>技术方案<ol>
+<li>多级任务分布式系统：测绘需求、测绘点、测绘目标等</li>
+<li>消除网络阻塞造成的噪声数据的技术：数据清洗</li>
+<li>全层级关联融合的重点域名解析异常评估技术：异常分析</li>
+</ol>
+</li>
+</ul>
+<h3 id="开放DNS服务器发现、分类与可用性评估"><a href="#开放DNS服务器发现、分类与可用性评估" class="headerlink" title="开放DNS服务器发现、分类与可用性评估"></a>开放DNS服务器发现、分类与可用性评估</h3><p>研究背景<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/38.png"></p>
+<ul>
+<li><p>特点：</p>
+<ol>
+<li>用用户直接交互</li>
+<li>规模庞大</li>
+<li>向公众用户开放</li>
+</ol>
+</li>
+<li><p>开放域名解析器对互联网影响远超另外两类</p>
+</li>
+<li><p>国内外研究现状</p>
+<ol>
+<li>发现不完全，分类不准确，探测效益比低</li>
+<li>对开放DNS评估的研究较少，评估指标孤立、未揭露互联网中开放DNS健康现状</li>
+<li>忽略提供服务本身的用户的接受度、服务满意度，测量和评估结果易受探测点影响，未揭露互联网中开放DNS服务质量现状</li>
+<li>忽略资源消耗成本，未有大规模实验验证可用性</li>
+</ol>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/39.png"></p>
+<h4 id="基于地址空间约减的开放DNS发现与分类"><a href="#基于地址空间约减的开放DNS发现与分类" class="headerlink" title="基于地址空间约减的开放DNS发现与分类"></a>基于地址空间约减的开放DNS发现与分类</h4><ul>
+<li>对开放DNS数据的要求<ol>
+<li>时效性</li>
+<li>数量和分布</li>
+<li>准确性</li>
+<li>信息量</li>
+</ol>
+</li>
+<li>三种获取方式<ol>
+<li>主动获取</li>
+<li>被动获取</li>
+<li>第三方获取</li>
+</ol>
+</li>
+</ul>
+<p>解决</p>
+<ul>
+<li>高容忍度发现<br>  实现对开放DNS的更完全发现</li>
+<li>在用户侧和权威域名服务器侧均收集DNS数据包<br>  实现对开放DNS的更准确分类</li>
+<li>分析发现获得的开放DNS的IP地址分布规律<br>  提高开放DNS发现与分类的效益比</li>
+</ul>
+<p>高容忍度发现<br>过程：</p>
+<ul>
+<li>DNS数据包发送</li>
+<li>DNS数据包收集</li>
+<li>开放DNS判定</li>
+</ul>
+<p>开放DNS发现与分类的结果</p>
+<ul>
+<li>发现足够多的开放DNS</li>
+<li>高容忍度的判定标准能更完全地发现</li>
+<li>高容忍度的数据包发送方式有助于更完全地发现</li>
+<li>高容忍度的数据包收集方式有助于更完全地发现</li>
+</ul>
+<p>基于解析路径的开放DNS分类方法<br>方法：</p>
+<ol>
+<li>分析域名解析器间一致性</li>
+<li>描绘域名解析路径</li>
+<li>判定DNS类型</li>
+<li>对开放DNS分类</li>
+</ol>
+<p>基于地址不均匀分布的探测地址空间约减方法<br>关键问题：<br>开放DNSIP地址变动频繁<br>开放DNS占所有IP地址量级小</p>
+<h3 id="基于多自身属性协同的开放DNS健康状况测量与评估"><a href="#基于多自身属性协同的开放DNS健康状况测量与评估" class="headerlink" title="基于多自身属性协同的开放DNS健康状况测量与评估"></a>基于多自身属性协同的开放DNS健康状况测量与评估</h3><p>评估指标：<br>运行稳定性<br>解析安全性<br>数据完整性<br>一致性：关注的是域名系统中同一DNS区的权威域名服务器间<br>速度和可用性：被归类为体现域名解析服务效果的指标<br>可恢复性：涉及故障恢复能力因而通常被认为无法进行主动测量获得</p>
+<h4 id="基于影响力对抗的解析安全性评估方法"><a href="#基于影响力对抗的解析安全性评估方法" class="headerlink" title="基于影响力对抗的解析安全性评估方法"></a>基于影响力对抗的解析安全性评估方法</h4><p>分析加密协议的正向影响力与DNS软件漏洞的反向影响力，基于两者对抗结果评估解析安全性</p>
+<h4 id="基于双传输协议的数据完整性评估方法"><a href="#基于双传输协议的数据完整性评估方法" class="headerlink" title="基于双传输协议的数据完整性评估方法"></a>基于双传输协议的数据完整性评估方法</h4><p>从UDP与TCP两个传输协议评估开放DNS的数据完整性</p>
+<h4 id="基于多自身属性协同的开放DNS健康状况评估方法"><a href="#基于多自身属性协同的开放DNS健康状况评估方法" class="headerlink" title="基于多自身属性协同的开放DNS健康状况评估方法"></a>基于多自身属性协同的开放DNS健康状况评估方法</h4><ol>
+<li>采用层次分析法确定权数【适用于绝对评价】</li>
+<li>合成模型的确定</li>
+<li>健康状况的评估</li>
+</ol>
+<h3 id="基于服务置信度的开放DNS服务质量测量与评估"><a href="#基于服务置信度的开放DNS服务质量测量与评估" class="headerlink" title="基于服务置信度的开放DNS服务质量测量与评估"></a>基于服务置信度的开放DNS服务质量测量与评估</h3><p>评估指标</p>
+<ul>
+<li>服务有效性</li>
+<li>服务准确定</li>
+<li>服务及时性</li>
+</ul>
+<h4 id="异常DNS响应的识别与分类方法"><a href="#异常DNS响应的识别与分类方法" class="headerlink" title="异常DNS响应的识别与分类方法"></a>异常DNS响应的识别与分类方法</h4><h4 id="服务有效性评估方法、服务准确性评估方法"><a href="#服务有效性评估方法、服务准确性评估方法" class="headerlink" title="服务有效性评估方法、服务准确性评估方法"></a>服务有效性评估方法、服务准确性评估方法</h4><h4 id="基于查询时延的服务及时性评估方法"><a href="#基于查询时延的服务及时性评估方法" class="headerlink" title="基于查询时延的服务及时性评估方法"></a>基于查询时延的服务及时性评估方法</h4><p>提出开放DNS与根&#x2F;顶级域名服务器间查询时延的测量方法，实现了服务及时性的评估</p>
+<h4 id="基于服务置信度的开放DNS服务质量评估方法"><a href="#基于服务置信度的开放DNS服务质量评估方法" class="headerlink" title="基于服务置信度的开放DNS服务质量评估方法"></a>基于服务置信度的开放DNS服务质量评估方法</h4><p>根据服务有效性、服务准确性、服务及时性对开放DNS服务质量进行综合评价</p>
+<ol>
+<li>采用层次分析法确定权数【适用于绝对评价】</li>
+<li>合成模型的确定</li>
+<li>健康状况的评估</li>
+</ol>
+<h3 id="基于效益比的开放DNS可用性测量与评估"><a href="#基于效益比的开放DNS可用性测量与评估" class="headerlink" title="基于效益比的开放DNS可用性测量与评估"></a>基于效益比的开放DNS可用性测量与评估</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/40.png"></p>
+<h4 id="基于数据包浪费分析的开放DNS节能程度评估方法"><a href="#基于数据包浪费分析的开放DNS节能程度评估方法" class="headerlink" title="基于数据包浪费分析的开放DNS节能程度评估方法"></a>基于数据包浪费分析的开放DNS节能程度评估方法</h4><p>依据其在域名解析路径中、DNS响应引起的数据包浪费行为，计算数据包浪费比例，实现节能程度评估</p>
+<h4 id="基于效益比的开放DNS可用性评估方法"><a href="#基于效益比的开放DNS可用性评估方法" class="headerlink" title="基于效益比的开放DNS可用性评估方法"></a>基于效益比的开放DNS可用性评估方法</h4><p>根据体现运行“收益”的健康状况、体现服务 “收益”的服务质量、体现资源“成本”的节能程度，对开放DNS的可用性进行综合评价</p>
+<h4 id="开放DNS可用性测量与评估系统"><a href="#开放DNS可用性测量与评估系统" class="headerlink" title="开放DNS可用性测量与评估系统"></a>开放DNS可用性测量与评估系统</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/41.png"></p>
+<h2 id="重点域名DNS劫持发现与分析"><a href="#重点域名DNS劫持发现与分析" class="headerlink" title="重点域名DNS劫持发现与分析"></a>重点域名DNS劫持发现与分析</h2><p>DNS劫持：通过攻击DNS服务器，或伪造DNS服务器的方法，把目标网站域名解析到错误的IP地址从而实现用户无法访问目标网站的目的，或者恶意要求用户访问指定IP地址（假网站）的目的。</p>
+<p>DNS劫持：造成经济损失，造成政治威胁</p>
+<p>开放DNS：可以接收公众用户的请求，直接与用户进行报文交互，负责接收用户的查询请求，进行查询并且返回给用户查询结果</p>
+<h3 id="研究目的："><a href="#研究目的：" class="headerlink" title="研究目的："></a>研究目的：</h3><p>及时全面的重点域名DNS劫持发现<br>意义：</p>
+<ul>
+<li>国家角度<br>  为国家网络安全应急响应提供依据</li>
+<li>行业角度<br>  为运营商等其他DNS服务器管理着运维、管理提供指导</li>
+<li>用户角度<br>  保障用户的安全访问</li>
+</ul>
+<h3 id="研究现状；"><a href="#研究现状；" class="headerlink" title="研究现状；"></a>研究现状；</h3><ol>
+<li>全球DNS发现<br> 针对全球节点发现，但全球节点巨多，所以时间长效率低对互联网空间污染大</li>
+<li>DNS劫持相关研究<br> 较多使用被动方式，DNS劫持发现不及时<br> 主动较少，常基于&lt;域名、IP&gt;解析对变化，方式单一容易误判<br> 整体来看，DNS劫持检测的方法研究少且不深入，应对DNS劫持的理论研究，防护措施，新技术</li>
+<li>改进<ul>
+<li>及时性——主动测量</li>
+<li>全面性——选取全球多地区探测点</li>
+<li>准确性——增加基于网页内容的DNS劫持检测方式</li>
+</ul>
+</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/42.png"></p>
+<p>研究方案：</p>
+<ul>
+<li>方式：主动测量</li>
+<li>报文：DNS请求报文</li>
+<li>探测点：云服务</li>
+<li>输入：全球开放DNS</li>
+</ul>
+<p>DNS劫持检测模块——重点域名解析IP地址检测</p>
+<ul>
+<li>是否错误</li>
+<li>是否可访问</li>
+</ul>
+<h3 id="基于网页内容的DNS劫持检测"><a href="#基于网页内容的DNS劫持检测" class="headerlink" title="基于网页内容的DNS劫持检测"></a>基于网页内容的DNS劫持检测</h3><p>提前网页标签特征和文本向量特征，特征融合后进行匹配，多不匹配则认为被劫持，或匹配后外链不对也判断为劫持<br>获取网页内外链，使用百度和腾讯提供的第三方API进行检测</p>
+<h3 id="基于网页证书的DNS劫持检测"><a href="#基于网页证书的DNS劫持检测" class="headerlink" title="基于网页证书的DNS劫持检测"></a>基于网页证书的DNS劫持检测</h3><p>链接网页后获取证书进行校验</p>
+<h3 id="基于网页快照文字识别的DNS劫持检测"><a href="#基于网页快照文字识别的DNS劫持检测" class="headerlink" title="基于网页快照文字识别的DNS劫持检测"></a>基于网页快照文字识别的DNS劫持检测</h3><p>图片文字识别</p>
+<h3 id="DNS劫持定位与分析"><a href="#DNS劫持定位与分析" class="headerlink" title="DNS劫持定位与分析"></a>DNS劫持定位与分析</h3><h4 id="研究方案"><a href="#研究方案" class="headerlink" title="研究方案"></a>研究方案</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/43.png"></p>
+<ol>
+<li>域名管理出错<br> 所有的DNS均判定为DNS劫持，说明域名权威出问题，测量域名其他维度属性如证书信息，备案信息等，之后辅助域名管理者修复</li>
+<li>DNS管理出错<br> 部分DNS判定为发生劫持，其他DNS出现异常，读取DNS劫持定位模块的DNS信息，辅助DNS管理者管理</li>
+<li>中间路径攻击<br> 部分DNS判定为发生DNS劫持，其他域名测试正常</li>
+</ol>
+<h2 id="网络不良实体发现"><a href="#网络不良实体发现" class="headerlink" title="网络不良实体发现"></a>网络不良实体发现</h2><p>现状</p>
+<ul>
+<li>发现不容易</li>
+<li>感知不准确</li>
+<li>处置不完整</li>
+<li>溯源不通畅</li>
+<li>取证不全面</li>
+</ul>
+<p>域名：</p>
+<ul>
+<li>基本信息<ul>
+<li>域名基本信息</li>
+<li>Whois&#x2F;WhoWas信息</li>
+</ul>
+</li>
+<li>站点信息<ul>
+<li>服务IP信息</li>
+<li>站点内容</li>
+<li>站点链接</li>
+<li>子域名信息</li>
+<li>证书信息</li>
+<li>ICP备案信息</li>
+</ul>
+</li>
+<li>关联分析<ul>
+<li>域名地理位置分析</li>
+<li>域名关联信息分析</li>
+<li>域名关联注册组织分析</li>
+</ul>
+</li>
+<li>域名检测信息<ul>
+<li>互联网公司</li>
+<li>安全公司</li>
+<li>域名检测平台</li>
+</ul>
+</li>
+</ul>
+<p>背景：</p>
+<ol>
+<li>不良站点信息多维（注册&#x2F;备案&#x2F;认证&#x2F;服务）</li>
+<li>不良站点内容复杂</li>
+<li>不良站点形式多样、传播渠道广</li>
+<li>不良站点信息动态易变</li>
+</ol>
+<p>挑战：</p>
+<ol>
+<li>全面、高效、高质量的异常域名信息获取</li>
+<li>高效、有效、准确的异常域名及其组织关系挖掘</li>
+<li>准确、及时的异常域名活性测绘和变化趋势分析</li>
+<li>准确、及时的异常域名治理效果评估</li>
+</ol>
+<p>然后这里有很多的技术，我觉的这里可能会让你例举几个技术，太多了我就不列了，大伙看着看就行</p>
+<h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8_1.jpeg"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8_2.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io">Nonbliss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/">https://nonbliss.github.io/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nonbliss.github.io" target="_blank">Nonbliss's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/tag.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/15/%E5%B0%8F%E5%B0%8F%E9%AD%94%E6%B3%95-for-UOOC/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">小小魔法 for UOOC</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95-%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络-自顶向下方法-复习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nonbliss</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/28605906"><i class="/img/bilibili.ico"></i><span>我的B站主页~</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">标记类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-%E5%85%B8%E5%9E%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%8B%E4%BB%B6%E5%89%96%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">1-1 典型网络安全事件剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">事件分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E8%B6%8B%E5%8A%BF%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">网络安全趋势分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%BD%A2%E5%8A%BF"><span class="toc-number">3.</span> <span class="toc-text">网络空间安全形势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%85%B8%E5%9E%8B%E7%89%B9%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">网络空间典型特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%A4%A7%E7%89%B9%E5%BE%81"><span class="toc-number">5.</span> <span class="toc-text">四大特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%A4%A7%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">四大问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E5%A4%A7%E7%8E%B0%E7%8A%B6"><span class="toc-number">7.</span> <span class="toc-text">两大现状</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">1-2 网络与信息安全体系结构介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">网络与信息安全概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.</span> <span class="toc-text">安全技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.</span> <span class="toc-text">什么是信息安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%B6%B5%E7%9B%96%E8%8C%83%E5%9B%B4%E2%9D%97"><span class="toc-number">1.3.</span> <span class="toc-text">网络与信息安全涵盖范围❗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E2%9D%97"><span class="toc-number">1.4.</span> <span class="toc-text">什么是信息安全技术❗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%96%B0%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.</span> <span class="toc-text">未来新技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%89%96%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">1-3 大型网络应用剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">百度搜索引擎分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">大型网络应用技术发展历程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">大型网络应用系统设计要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">分布式系统的网络问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">分布式系统通信协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%83%AD%E7%82%B9%E5%89%96%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">1-4 互联网发展热点剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E4%B8%83%E4%B8%AA%E7%88%86%E5%8F%91%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">互联网接下来的七个爆发点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018%E5%B9%B4%E4%B8%AD%E5%9B%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%956%E4%B8%AA%E6%96%B0%E8%B6%8B%E5%8A%BF"><span class="toc-number">2.</span> <span class="toc-text">2018年中国互联网产业发展6个新趋势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2020%E5%B9%B4%E4%B8%AD%E5%9B%BD%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%81%E5%A4%A7%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B"><span class="toc-number">3.</span> <span class="toc-text">2020年中国互联网十大趋势预测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5%E4%B8%8E%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">1-5 负载均衡策略与算法剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.</span> <span class="toc-text">为什么要负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A%E6%80%8E%E6%A0%B7%E4%BF%9D%E6%8C%81%E4%B8%9A%E5%8A%A1%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">关键点：怎样保持业务的连续性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%85%B8%E5%9E%8B%E7%89%B9%E7%82%B9-1"><span class="toc-number">1.2.</span> <span class="toc-text">网络空间典型特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">需要原因分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.4.</span> <span class="toc-text">本地负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">全局负载均衡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E7%AD%96%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">负载均衡主要策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EDNS%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">基于DNS的负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">2.1.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7"><span class="toc-number">2.1.4.</span> <span class="toc-text">缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.2.</span> <span class="toc-text">基于反向代理的负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%AE%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.3.</span> <span class="toc-text">基于特定服务器软件的负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">2.3.3.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ENAT%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E2%9D%97"><span class="toc-number">2.4.</span> <span class="toc-text">基于NAT的负载均衡❗</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-number">2.4.2.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ECDN%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.5.</span> <span class="toc-text">基于CDN的负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-2"><span class="toc-number">2.5.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-4"><span class="toc-number">2.5.2.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">负载均衡主要算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">轮询算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-5"><span class="toc-number">3.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E7%94%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">适用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">Hash散列算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%91%E9%93%BE%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">最少链接算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-3"><span class="toc-number">3.3.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-6"><span class="toc-number">3.3.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-number">3.3.3.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E7%94%A8-1"><span class="toc-number">3.3.4.</span> <span class="toc-text">适用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%BF%AB%E9%93%BE%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">最快链接算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-4"><span class="toc-number">3.4.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.4.2.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%A5%E5%BA%B7%E6%80%A7%E6%A3%80%E6%9F%A5%E7%AE%97%E6%B3%95"><span class="toc-number">3.5.</span> <span class="toc-text">健康性检查算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">3.5.1.</span> <span class="toc-text">目的</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-1-%E9%98%B2%E7%81%AB%E5%A2%99%E5%9F%BA%E7%A1%80"><span class="toc-number"></span> <span class="toc-text">2-1 防火墙基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E4%BB%A3%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.</span> <span class="toc-text">下一代防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%A6%82%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">防火墙概论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">防火墙定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E8%A6%81%E7%B4%A0"><span class="toc-number">2.1.3.</span> <span class="toc-text">三大要素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-7"><span class="toc-number">2.1.4.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E7%82%B9"><span class="toc-number">2.1.5.</span> <span class="toc-text">弱点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">防火墙基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%8F%E8%94%BD%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">屏蔽路由器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E9%87%8D%E5%AE%BF%E4%B8%BB%E4%B8%BB%E6%9C%BA%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">3.2.</span> <span class="toc-text">双重宿主主机防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%8F%E8%94%BD%E4%B8%BB%E6%9C%BA%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">3.3.</span> <span class="toc-text">屏蔽主机防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%8F%E8%94%BD%E5%AD%90%E7%BD%91%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">3.4.</span> <span class="toc-text">屏蔽子网防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%98%B2%E7%81%AB%E5%A2%99%E7%BB%93%E6%9E%84"><span class="toc-number">3.5.</span> <span class="toc-text">其他防火墙结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">防火墙的模型与分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">防火墙模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%88%86%E7%B1%BB"><span class="toc-number">4.2.</span> <span class="toc-text">防火墙分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E8%BF%87%E6%BB%A4%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.2.1.</span> <span class="toc-text">包过滤防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81-%E5%8A%A8%E6%80%81%E6%A3%80%E6%B5%8B%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.2.2.</span> <span class="toc-text">状态&#x2F;动态检测防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%90%86%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.2.3.</span> <span class="toc-text">应用程序代理防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.2.4.</span> <span class="toc-text">个人防火墙</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%98%B2%E5%BE%A1"><span class="toc-number">5.</span> <span class="toc-text">攻击方式与防火墙防御</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E9%BB%91%E5%AE%A2"><span class="toc-number">5.1.</span> <span class="toc-text">认识黑客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%89%8B%E6%AE%B5"><span class="toc-number">5.2.</span> <span class="toc-text">网络攻击的基本手段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E6%9D%83%E9%99%90%E7%B1%BB"><span class="toc-number">5.2.1.</span> <span class="toc-text">非法权限类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%9F%93%E7%B1%BB"><span class="toc-number">5.2.2.</span> <span class="toc-text">传染类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%B5%E5%8D%A0%E8%B5%84%E6%BA%90%E7%B1%BB"><span class="toc-number">5.2.3.</span> <span class="toc-text">侵占资源类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%8F%91%E5%B1%95"><span class="toc-number">6.</span> <span class="toc-text">防火墙发展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-2-%E9%98%B2%E7%81%AB%E5%A2%99%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">2-2 防火墙技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E8%BF%87%E6%BB%A4%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">包过滤技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%BF%87%E6%BB%A4%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">包过滤原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">配置访问控制列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">动态访问控制列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8C%85%E6%A3%80%E6%9F%A5%EF%BC%88%E5%8F%8D%E5%B0%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">状态包检查（反射访问控制列表）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%BF%87%E6%BB%A4%E6%8A%80%E6%9C%AF%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">包过滤技术优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-8"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-3"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">网络地址翻译技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NAT%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">NAT技术原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NAT%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-number">2.2.</span> <span class="toc-text">NAT相关术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF"><span class="toc-number">2.3.</span> <span class="toc-text">静态网络地址翻译技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF"><span class="toc-number">2.4.</span> <span class="toc-text">动态网络地址翻译技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.5.</span> <span class="toc-text">网络地址翻译技术实现负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E4%BA%A4%E8%BF%AD"><span class="toc-number">2.6.</span> <span class="toc-text">网络地址翻译技术处理网络地址交迭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">2.7.</span> <span class="toc-text">网络地址翻译技术优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-3"><span class="toc-number">2.7.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">网络代理技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E4%BB%A3%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">应用层代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B"><span class="toc-number">3.1.1.</span> <span class="toc-text">应用层代理简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E4%BB%A3%E7%90%86%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.2.</span> <span class="toc-text">应用层代理的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text">代理服务程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-number">3.1.4.</span> <span class="toc-text">应用层代理技术的优缺点分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-9"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-4"><span class="toc-number">3.1.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E7%BA%A7%E4%BB%A3%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">电路级代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E7%BA%A7%E4%BB%A3%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">电路级代理概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E7%BA%A7%E7%BD%91%E5%85%B3%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">3.2.2.</span> <span class="toc-text">电路级网关的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SOCKS%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF"><span class="toc-number">3.2.3.</span> <span class="toc-text">SOCKS代理技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SOCKS%E4%BB%A3%E7%90%86%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.4.</span> <span class="toc-text">SOCKS代理的实现</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-3-%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2-3 防火墙安全策略及其配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">1.</span> <span class="toc-text">防火墙如何开发安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1%E4%BA%A7%E5%93%81%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.</span> <span class="toc-text">审计产品部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E6%89%80%E9%9C%80%E8%A6%81%E8%BE%BE%E5%88%B0%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="toc-number">1.3.</span> <span class="toc-text">确定有效的安全策略所需要达到的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E7%9A%847%E6%AD%A5"><span class="toc-number">1.4.</span> <span class="toc-text">构建安全策略的7步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E8%99%91%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-number">1.5.</span> <span class="toc-text">考虑防火墙的不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9D%E5%8F%8D%E5%AE%89%E5%85%A8%E8%A7%84%E5%88%99%E5%93%8D%E5%BA%94%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">违反安全规则响应方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cisco-IOS-%E9%98%B2%E7%81%AB%E5%A2%99%E7%89%B9%E5%BE%81%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">Cisco IOS 防火墙特征集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AECisco-IOS%E9%98%B2%E7%81%AB%E5%A2%99%E5%8C%85%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD"><span class="toc-number">3.</span> <span class="toc-text">配置Cisco IOS防火墙包过滤功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A0%87%E5%87%86%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">3.1.</span> <span class="toc-text">配置标准访问控制列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%8B%93%E5%B1%95%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">3.2.</span> <span class="toc-text">配置拓展访问控制列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A0%87%E8%AF%86%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">3.3.</span> <span class="toc-text">配置标识访问控制列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8A%A8%E6%80%81%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">3.4.</span> <span class="toc-text">配置动态访问控制列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E8%A6%81%E7%82%B9%E2%9D%97"><span class="toc-number">3.5.</span> <span class="toc-text">访问控制列表配置要点❗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-1-%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">3-1 入侵检测技术概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2"><span class="toc-number">1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDS%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">IDS基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPDR%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">PPDR模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">入侵检测的信息源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%E5%88%86%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">入侵检测技术分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E4%BF%A1%E6%81%AF%E6%BA%90%E5%88%86%E7%B1%BB"><span class="toc-number">4.1.</span> <span class="toc-text">按照信息源分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">4.2.</span> <span class="toc-text">按照检测方法分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-2-%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">3-2 基于主机的入侵检测技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-number">1.</span> <span class="toc-text">审计数据的获取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%9D%A5%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">审计数据类型和来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">审计数据的预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.</span> <span class="toc-text">审计数据获取模块设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">用于入侵检测的统计模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%9A%84%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">入侵检测的专家系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%88%86%E6%9E%90%E7%9A%84%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">4.</span> <span class="toc-text">基于状态转移分析的入侵检测技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">5.</span> <span class="toc-text">文件完整性检查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%88%97%E8%A1%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">5.1.</span> <span class="toc-text">检查列表技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TripWire"><span class="toc-number">5.2.</span> <span class="toc-text">TripWire</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF"><span class="toc-number">6.</span> <span class="toc-text">系统配置分析技术</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-3-%E5%9F%BA%E4%BA%8E%E7%BD%91%E7%BB%9C%E7%9A%84%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">3-3 基于网络的入侵检测技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text">协议分层模型与TCP&#x2F;IP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E5%8C%85%E6%88%AA%E8%8E%B7%E2%9D%97"><span class="toc-number">2.</span> <span class="toc-text">网络数据包截获❗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1%E2%9D%97"><span class="toc-number">3.</span> <span class="toc-text">检测引擎设计❗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%A7%84%E5%88%99%E6%A3%80%E6%B5%8B%E5%BC%95%E6%93%8E%E2%9D%97Snort"><span class="toc-number">3.1.</span> <span class="toc-text">嵌入式规则检测引擎❗Snort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E7%9A%84%E6%A3%80%E6%B5%8B%E5%BC%95%E6%93%8E"><span class="toc-number">3.2.</span> <span class="toc-text">可编程的检测引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E6%9E%90%E4%B8%8E%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E2%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">特征分析与协议分析❗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%BA%92%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%AE%89%E5%85%A8"><span class="toc-number"></span> <span class="toc-text">4 互联网基础设施安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E7%9A%84%E7%9B%AE%E7%9A%84%E4%B8%8E%E6%84%8F%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">研究的目的与意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS%E5%AE%89%E5%85%A8%E4%B8%8E%E5%9F%9F%E5%90%8D%E5%AE%89%E5%85%A8"><span class="toc-number">2.</span> <span class="toc-text">DNS安全与域名安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E7%BB%98"><span class="toc-number">2.1.</span> <span class="toc-text">测绘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E7%90%83%E6%A0%B9%E5%92%8C%E9%A1%B6%E7%BA%A7%E5%9F%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%8B%E9%87%8F%E5%8F%8A%E5%BC%82%E5%B8%B8%E8%A7%A3%E6%9E%90%E5%88%86%E6%9E%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">全球根和顶级域服务器测量及异常解析分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9C%E6%9C%8D%E5%BC%82%E5%B8%B8%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">停服异常评估模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%AD%E6%9C%8D%E5%BC%82%E5%B8%B8%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.3.</span> <span class="toc-text">断服异常评估模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AF%A1%E6%94%B9%E5%BC%82%E5%B8%B8%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.4.</span> <span class="toc-text">篡改异常评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E7%90%83%E6%A0%B9%E5%92%8C%E9%A1%B6%E7%BA%A7%E5%9F%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%B5%8B%E9%87%8F%E5%8F%8A%E5%BC%82%E5%B8%B8%E8%A7%A3%E6%9E%90%E5%88%86%E6%9E%90"><span class="toc-number">2.1.5.</span> <span class="toc-text">全球根和顶级域服务器的测量及异常解析分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BEDNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E7%8E%B0%E3%80%81%E5%88%86%E7%B1%BB%E4%B8%8E%E5%8F%AF%E7%94%A8%E6%80%A7%E8%AF%84%E4%BC%B0"><span class="toc-number">2.2.</span> <span class="toc-text">开放DNS服务器发现、分类与可用性评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E7%BA%A6%E5%87%8F%E7%9A%84%E5%BC%80%E6%94%BEDNS%E5%8F%91%E7%8E%B0%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.1.</span> <span class="toc-text">基于地址空间约减的开放DNS发现与分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E8%87%AA%E8%BA%AB%E5%B1%9E%E6%80%A7%E5%8D%8F%E5%90%8C%E7%9A%84%E5%BC%80%E6%94%BEDNS%E5%81%A5%E5%BA%B7%E7%8A%B6%E5%86%B5%E6%B5%8B%E9%87%8F%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">2.3.</span> <span class="toc-text">基于多自身属性协同的开放DNS健康状况测量与评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%BD%B1%E5%93%8D%E5%8A%9B%E5%AF%B9%E6%8A%97%E7%9A%84%E8%A7%A3%E6%9E%90%E5%AE%89%E5%85%A8%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">基于影响力对抗的解析安全性评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%8C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.2.</span> <span class="toc-text">基于双传输协议的数据完整性评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E8%87%AA%E8%BA%AB%E5%B1%9E%E6%80%A7%E5%8D%8F%E5%90%8C%E7%9A%84%E5%BC%80%E6%94%BEDNS%E5%81%A5%E5%BA%B7%E7%8A%B6%E5%86%B5%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.3.</span> <span class="toc-text">基于多自身属性协同的开放DNS健康状况评估方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%BD%AE%E4%BF%A1%E5%BA%A6%E7%9A%84%E5%BC%80%E6%94%BEDNS%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F%E6%B5%8B%E9%87%8F%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">2.4.</span> <span class="toc-text">基于服务置信度的开放DNS服务质量测量与评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8DNS%E5%93%8D%E5%BA%94%E7%9A%84%E8%AF%86%E5%88%AB%E4%B8%8E%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.1.</span> <span class="toc-text">异常DNS响应的识别与分类方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%9C%89%E6%95%88%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95%E3%80%81%E6%9C%8D%E5%8A%A1%E5%87%86%E7%A1%AE%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.2.</span> <span class="toc-text">服务有效性评估方法、服务准确性评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9F%A5%E8%AF%A2%E6%97%B6%E5%BB%B6%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8F%8A%E6%97%B6%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.3.</span> <span class="toc-text">基于查询时延的服务及时性评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%BD%AE%E4%BF%A1%E5%BA%A6%E7%9A%84%E5%BC%80%E6%94%BEDNS%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.4.</span> <span class="toc-text">基于服务置信度的开放DNS服务质量评估方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%95%88%E7%9B%8A%E6%AF%94%E7%9A%84%E5%BC%80%E6%94%BEDNS%E5%8F%AF%E7%94%A8%E6%80%A7%E6%B5%8B%E9%87%8F%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">2.5.</span> <span class="toc-text">基于效益比的开放DNS可用性测量与评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%B5%AA%E8%B4%B9%E5%88%86%E6%9E%90%E7%9A%84%E5%BC%80%E6%94%BEDNS%E8%8A%82%E8%83%BD%E7%A8%8B%E5%BA%A6%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.5.1.</span> <span class="toc-text">基于数据包浪费分析的开放DNS节能程度评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%95%88%E7%9B%8A%E6%AF%94%E7%9A%84%E5%BC%80%E6%94%BEDNS%E5%8F%AF%E7%94%A8%E6%80%A7%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.5.2.</span> <span class="toc-text">基于效益比的开放DNS可用性评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%94%BEDNS%E5%8F%AF%E7%94%A8%E6%80%A7%E6%B5%8B%E9%87%8F%E4%B8%8E%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.3.</span> <span class="toc-text">开放DNS可用性测量与评估系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%82%B9%E5%9F%9F%E5%90%8DDNS%E5%8A%AB%E6%8C%81%E5%8F%91%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">重点域名DNS劫持发现与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E7%9B%AE%E7%9A%84%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">研究目的：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6%EF%BC%9B"><span class="toc-number">3.2.</span> <span class="toc-text">研究现状；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E7%9A%84DNS%E5%8A%AB%E6%8C%81%E6%A3%80%E6%B5%8B"><span class="toc-number">3.3.</span> <span class="toc-text">基于网页内容的DNS劫持检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BD%91%E9%A1%B5%E8%AF%81%E4%B9%A6%E7%9A%84DNS%E5%8A%AB%E6%8C%81%E6%A3%80%E6%B5%8B"><span class="toc-number">3.4.</span> <span class="toc-text">基于网页证书的DNS劫持检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A7%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E7%9A%84DNS%E5%8A%AB%E6%8C%81%E6%A3%80%E6%B5%8B"><span class="toc-number">3.5.</span> <span class="toc-text">基于网页快照文字识别的DNS劫持检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E5%8A%AB%E6%8C%81%E5%AE%9A%E4%BD%8D%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">3.6.</span> <span class="toc-text">DNS劫持定位与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88"><span class="toc-number">3.6.1.</span> <span class="toc-text">研究方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%8D%E8%89%AF%E5%AE%9E%E4%BD%93%E5%8F%91%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">网络不良实体发现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0"><span class="toc-number"></span> <span class="toc-text">笔记</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/" title="信息内容安全-复习（仅重点内容）">信息内容安全-复习（仅重点内容）</a><time datetime="2023-05-26T11:15:31.000Z" title="发表于 2023-05-26 19:15:31">2023-05-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/20/%E5%B7%A5%E6%8E%A7%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/" title="工控网络安全-复习">工控网络安全-复习</a><time datetime="2023-05-20T11:41:23.000Z" title="发表于 2023-05-20 19:41:23">2023-05-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/%E5%B0%8F%E5%B0%8F%E9%AD%94%E6%B3%95-for-UOOC/" title="小小魔法 for UOOC">小小魔法 for UOOC</a><time datetime="2023-05-15T11:47:05.000Z" title="发表于 2023-05-15 19:47:05">2023-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0/" title="网络安全-复习">网络安全-复习</a><time datetime="2023-05-15T11:08:45.000Z" title="发表于 2023-05-15 19:08:45">2023-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95-%E5%A4%8D%E4%B9%A0/" title="计算机网络-自顶向下方法-复习">计算机网络-自顶向下方法-复习</a><time datetime="2023-05-12T01:51:02.000Z" title="发表于 2023-05-12 09:51:02">2023-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Nonbliss</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script defer src="/live2d-widget/autoload.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="给我狠狠的学,熬熬熬,肝爆！" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
