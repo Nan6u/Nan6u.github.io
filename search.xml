@@ -26,22 +26,6 @@
       </categories>
   </entry>
   <entry>
-    <title>leetcode top 100 思路</title>
-    <url>/2023/03/17/leetcode-top-100-%E6%80%9D%E8%B7%AF/</url>
-    <content><![CDATA[<p>不定期更新，争取保研机试之前刷完，刷不完就回家种地</p>
-<h1 id="1-size-vs-sizeof"><a href="#1-size-vs-sizeof" class="headerlink" title="1.size vs sizeof"></a>1.size vs sizeof</h1><p>对于vector，新版c++推荐使用size，sizeof有点问题，要是执着使用sizeof，就会像我一样死活跑不出来</p>
-<h1 id="2-leetcode新版申请内存问题"><a href="#2-leetcode新版申请内存问题" class="headerlink" title="2.leetcode新版申请内存问题"></a>2.leetcode新版申请内存问题</h1><p>malloc报错的，需要用new申请内存，比如</p>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">struct ListNode* <span class="keyword">new</span><span class="type">ListNode</span> = <span class="keyword">new</span> <span class="type">ListNode</span>;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-队列结构？"><a href="#3-队列结构？" class="headerlink" title="3.队列结构？"></a>3.队列结构？</h1><p>有些题目解析把这玩意叫做窗口，反正不管咋叫，逻辑是一样的</p>
-<p>每次读入下一个字符，然后进行一波判断，如果不满足就把最开头那个去掉</p>
-<p>然后每次都把最长的那个更新一下，发现读到最后了就输出完事</p>
-]]></content>
-      <categories>
-        <category>编程编程~</category>
-      </categories>
-  </entry>
-  <entry>
     <title>PR培训-12.4</title>
     <url>/2022/12/03/PR%E5%9F%B9%E8%AE%AD-12-4/</url>
     <content><![CDATA[<h1 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h1><p>位置选择自己的工作文件夹，右侧浏览可以选择保存位置</p>
@@ -103,6 +87,22 @@
 ]]></content>
       <categories>
         <category>PR/AE</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode top 100 思路</title>
+    <url>/2023/03/17/leetcode-top-100-%E6%80%9D%E8%B7%AF/</url>
+    <content><![CDATA[<p>不定期更新，争取保研机试之前刷完，刷不完就回家种地</p>
+<h1 id="1-size-vs-sizeof"><a href="#1-size-vs-sizeof" class="headerlink" title="1.size vs sizeof"></a>1.size vs sizeof</h1><p>对于vector，新版c++推荐使用size，sizeof有点问题，要是执着使用sizeof，就会像我一样死活跑不出来</p>
+<h1 id="2-leetcode新版申请内存问题"><a href="#2-leetcode新版申请内存问题" class="headerlink" title="2.leetcode新版申请内存问题"></a>2.leetcode新版申请内存问题</h1><p>malloc报错的，需要用new申请内存，比如</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">struct ListNode* <span class="keyword">new</span><span class="type">ListNode</span> = <span class="keyword">new</span> <span class="type">ListNode</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-队列结构？"><a href="#3-队列结构？" class="headerlink" title="3.队列结构？"></a>3.队列结构？</h1><p>有些题目解析把这玩意叫做窗口，反正不管咋叫，逻辑是一样的</p>
+<p>每次读入下一个字符，然后进行一波判断，如果不满足就把最开头那个去掉</p>
+<p>然后每次都把最长的那个更新一下，发现读到最后了就输出完事</p>
+]]></content>
+      <categories>
+        <category>编程编程~</category>
       </categories>
   </entry>
   <entry>
