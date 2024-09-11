@@ -2642,70 +2642,6 @@
       </categories>
   </entry>
   <entry>
-    <title>上下文感知常识性知识图谱推理和路径引导解释</title>
-    <url>/2024/07/27/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E6%80%A7%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E5%92%8C%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A/</url>
-    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>常识知识图谱通常因为稀疏性和缺乏结构信息，传统知识图谱方法通常无法很好的进行推理。本文提出CoRPe，一种基于路径引导解释和上下文的推理方法。</p>
-<h1 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h1><p>常识知识图谱的数据特征如下</p>
-<table>
-<thead>
-<tr>
-<th>数据集</th>
-<th>节点数</th>
-<th>关系数</th>
-<th>三元组数</th>
-<th>密度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>KG:</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>FB15K</td>
-<td>14,951</td>
-<td>1,345</td>
-<td>483,142</td>
-<td>$2.16 \times 10^{-3}$</td>
-</tr>
-<tr>
-<td>FB15K-237</td>
-<td>14,541</td>
-<td>237</td>
-<td>272,115</td>
-<td>$1.28 \times 10^{-3}$</td>
-</tr>
-<tr>
-<td>CKG:</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>CN-100K</td>
-<td>78,088</td>
-<td>34</td>
-<td>100,000</td>
-<td>$1.64 \times 10^{-5}$</td>
-</tr>
-<tr>
-<td>ATOMIC</td>
-<td>256,570</td>
-<td>9</td>
-<td>610,536</td>
-<td>$9.27 \times 10^{-6}$</td>
-</tr>
-</tbody></table>
-<p>根据我毕业设计阶段制作的威胁情报知识图谱的数据来看，威胁情报数据很符合常识知识图谱的特征，关系种类少且节点多，在实际实验中也确实证明传统知识图谱推理方法没有很好的效果。</p>
-<p>在CKG的推理中，可能存在语义存在相近，但概念不同的节点，如图中go to store和shop，前者为一个动作，后者可以是名词也可以是动词，在图例中，在路径1中，shop表示一个地点，路径2中shop表示动作，在shop作为一个动作时，与go to shore有相似的语义。如果基于语义推断，(?, UsedFor, Buy present)时，需要区分shop和go to store，因为这里的头实体需要是作为地点的shop，意为商店可用作买礼物。但传统推理方法中，因为go to store与shop有部分语义重合，就会导致推理错误。</p>
-<p>一些研究通过PLM去编码语义信息，但是当节点数大于120k时，相似度上升，说明仅通过PLM去处理是不足的。</p>
-<p>CoRPe利用从一阶逻辑规则实例化得到的推理路径来引入增强的上下文，这有助于在概念多样性存在的情况下推断常识三元组。此外，增强的上下文还提供了文本语义，以缓解CKG的结构不足问题。<br>CoRPe包括两个主要模块：上下文增强的文本嵌入（CTE）和联合评分（JS）。在CTE模块中，1) CoRPe利用设计的模板构建上下文，这些模板根据目标常识三元组引入一阶逻辑规则实例化的推理路径。2) CoRPe还采用了一种上下文增强的微调策略，对PLM进行上下文注入。这一过程通过掩码操作对上下文进行处理，并使节点文本与上下文中的文本对齐。3) CoRPe通过协同优化机制进行优化，以通过掩码和对齐损失整合注入上下文的语义。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="增强上下文的语义嵌入"><a href="#增强上下文的语义嵌入" class="headerlink" title="增强上下文的语义嵌入"></a>增强上下文的语义嵌入</h2>]]></content>
-  </entry>
-  <entry>
     <title>基于路径引导解释的上下文感知常识知识图谱推理</title>
     <url>/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/</url>
     <content><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>本次分享主要分为四点：<br>背景部分主要介绍问题来源，目前研究现状。<br>其次来介绍文章是怎么从路径中抽取其上下文信息<br>然后介绍文章对语言模型进行预训练的方法，以及文章设计了一个用于测试的评分机制<br>最后基于实验结果分析文章方法的效果，并对该方法的应用提出设想</p>
@@ -2749,7 +2685,7 @@
 <p>文章对于PLM的种类进行了实验，结果证明BERT比RoBARTa以及albert效果更好。</p>
 <h1 id="【19】使用研究"><a href="#【19】使用研究" class="headerlink" title="【19】使用研究"></a>【19】使用研究</h1><p>首先常识知识图谱推理可以很好的对自然语言进行特征提取，可以适应如“常识性问答”的场景。本文可以从查询中提取图谱中的路径，对问答任务进行辅助推理。</p>
 <p>在安全角度进行探索，如用于威胁情报推理的知识图谱。<br>CWE-1220 实施的访问控制缺乏所需的粒度，这使得控制策略过于宽泛，因为它允许未经授权的代理访问安全敏感资产。<br>CAPEC-1 如果管理员未能为特定元素指定 ACL，攻击者可能能够访问该元素而不受惩罚。<br>CAPEC-180 配置所有门禁系统可能非常复杂，并且有很多出错的机会。</p>
-<p>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_02.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_03.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_04.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_05.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_06.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_07.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_08.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_09.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_10.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_11.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_12.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_13.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_14.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_15.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_16.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_17.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_18.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_19.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_20.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_21.png)<br>![](33-3-1-哈工深-王子雨-Context-Aware Commonsense Knowledge Graph Reasoning with Path-Guided Explanations基于路径引导解释的上下文感知常识知识图谱推理_页面_22.png)</p>
+<p><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/1.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/3.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/4.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/5.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/6.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/7.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/8.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/9.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/10.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/11.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/12.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/13.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/14.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/15.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/16.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/17.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/18.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/19.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/20.png"><br><img src="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/21.png"></p>
 ]]></content>
       <categories>
         <category>论文阅读</category>
