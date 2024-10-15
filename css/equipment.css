@@ -7,7 +7,7 @@
   }
   
   .equipment-item-content-item {
-    width: calc(25% - 12px);
+    width: calc(20% - 12px);
     border-radius: 12px;
     border: var(--style-border-always);
     overflow: hidden;
@@ -36,7 +36,7 @@
   }
   
   .equipment-item-content-item-name {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     line-height: 1;
     margin-bottom: 8px;
@@ -47,7 +47,7 @@
   }
   
   .equipment-item-content-item-specification {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--heo-secondtext);
     line-height: 1;
     margin-bottom: 12px;
@@ -64,7 +64,7 @@
     overflow: auto;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    font-size: 14px;
+    font-size: 12px;
   }
   
   a.equipment-item-content-item-link {
@@ -91,7 +91,7 @@
   }
   
   .equipment-item-content-item-cover {
-    width: 100%;
+    width: auto;
     height: 200px;
     background: var(--heo-secondbg);
     display: flex;
