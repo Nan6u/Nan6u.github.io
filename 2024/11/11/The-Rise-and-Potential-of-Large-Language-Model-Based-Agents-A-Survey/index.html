@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读 | Nan6u's blog</title><meta name="author" content="Nan6u"><meta name="copyright" content="Nan6u"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="文章给Agent定义的的结构 大脑模块+感知模块+行为模块通过这几个模块，Agent可以实现对“环境”的理解和动作。 为什么LLM适合作为大脑 自主性 LLM可以独立发起动作，可以对环境有一定程度的适应性  反应性 Agent要求可以对环境做出较快的反应。LLM利用多模态技术可以实现多种输入。具身智能+工具使用  主动性 不仅能感知环境，还需要能改变环境。LLM有很好的任务分解能力  社交能力 大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读">
+<meta property="og:url" content="https://nonbliss.github.io/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/index.html">
+<meta property="og:site_name" content="Nan6u&#39;s blog">
+<meta property="og:description" content="文章给Agent定义的的结构 大脑模块+感知模块+行为模块通过这几个模块，Agent可以实现对“环境”的理解和动作。 为什么LLM适合作为大脑 自主性 LLM可以独立发起动作，可以对环境有一定程度的适应性  反应性 Agent要求可以对环境做出较快的反应。LLM利用多模态技术可以实现多种输入。具身智能+工具使用  主动性 不仅能感知环境，还需要能改变环境。LLM有很好的任务分解能力  社交能力 大">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nonbliss.github.io/img/tag.png">
+<meta property="article:published_time" content="2024-11-11T08:52:07.000Z">
+<meta property="article:modified_time" content="2024-11-11T08:53:42.704Z">
+<meta property="article:author" content="Nan6u">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Agent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nonbliss.github.io/img/tag.png"><link rel="shortcut icon" href="/img/logow_t.png"><link rel="canonical" href="https://nonbliss.github.io/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-11 16:53:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/equipment.css"><link rel="stylesheet" href="/css/ahzoo.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/arcive.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tag.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nan6u's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-11T08:52:07.000Z" title="发表于 2024-11-11 16:52:07">2024-11-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-11T08:53:42.704Z" title="更新于 2024-11-11 16:53:42">2024-11-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="文章给Agent定义的的结构"><a href="#文章给Agent定义的的结构" class="headerlink" title="文章给Agent定义的的结构"></a>文章给Agent定义的的结构</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/9XKCEV3I.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;9XKCEV3I&quot; width=&quot;936&quot; height=&quot;550&quot; src=&quot;9XKCEV3I.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>大脑模块+感知模块+行为模块<br>通过这几个模块，Agent可以实现对“环境”的理解和动作。</p>
+<h2 id="为什么LLM适合作为大脑"><a href="#为什么LLM适合作为大脑" class="headerlink" title="为什么LLM适合作为大脑"></a>为什么LLM适合作为大脑</h2><ol>
+<li><p>自主性</p>
+<p>LLM可以独立发起动作，可以对环境有一定程度的适应性</p>
+</li>
+<li><p>反应性</p>
+<p>Agent要求可以对环境做出较快的反应。LLM利用多模态技术可以实现多种输入。具身智能+<strong><span style="background-color: #ff666680">工具使用</span></strong></p>
+</li>
+<li><p>主动性</p>
+<p>不仅能感知环境，还需要能改变环境。LLM有很好的任务分解能力</p>
+</li>
+<li><p>社交能力</p>
+<p>大模型之间以可解释的方式相互或与人类合作，多个LLM可以存在社会的分工。</p>
+<p>用⚪举的Agent社会例子，画的挺好的<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/USBVKNNQ.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;USBVKNNQ&quot; width=&quot;903&quot; height=&quot;575&quot; src=&quot;USBVKNNQ.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+</li>
+</ol>
+<h1 id="大脑模块"><a href="#大脑模块" class="headerlink" title="大脑模块"></a>大脑模块</h1><p>好图<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/4APZVPPU.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4APZVPPU&quot; width=&quot;625&quot; height=&quot;799&quot; src=&quot;4APZVPPU.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h2 id="自然语言交互"><a href="#自然语言交互" class="headerlink" title="自然语言交互"></a>自然语言交互</h2><ol>
+<li><p>多轮对话</p>
+<p>互动性强，包含信息更复杂更冗余</p>
+</li>
+<li><p>高质量自然语言生成</p>
+<p>语法错误，对话适应性，内容相关性等</p>
+</li>
+<li><p>意图理解能力</p>
+<p>设计奖励函数并采用对比方法如对比解码；动作空间进行映射辅助理解意图</p>
+</li>
+</ol>
+<h2 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h2><ol>
+<li><p>语言知识</p>
+<p>某种语言的语法、词语等。</p>
+</li>
+<li><p>常识知识</p>
+<p>比如“书里面有知识”这样的常识逻辑</p>
+</li>
+<li><p>专业知识</p>
+</li>
+</ol>
+<p>几个问题：<br>1. 训练用的知识是错的：重新训练，可能导致灾难性遗忘<br>2. 幻觉问题：<strong>存在度量方法，</strong>调用外部工具来减少幻觉</p>
+<h2 id="记忆"><a href="#记忆" class="headerlink" title="记忆"></a>记忆</h2><p>两个困难：1. 记忆长度有限 2. 提取记忆困难</p>
+<p>解决记忆长度有限：</p>
+<ol>
+<li><p>提升记忆长度限制</p>
+<ol>
+<li>文本截断</li>
+<li>分割输入</li>
+<li>强调文本的关键部分</li>
+<li>修改transformer注意力部分</li>
+</ol>
+</li>
+<li><p>总结记忆</p>
+<ol>
+<li>整合记忆</li>
+<li>反思</li>
+<li>层次化方法</li>
+</ol>
+</li>
+<li><p>使用向量和数据结构压缩记忆</p>
+<ol>
+<li>记忆嵌入向量</li>
+<li>句子翻译成三元组</li>
+<li>结合SQL</li>
+</ol>
+</li>
+</ol>
+<p>解决提取记忆困难：</p>
+<p>提取记忆指的是Agent需要选择合适的内存（记忆）作为回答的基准。这里存在3个指标，最近、相关性、重要性。<br>一些研究提供了<strong>用户可以操作记忆对象</strong>的方法，从而控制输出。</p>
+<h2 id="推理和规划"><a href="#推理和规划" class="headerlink" title="推理和规划"></a>推理和规划</h2><h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><p>基于LLM的Agent的推理能力很重要，增强COT性能可以先给出解释再给出答案，增强推理能力可以使用<strong>自洽、自抛光、自精炼、选择推理</strong></p>
+<h3 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h3><p>很重要，是将<strong>大任务分解成子任务</strong>的能力，本质还是基于推理能力。也许可以结合推理优化的方法。</p>
+<ol>
+<li>一次性规划任务，一个一个处理</li>
+<li>一次规划和处理一个子任务</li>
+<li>执行树状的推理步骤最终得到规划</li>
+<li>专业任务需要特定领域的规划者</li>
+</ol>
+<p>计划反思是需要的</p>
+<ol>
+<li>内部反馈：从已有的模型增强自身</li>
+<li>人类反馈增强自身</li>
+<li>根据执行动作后的环境反馈来调整</li>
+</ol>
+<h2 id="可转移性和泛化性"><a href="#可转移性和泛化性" class="headerlink" title="可转移性和泛化性"></a>可转移性和泛化性</h2><p><span style="background-color: #ff666680">基于LLM的智能体需要快速的适应其他任务</span>？<span style="background-color: #ff666680"><br></span>我想做特定方向的也可以吧，我不需要他做别的任务</p>
+<ol>
+<li><p>语境学习：通过将原始输入和若干个示例联系起来丰富上下文。ICL不涉及微调或参数更新，这可以大大降低模型适应新任务的计算成本。</p>
+</li>
+<li><p>继续学习：如何解决灾难性遗忘（<span style="background-color: #ffd40080">下面的几个方法没一个能看懂的</span>）</p>
+<ol>
+<li>参考先前模型的基础上引入常规使用的术语</li>
+<li>近似先验数据分布</li>
+<li>和设计具有任务自适应参数的体系结构</li>
+<li>通过从更简单的程序中合成复杂的技能，智能体不仅能够快速地增强其能力，而且能够有效地对抗灾难性遗忘。</li>
+</ol>
+</li>
+</ol>
+<h1 id="感知模块"><a href="#感知模块" class="headerlink" title="感知模块"></a>感知模块</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/YG3ZX5LC.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;YG3ZX5LC&quot; width=&quot;826&quot; height=&quot;237&quot; src=&quot;YG3ZX5LC.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<ol>
+<li><p>文本输入：主要是理解文本的隐含意义还有零样本指令情况。有工作用强化学习</p>
+</li>
+<li><p>视觉输入</p>
+<ol>
+<li>为Agent生成图片的描述：可解释性强，不需要额外的字幕生成训练，可以节省大量的计算资源。可能会丢失很多潜在的信息。</li>
+<li>使用Transformer对视觉信息进行编码：将图像划分为固定大小的图块，然后将这些图块进行线性投影后作为Transformers的输入标记</li>
+<li>将图像编码器和LLM直接结合，以端到端的方式训练整个模型。计算资源消耗大。LLMs不能直接理解视觉编码器的输出，因此需要将图像编码转换为LLMs可以理解的嵌入。需要加一个可学习的接口层。</li>
+<li>视频输入就是包含时间轴的图像输入，但是需要保证视频信息的逻辑，只能从当前帧及其之前获取信息。</li>
+</ol>
+</li>
+<li><p>音频输入</p>
+<ol>
+<li>可以让LLM调用工具理解音频输入</li>
+<li>可以采用音频频谱图来理解音频信息，进而发散可以将音频信息转移到其他模态上。</li>
+</ol>
+</li>
+<li><p>其他输入：比如嗅觉触觉，温度、眼动追踪、脑信号等。</p>
+</li>
+</ol>
+<h1 id="行为模块"><a href="#行为模块" class="headerlink" title="行为模块"></a>行为模块</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/5AM7N6W7.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;5AM7N6W7&quot; width=&quot;833&quot; height=&quot;363&quot; src=&quot;5AM7N6W7.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h2 id="工具利用"><a href="#工具利用" class="headerlink" title="工具利用"></a>工具利用</h2><ol>
+<li>LLM易受对抗攻击</li>
+<li>智能体输出无法溯源，无法判断可靠与否</li>
+<li>幻觉</li>
+<li>缺乏语料库：这个可以靠工具解决</li>
+</ol>
+<h2 id="LLM-based-优点"><a href="#LLM-based-优点" class="headerlink" title="LLM based 优点"></a>LLM based 优点</h2><ol>
+<li>LLM可以很好的帮Agent分解任务，可以更好的理解用户</li>
+<li>LLM可以降低工具使用门槛</li>
+</ol>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><ol>
+<li><p>Agent有效使用工具的前提是对工具的应用场景和调用方式有一个全面的了解。——通过零样本或小样本学习，成本很低但效果可以接受。</p>
+</li>
+<li><p>单一工具无法解决复杂问题，首先分解问题然后调用多个工具，这也依赖于Agent对工具的理解能力。</p>
+</li>
+<li><p>Agent学习使用工具的方法主要包括从演示中学习和从反馈中学习。</p>
+</li>
+<li><p>代理人需要将其在具体情境中学习到的工具使用技巧泛化到更一般的情境中，Agent必须掌握工具使用策略中的共同原则或模式——</p>
+<p><span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FUD4NR4Q7%22%2C%22pageLabel%22%3A%2221%22%2C%22position%22%3A%7B%22pageIndex%22%3A20%2C%22rects%22%3A%5B%5B256.926%2C620.613%2C336.744%2C629.52%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FG2JT788X%22%5D%2C%22locator%22%3A%2221%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/UD4NR4Q7?page=21">“Curriculum learning”</a></span></p>
+<p>可以从简单的情景训练到复杂的情景。</p>
+</li>
+<li><p>工具可以扩大Agent的能力——比如可以用SQL去存一些数据，用python或latex接口提升计算和写作能力，电子邮件可以在多智能体之间沟通。</p>
+</li>
+<li><p>尽管使用了工具，但LLM的输入输出还是基于文本的，但通过调用工具可以扩大输出的格式形式。</p>
+</li>
+</ol>
+<h2 id="具身智能"><a href="#具身智能" class="headerlink" title="具身智能"></a>具身智能</h2><p>智能体的智能产生于与环境的不断交互和反馈，而不是仅仅依靠精心编写的教科书。</p>
+<p>具身智能可粗略定义为，智能体（可以是生物或机械），通过与环境产生交互后，通过自身的学习，产生对于客观世界的理解和改造能力。</p>
+<p>RL算法在数据效率、泛化性和复杂问题推理方面面临着局限性，因为它们在建模动态和经常模糊的真实环境方面存在挑战，或者它们严重依赖精确的奖励信号表示。最近的研究表明，利用LLMs预训练过程中获得的丰富的内部知识可以有效地缓解这些问题</p>
+<p>LLMs通过多样化的形式和丰富的任务类型进行微调，表现出显著的跨任务泛化能力</p>
+<ol>
+<li>观察：这些观察最终会变成多模态信号，一种方法是用ViT作为图像和文本之间的过渡层。</li>
+<li>操作：比较经典的就是物体重排或者抽屉取物。</li>
+</ol>
+<p>高级策略指的是智能体给出的指令和动作目标，低级策略指的是智能体如机械臂的移动，图像和文本转换网络的使用之类的。</p>
+<h1 id="实践中的Agent"><a href="#实践中的Agent" class="headerlink" title="实践中的Agent"></a><span style="color: #ff2020">实践中的Agent</span></h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/AXN4TA4J.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;AXN4TA4J&quot; width=&quot;908&quot; height=&quot;730&quot; src=&quot;AXN4TA4J.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>三种交互方式<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/4GBPL4D3.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4GBPL4D3&quot; width=&quot;744&quot; height=&quot;162&quot; src=&quot;4GBPL4D3.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>能力：</p>
+<ol>
+<li>解放用户双手</li>
+<li>解决更高级问题</li>
+<li>前沿学科有更好的解决</li>
+</ol>
+<h2 id="单智能体能力总述"><a href="#单智能体能力总述" class="headerlink" title="单智能体能力总述"></a>单智能体能力总述</h2><p>三种部署形式<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/5FYF2KBL.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;5FYF2KBL&quot; width=&quot;832&quot; height=&quot;324&quot; src=&quot;5FYF2KBL.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>Agent服从用户提供的指令，进行任务分解，子任务规划，环境交互等。最终完成任务</p>
+<h3 id="面向Web场景"><a href="#面向Web场景" class="headerlink" title="面向Web场景"></a>面向Web场景</h3><p>理解用户的需求并分解后进行操作，包括填写表格、网上购物、发送电子邮件等网络任务。</p>
+<p>经过强化学习的LLM可以更好的模仿人类的操作，在复杂任务上具有更好的性能。</p>
+<p>Mind2Web直接针对HTML进行微调</p>
+<h3 id="面向生活场景"><a href="#面向生活场景" class="headerlink" title="面向生活场景"></a>面向生活场景</h3><p>理解内隐指令和应用常识知识，并且存在一些隐晦的任务比如“要在黑暗的房间里取东西需要先开灯“</p>
+<p><span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FUD4NR4Q7%22%2C%22pageLabel%22%3A%2227%22%2C%22position%22%3A%7B%22pageIndex%22%3A26%2C%22rects%22%3A%5B%5B108%2C647.86%2C181.451%2C656.767%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FG2JT788X%22%5D%2C%22locator%22%3A%2227%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/UD4NR4Q7?page=27">“Huang et al. [257]”</a></span> <span class="citation" data-citation="%7B%22citationItems%22%3A%5B%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FG2JT788X%22%5D%2C%22locator%22%3A%2227%22%7D%5D%2C%22properties%22%3A%7B%7D%7D" ztype="zcitation">(<span class="citation-item"><a href="zotero://select/library/items/G2JT788X">Xi 等, 2023, p. 27</a></span>)</span>：足够大的LLM，加上适当的提示，可以有效地将高层任务分解为合适的子任务，而不需要额外的训练。但静态推理导致智能体产生的行动往往缺乏对周围动态环境的感知。</p>
+<h3 id="面向创新场景"><a href="#面向创新场景" class="headerlink" title="面向创新场景"></a>面向创新场景</h3><ol>
+<li>许多特定领域的术语和多维结构难以用单一文本表示。因此，它们的完整属性不能被完全封装。</li>
+<li>没有专业数据可以用。</li>
+</ol>
+<p>可能被恶意利用比如调配有毒有害的化学药品等。</p>
+<h3 id="面向生命周期的部署"><a href="#面向生命周期的部署" class="headerlink" title="面向生命周期的部署"></a>面向生命周期的部署</h3><p>在一个开放的、未知的世界中，构建一个能够持续探索、发展新技能并保持长期生命周期的普遍有能力的智能体</p>
+<p>在利用MC进行生命周期的测试方面，有研究使用LLM将高级任务指令分解为一系列子目标[ 399 ]、基本技能序列[ 338 ]或基本键盘&#x2F;鼠标操作[ 399 ]，逐步辅助智能体探索开放世界。</p>
+<p>它引入了一个用于存储和检索复杂动作可执行代码的技能库，以及一个包含环境反馈和错误纠正的迭代提示机制。这使得智能体能够在没有人为干预的情况下自主探索和适应未知环境。</p>
+<h2 id="多智能体潜力"><a href="#多智能体潜力" class="headerlink" title="多智能体潜力"></a>多智能体潜力</h2><p>单智能体结构限制了他们从他人的多轮反馈中学习的潜力，并且限制了他们无法部署在复杂场景中。</p>
+<p>多智能体之间的高效分工可以完成比没有专业化分工时更大的工作量，从而使整个系统的效率和产出质量得到大幅提升</p>
+<h2 id="两种交互方式"><a href="#两种交互方式" class="headerlink" title="两种交互方式"></a>两种交互方式</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/KFA5K3A4.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;KFA5K3A4&quot; width=&quot;867&quot; height=&quot;348&quot; src=&quot;KFA5K3A4.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h3 id="互补的合作交互"><a href="#互补的合作交互" class="headerlink" title="互补的合作交互"></a>互补的合作交互</h3><p>基于LLM的多智能体系统中，智能体之间的通信主要采用自然语言</p>
+<h4 id="无序的合作"><a href="#无序的合作" class="headerlink" title="无序的合作"></a>无序的合作</h4><p>每个主体都可以自由地公开表达自己的观点和看法。他们可以提供反馈和建议，以修改与现有任务有关的反应</p>
+<p>ChatLLM网络[ 400 ]是这一概念的典型代表。它模拟神经网络内部的前向和后向传播过程，将每个智能体视为一个单独的节点。后续层的智能体需要处理来自前面所有智能体的输入，并向前传播。</p>
+<h4 id="有序的合作"><a href="#有序的合作" class="headerlink" title="有序的合作"></a>有序的合作</h4><p>遵循特定的规则，逐一发表意见，下游代理人只需关注上游的产出。这导致任务完成效率显著提高</p>
+<p>值得注意的是，只有两个代理的系统，本质上是通过前后交互以对话的方式进行的，也属于有序合作的范畴。</p>
+<p>Talebirad等人[ 407 ]率先系统地提出了一个完整的基于LLM的多Agent协作框架。AgentVerse [ 408 ]构造了一个通用的、经过多任务测试的群体Agent协作框架。MetaGPT将Agent的输入&#x2F;输出标准化为工程文档。</p>
+<p>MetaGPT发现了多智能体合作的潜在威胁。在没有设定相应规则的情况下，多个智能体之间频繁的交互可以无限地放大微小的幻觉[ 403 ]。</p>
+<h3 id="提升导向的对抗互动"><a href="#提升导向的对抗互动" class="headerlink" title="提升导向的对抗互动"></a>提升导向的对抗互动</h3><p>在竞争环境中，智能体可以通过动态交互迅速调整策略，努力选择最有利或最合理的行动以应对其他智能体引起的变化。</p>
+<p>当多个施动者以”针锋相对”的状态表达自己的论点时，一个施动者可以从其他施动者那里获得大量的外部反馈，从而纠正其歪曲的思想</p>
+<p>问题</p>
+<ol>
+<li>随着长时间的争论，LLM的有限上下文无法处理整个输入</li>
+<li>在多智能体环境中，计算开销显著增加</li>
+<li>多智能体协商可能收敛到不正确的共识，所有智能体都坚信其准确性</li>
+</ol>
+<h2 id="人类智能体互动"><a href="#人类智能体互动" class="headerlink" title="人类智能体互动"></a>人类智能体互动</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/N3LI2IB7.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;N3LI2IB7&quot; width=&quot;823&quot; height=&quot;372&quot; src=&quot;N3LI2IB7.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>人类指导或通过规范代理人的安全、合法和道德行为。</p>
+<h3 id="指导者执行者"><a href="#指导者执行者" class="headerlink" title="指导者执行者"></a>指导者执行者</h3><p>人类直接提供清晰而具体的指令，而智能体的作用是理解人类的自然语言命令、</p>
+<p>人类提供两种反馈：定量反馈和定性反馈</p>
+<ol>
+<li><p><span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FUD4NR4Q7%22%2C%22pageLabel%22%3A%2231%22%2C%22position%22%3A%7B%22pageIndex%22%3A30%2C%22rects%22%3A%5B%5B108%2C157.121%2C203.37%2C166.147%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FG2JT788X%22%5D%2C%22locator%22%3A%2231%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/UD4NR4Q7?page=31">“Quantitative feedback”</a></span></p>
+<p>二元评分和评分，以及相对评分。</p>
+</li>
+<li><p><span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FUD4NR4Q7%22%2C%22pageLabel%22%3A%2232%22%2C%22position%22%3A%7B%22pageIndex%22%3A31%2C%22rects%22%3A%5B%5B108%2C669.139%2C198.278%2C678.165%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FG2JT788X%22%5D%2C%22locator%22%3A%2232%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/UD4NR4Q7?page=32">“Qualitative feedback”</a></span>人类提供关于如何修改智能体产生的输出的建议，智能体然后将这些建议合并以改进其后续输出</p>
+<p>虽然这种方法比定量反馈能更好地传达人的意图，但对于智能体来说，理解起来可能更具有挑战性。</p>
+</li>
+</ol>
+<h3 id="平等交流"><a href="#平等交流" class="headerlink" title="平等交流"></a>平等交流</h3><p>人类的参与主要有两个原因：第一，为了确保可解释性，因为纯粹的Agent之间的相互作用可以产生不可理解的语言；其次，为了保证可控性，具有完全”自由意志”的代理人的追求可能会导致不可预见的负面后果，具有破坏的可能性。</p>
+<h1 id="智能体社会"><a href="#智能体社会" class="headerlink" title="智能体社会"></a>智能体社会</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/SNLS2RU8.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;SNLS2RU8&quot; width=&quot;861&quot; height=&quot;549&quot; src=&quot;SNLS2RU8.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/DTYXKU7G.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;DTYXKU7G&quot; width=&quot;812&quot; height=&quot;449&quot; src=&quot;DTYXKU7G.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>研究人员和实践者一直在设想一个交互式的人工社会，其中人类的行为可以通过可信的代理来执行</p>
+<p>Agent社会是一个包含个体和群体社会活动的复杂系统。最近，基于LLM的智能体在合作与竞争共存的环境中表现出自发的社会行为[ 523 ]。</p>
+<h2 id="社会行为"><a href="#社会行为" class="headerlink" title="社会行为"></a>社会行为</h2><ol>
+<li><p>基础个体行为</p>
+<ol>
+<li>输入行为</li>
+<li>内在行为：计划推理反思</li>
+<li>输出行为</li>
+</ol>
+</li>
+<li><p>动态群组行为</p>
+<ol>
+<li>正面群组行为：协助智能体同伴思考和规划</li>
+<li>中立群组行为：从众行为，包括模仿、旁观和不愿意反对大多数人。</li>
+<li>负面群组行为：总是反驳，试图摧毁其他智能体，嫉妒</li>
+</ol>
+</li>
+</ol>
+<h2 id="人格性"><a href="#人格性" class="headerlink" title="人格性"></a>人格性</h2><ol>
+<li>认知能力：最近的研究已经开始利用认知心理学的方法，通过各种镜头[ 497 ; 499、0 . 500]来调查基于LLM的代理人的新兴社会学人格。这些研究表明，基于LLM的智能体在某些方面表现出反映人类认知的智能水平。</li>
+<li>情感：Wang等人发现，当在EI基准上评估时，LLMs与人类的情感和价值观一致[ 501 ]。此外，研究表明，LLMs能够准确识别用户情绪，甚至表现出共情[ 502 ; 503]。</li>
+<li>角色扮演：他们的反应和行为与所描述的人物特征保持一致。</li>
+</ol>
+<h2 id="Agent社会-环境组成"><a href="#Agent社会-环境组成" class="headerlink" title="Agent社会-环境组成"></a>Agent社会-环境组成</h2><ol>
+<li>基于文本的环境</li>
+<li>虚拟沙盒环境</li>
+<li>物理环境</li>
+</ol>
+<h2 id="Agent社会仿真"><a href="#Agent社会仿真" class="headerlink" title="Agent社会仿真"></a>Agent社会仿真</h2><p>幻觉或思维退化( DoT )等个体错误被小组纠正[ 112 ]。</p>
+<h1 id="评估Agents"><a href="#评估Agents" class="headerlink" title="评估Agents"></a>评估Agents</h1><ol>
+<li><p>可用性：任务执行过程中的有效性和效用性是现阶段至关重要的评价标准。<br>AgentBench [ 580 ]聚合了来自不同真实世界场景的挑战，并引入了一个系统的基准来评估LLM的任务完成能力。这些基础能力包括环境理解能力、推理能力、计划能力、决策能力、工具运用能力和具身行动能力</p>
+</li>
+<li><p>社交性：它影响用户的通信体验，并显著影响通信效率，涉及他们是否能够与人类和其他代理[ 206、0 . 496 ; 584]进行无缝交互。</p>
+<ol>
+<li>语言交际能力：要求施动者不仅要理解字面意义，还要掌握隐含意义和相关的社会知识，如幽默、讽刺、攻击性、情绪[ 485 ; 3 . 585 ; 586]。产出流利、语法正确、可信的内容，同时适应适当的语气和情感。</li>
+<li>协作和协商：要求智能体在有序和无序场景[ 108、0 . 111 ; 0 . 400 ; 3 . 403]中都能有效地执行所分配的任务。</li>
+<li>角色扮演能力：忠实地体现他们指定的角色，表达陈述和执行与他们指定的身份一致的动作[ 568 ]。</li>
+</ol>
+</li>
+<li><p>道德：LLM的代理人需要遵守与人类社会价值[ 349 ; 525]相一致的特定道德和伦理准则。</p>
+</li>
+<li><p>进化：</p>
+<ol>
+<li>持续学习[ 196 ; 2 . 197]是机器学习中一个长期讨论的话题，旨在使模型能够在不遗忘先前获得的知识和技能(又称为灾难性遗忘)</li>
+<li>自主学习：智能体在开放的世界环境中自主生成目标并实现目标，在[ 590、0 . 593]过程中探索未知并获得技能。</li>
+</ol>
+</li>
+</ol>
+<h1 id="扩大Agents的数量"><a href="#扩大Agents的数量" class="headerlink" title="扩大Agents的数量"></a>扩大Agents的数量</h1><ol>
+<li>预定Agents数量并安排好工作</li>
+<li>动态缩放：如果某个环节用不到那么多代理就删除几个</li>
+<li>多智能体系统或社会中，由于幻觉、误解等原因会导致信息传播出现偏差，从而导致信息传播失真。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io">Nan6u</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/">https://nonbliss.github.io/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nonbliss.github.io" target="_blank">Nan6u's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post_share"><div class="social-share" data-image="/img/tag.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基于路径引导解释的上下文感知常识知识图谱推理</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nan6u</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/28605906"><i class="/img/bilibili.ico"></i><span>我的B站主页~</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E7%BB%99Agent%E5%AE%9A%E4%B9%89%E7%9A%84%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">文章给Agent定义的的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88LLM%E9%80%82%E5%90%88%E4%BD%9C%E4%B8%BA%E5%A4%A7%E8%84%91"><span class="toc-number">1.1.</span> <span class="toc-text">为什么LLM适合作为大脑</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E8%84%91%E6%A8%A1%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">大脑模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E4%BA%A4%E4%BA%92"><span class="toc-number">2.1.</span> <span class="toc-text">自然语言交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86"><span class="toc-number">2.3.</span> <span class="toc-text">记忆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E5%92%8C%E8%A7%84%E5%88%92"><span class="toc-number">2.4.</span> <span class="toc-text">推理和规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86"><span class="toc-number">2.4.1.</span> <span class="toc-text">推理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%92"><span class="toc-number">2.4.2.</span> <span class="toc-text">规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%BD%AC%E7%A7%BB%E6%80%A7%E5%92%8C%E6%B3%9B%E5%8C%96%E6%80%A7"><span class="toc-number">2.5.</span> <span class="toc-text">可转移性和泛化性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">感知模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">行为模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%88%A9%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">工具利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLM-based-%E4%BC%98%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">LLM based 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-number">4.3.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD"><span class="toc-number">4.4.</span> <span class="toc-text">具身智能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84Agent"><span class="toc-number">5.</span> <span class="toc-text">实践中的Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E8%83%BD%E5%8A%9B%E6%80%BB%E8%BF%B0"><span class="toc-number">5.1.</span> <span class="toc-text">单智能体能力总述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91Web%E5%9C%BA%E6%99%AF"><span class="toc-number">5.1.1.</span> <span class="toc-text">面向Web场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E7%94%9F%E6%B4%BB%E5%9C%BA%E6%99%AF"><span class="toc-number">5.1.2.</span> <span class="toc-text">面向生活场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%88%9B%E6%96%B0%E5%9C%BA%E6%99%AF"><span class="toc-number">5.1.3.</span> <span class="toc-text">面向创新场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">5.1.4.</span> <span class="toc-text">面向生命周期的部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%BD%9C%E5%8A%9B"><span class="toc-number">5.2.</span> <span class="toc-text">多智能体潜力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E4%BA%A4%E4%BA%92%E6%96%B9%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">两种交互方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%92%E8%A1%A5%E7%9A%84%E5%90%88%E4%BD%9C%E4%BA%A4%E4%BA%92"><span class="toc-number">5.3.1.</span> <span class="toc-text">互补的合作交互</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E7%9A%84%E5%90%88%E4%BD%9C"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">无序的合作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%88%E4%BD%9C"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">有序的合作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E5%AF%BC%E5%90%91%E7%9A%84%E5%AF%B9%E6%8A%97%E4%BA%92%E5%8A%A8"><span class="toc-number">5.3.2.</span> <span class="toc-text">提升导向的对抗互动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E6%99%BA%E8%83%BD%E4%BD%93%E4%BA%92%E5%8A%A8"><span class="toc-number">5.4.</span> <span class="toc-text">人类智能体互动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AF%BC%E8%80%85%E6%89%A7%E8%A1%8C%E8%80%85"><span class="toc-number">5.4.1.</span> <span class="toc-text">指导者执行者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E7%AD%89%E4%BA%A4%E6%B5%81"><span class="toc-number">5.4.2.</span> <span class="toc-text">平等交流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E4%BD%93%E7%A4%BE%E4%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">智能体社会</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BC%9A%E8%A1%8C%E4%B8%BA"><span class="toc-number">6.1.</span> <span class="toc-text">社会行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E6%A0%BC%E6%80%A7"><span class="toc-number">6.2.</span> <span class="toc-text">人格性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agent%E7%A4%BE%E4%BC%9A-%E7%8E%AF%E5%A2%83%E7%BB%84%E6%88%90"><span class="toc-number">6.3.</span> <span class="toc-text">Agent社会-环境组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agent%E7%A4%BE%E4%BC%9A%E4%BB%BF%E7%9C%9F"><span class="toc-number">6.4.</span> <span class="toc-text">Agent社会仿真</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0Agents"><span class="toc-number">7.</span> <span class="toc-text">评估Agents</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%A4%A7Agents%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">8.</span> <span class="toc-text">扩大Agents的数量</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/" title="The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读">The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读</a><time datetime="2024-11-11T08:52:07.000Z" title="发表于 2024-11-11 16:52:07">2024-11-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" title="基于路径引导解释的上下文感知常识知识图谱推理">基于路径引导解释的上下文感知常识知识图谱推理</a><time datetime="2024-09-11T07:32:07.000Z" title="发表于 2024-09-11 15:32:07">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/" title="CADE: 检测和解释安全应用中的概念漂移样本">CADE: 检测和解释安全应用中的概念漂移样本</a><time datetime="2024-07-14T01:31:48.000Z" title="发表于 2024-07-14 09:31:48">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/02/23-PR-AE-%E5%9F%B9%E8%AE%AD/" title="23 PR/AE 培训">23 PR/AE 培训</a><time datetime="2023-12-02T12:15:41.000Z" title="发表于 2023-12-02 20:15:41">2023-12-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8-%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%BB%85%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%EF%BC%89/" title="信息内容安全-复习（仅重点内容）">信息内容安全-复习（仅重点内容）</a><time datetime="2023-05-26T11:15:31.000Z" title="发表于 2023-05-26 19:15:31">2023-05-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">闲聊</p><div class="bg-ad"><div>研究方向网安和人工智能交叉，目前研究大模型赋能渗透测试。<br>
+随缘更新随缘更新，一般闲了能写点东西（有时间且不想打游戏看动漫的话 XD）。</div></div></div><div class="t-t-r"><p class="ft-t t-l-t">导航</p><ul class="ft-links"><li><a href="https://nonbliss.github.io/about/">关于博主</a><a href="https://nonbliss.github.io/archives/">文章归档</a></li><li><a href="https://nonbliss.github.io/bangumis/">我的追番</a><a href="https://nonbliss.github.io/tags/">文章标签</a></li><li><a href="https://nonbliss.github.io/games/">我的游戏</a><a href="https://nonbliss.github.io/categories/">文章分类</a></li></ul></div></div></div></div><div class="copyright">&copy;2022 - 2024   <i id="heartbeat" class="fa fas fa-heartbeat"></i>  Nan6u</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-api-w8og.vercel.app',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-api-w8og.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer src="/live2d-widget/autoload.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="给我狠狠的学,熬熬熬,肝爆！" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
