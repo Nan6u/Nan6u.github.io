@@ -2968,4 +2968,36 @@
         <tag>Agent</tag>
       </tags>
   </entry>
+  <entry>
+    <title>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读</title>
+    <url>/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/</url>
+    <content><![CDATA[<h1 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h1><p>利用chatgpt做任务规划，调用huggingface中的各种人工智能模型做具体的操作（工具调用），最终统筹概括给一个明确的结果到用户。</p>
+<p>关键点在于如何构建chaotgpt和AI模型的桥梁。<br>进一步思路是将众多的模型如何应用的描述总结成prompt给到大模型，这个工作量重到令人绝望。<br>但是发现可以用LLM去公众ML社区上找高质量的模型描述，以及模型如何使用。</p>
+<p>整个问题分为四个阶段</p>
+<ol>
+<li>任务规划</li>
+<li>模型选择</li>
+<li>任务执行</li>
+<li>生成反馈</li>
+</ol>
+<p><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/JQQS972P.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;JQQS972P&quot; width=&quot;915&quot; height=&quot;527&quot; src=&quot;JQQS972P.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h1 id="任务规划阶段"><a href="#任务规划阶段" class="headerlink" title="任务规划阶段"></a>任务规划阶段</h1><p>任务解析有四个slot，任务类型，任务ID，任务依赖，任务参数。</p>
+<p>ID：唯一标识<br>类型：描述这是怎样的任务<br>依赖：前置任务的完成情况<br>参数：根据任务类型有不同的输入如文本，图片和音频等。<br><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/EX7FZZFG.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;EX7FZZFG&quot; width=&quot;910&quot; height=&quot;310&quot; src=&quot;EX7FZZFG.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>任务示例：<span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FFIDQ6FT4%22%2C%22pageLabel%22%3A%225%22%2C%22position%22%3A%7B%22pageIndex%22%3A4%2C%22rects%22%3A%5B%5B127.236%2C701.337%2C467.805%2C709.286%5D%2C%5B127.236%2C691.799%2C341.374%2C699.748%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2F86UNVFIR%22%5D%2C%22locator%22%3A%225%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/FIDQ6FT4?page=5">“please generate an image where a girl is reading a book, and her pose is the same as the boy in the image example.jpg. Then please describe the new image with your voice.”</a></span><br><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/9HKSQL9B.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;9HKSQL9B&quot; width=&quot;801&quot; height=&quot;797&quot; src=&quot;9HKSQL9B.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h1 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h1><p>首先从HuggedFace Hub中获取专家模型的描述，然后通过In-Context Task-Model Assignment(语境任务模型分配机制)为任务动态选择模型。</p>
+<p>将当前任务可用的模型在prompt中给出，然而，由于最大上下文长度的限制，提示中并不总能包含所有相关的模型信息。<br>所以只选择与当前任务相关的模型，以及在剩余模型中选择Hugging Face上下载量前十的模型，放提示词中。</p>
+<h1 id="任务执行"><a href="#任务执行" class="headerlink" title="任务执行"></a>任务执行</h1><p>混合推理端点：本地模型推理和Hugging Face远程模型推理结合。本地模型推理覆盖模型少但推理快，远程模型覆盖模型多但推理慢<br>本地模型推理优先，当本地没有保存模型的时候远程去HF上找</p>
+<p><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/4Z4GKTS9.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4Z4GKTS9&quot; width=&quot;704&quot; height=&quot;791&quot; src=&quot;4Z4GKTS9.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/767EKBBD.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;767EKBBD&quot; width=&quot;706&quot; height=&quot;794&quot; src=&quot;767EKBBD.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p><img src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/IVLZCBQ2.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;IVLZCBQ2&quot; width=&quot;592&quot; height=&quot;753&quot; src=&quot;IVLZCBQ2.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>Referred in <a href="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" rel="noopener noreferrer nofollow" zhref="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" ztype="znotelink" class="internal-link">Agent</a></p>
+]]></content>
+      <categories>
+        <category>论文阅读</category>
+      </categories>
+      <tags>
+        <tag>LLM</tag>
+        <tag>Agent</tag>
+      </tags>
+  </entry>
 </search>

@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读 | Nan6u's blog</title><meta name="author" content="Nan6u"><meta name="copyright" content="Nan6u"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="大致思路利用chatgpt做任务规划，调用huggingface中的各种人工智能模型做具体的操作（工具调用），最终统筹概括给一个明确的结果到用户。 关键点在于如何构建chaotgpt和AI模型的桥梁。进一步思路是将众多的模型如何应用的描述总结成prompt给到大模型，这个工作量重到令人绝望。但是发现可以用LLM去公众ML社区上找高质量的模型描述，以及模型如何使用。 整个问题分为四个阶段  任务规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读">
+<meta property="og:url" content="https://nonbliss.github.io/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/index.html">
+<meta property="og:site_name" content="Nan6u&#39;s blog">
+<meta property="og:description" content="大致思路利用chatgpt做任务规划，调用huggingface中的各种人工智能模型做具体的操作（工具调用），最终统筹概括给一个明确的结果到用户。 关键点在于如何构建chaotgpt和AI模型的桥梁。进一步思路是将众多的模型如何应用的描述总结成prompt给到大模型，这个工作量重到令人绝望。但是发现可以用LLM去公众ML社区上找高质量的模型描述，以及模型如何使用。 整个问题分为四个阶段  任务规划">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nonbliss.github.io/img/tag.png">
+<meta property="article:published_time" content="2024-11-14T08:33:29.000Z">
+<meta property="article:modified_time" content="2024-11-14T08:34:32.407Z">
+<meta property="article:author" content="Nan6u">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Agent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nonbliss.github.io/img/tag.png"><link rel="shortcut icon" href="/img/logow_t.png"><link rel="canonical" href="https://nonbliss.github.io/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-14 16:34:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/equipment.css"><link rel="stylesheet" href="/css/ahzoo.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/arcive.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tag.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nan6u's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-14T08:33:29.000Z" title="发表于 2024-11-14 16:33:29">2024-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-14T08:34:32.407Z" title="更新于 2024-11-14 16:34:32">2024-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h1><p>利用chatgpt做任务规划，调用huggingface中的各种人工智能模型做具体的操作（工具调用），最终统筹概括给一个明确的结果到用户。</p>
+<p>关键点在于如何构建chaotgpt和AI模型的桥梁。<br>进一步思路是将众多的模型如何应用的描述总结成prompt给到大模型，这个工作量重到令人绝望。<br>但是发现可以用LLM去公众ML社区上找高质量的模型描述，以及模型如何使用。</p>
+<p>整个问题分为四个阶段</p>
+<ol>
+<li>任务规划</li>
+<li>模型选择</li>
+<li>任务执行</li>
+<li>生成反馈</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/JQQS972P.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;JQQS972P&quot; width=&quot;915&quot; height=&quot;527&quot; src=&quot;JQQS972P.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h1 id="任务规划阶段"><a href="#任务规划阶段" class="headerlink" title="任务规划阶段"></a>任务规划阶段</h1><p>任务解析有四个slot，任务类型，任务ID，任务依赖，任务参数。</p>
+<p>ID：唯一标识<br>类型：描述这是怎样的任务<br>依赖：前置任务的完成情况<br>参数：根据任务类型有不同的输入如文本，图片和音频等。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/EX7FZZFG.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;EX7FZZFG&quot; width=&quot;910&quot; height=&quot;310&quot; src=&quot;EX7FZZFG.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>任务示例：<span class="highlight" data-annotation="%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2FFIDQ6FT4%22%2C%22pageLabel%22%3A%225%22%2C%22position%22%3A%7B%22pageIndex%22%3A4%2C%22rects%22%3A%5B%5B127.236%2C701.337%2C467.805%2C709.286%5D%2C%5B127.236%2C691.799%2C341.374%2C699.748%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2F15165918%2Fitems%2F86UNVFIR%22%5D%2C%22locator%22%3A%225%22%7D%7D" ztype="zhighlight"><a href="zotero://open-pdf/library/items/FIDQ6FT4?page=5">“please generate an image where a girl is reading a book, and her pose is the same as the boy in the image example.jpg. Then please describe the new image with your voice.”</a></span><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/9HKSQL9B.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;9HKSQL9B&quot; width=&quot;801&quot; height=&quot;797&quot; src=&quot;9HKSQL9B.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h1 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h1><p>首先从HuggedFace Hub中获取专家模型的描述，然后通过In-Context Task-Model Assignment(语境任务模型分配机制)为任务动态选择模型。</p>
+<p>将当前任务可用的模型在prompt中给出，然而，由于最大上下文长度的限制，提示中并不总能包含所有相关的模型信息。<br>所以只选择与当前任务相关的模型，以及在剩余模型中选择Hugging Face上下载量前十的模型，放提示词中。</p>
+<h1 id="任务执行"><a href="#任务执行" class="headerlink" title="任务执行"></a>任务执行</h1><p>混合推理端点：本地模型推理和Hugging Face远程模型推理结合。本地模型推理覆盖模型少但推理快，远程模型覆盖模型多但推理慢<br>本地模型推理优先，当本地没有保存模型的时候远程去HF上找</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/4Z4GKTS9.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4Z4GKTS9&quot; width=&quot;704&quot; height=&quot;791&quot; src=&quot;4Z4GKTS9.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/767EKBBD.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;767EKBBD&quot; width=&quot;706&quot; height=&quot;794&quot; src=&quot;767EKBBD.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/IVLZCBQ2.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;IVLZCBQ2&quot; width=&quot;592&quot; height=&quot;753&quot; src=&quot;IVLZCBQ2.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>Referred in <a href="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" rel="noopener noreferrer nofollow" zhref="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" ztype="znotelink" class="internal-link">Agent</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io">Nan6u</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nonbliss.github.io/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/">https://nonbliss.github.io/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nonbliss.github.io" target="_blank">Nan6u's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post_share"><div class="social-share" data-image="/img/tag.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/" title="The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tag.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-11</div><div class="title">The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E5%A4%B4%E5%83%8Fplus.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nan6u</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/28605906"><i class="/img/bilibili.ico"></i><span>我的B站主页~</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">大致思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%A7%84%E5%88%92%E9%98%B6%E6%AE%B5"><span class="toc-number">2.</span> <span class="toc-text">任务规划阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-number">3.</span> <span class="toc-text">模型选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">任务执行</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/14/HuggingGPT-Solving-AI-Tasks-with-ChatGPT-and-its-Friends-in-Hugging-Face/" title="HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读">HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face——论文阅读</a><time datetime="2024-11-14T08:33:29.000Z" title="发表于 2024-11-14 16:33:29">2024-11-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/11/The-Rise-and-Potential-of-Large-Language-Model-Based-Agents-A-Survey/" title="The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读">The Rise and Potential of Large Language Model Based Agents A Survey——论文阅读</a><time datetime="2024-11-11T08:52:07.000Z" title="发表于 2024-11-11 16:52:07">2024-11-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" title="基于路径引导解释的上下文感知常识知识图谱推理">基于路径引导解释的上下文感知常识知识图谱推理</a><time datetime="2024-09-11T07:32:07.000Z" title="发表于 2024-09-11 15:32:07">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/" title="CADE: 检测和解释安全应用中的概念漂移样本">CADE: 检测和解释安全应用中的概念漂移样本</a><time datetime="2024-07-14T01:31:48.000Z" title="发表于 2024-07-14 09:31:48">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/02/23-PR-AE-%E5%9F%B9%E8%AE%AD/" title="23 PR/AE 培训">23 PR/AE 培训</a><time datetime="2023-12-02T12:15:41.000Z" title="发表于 2023-12-02 20:15:41">2023-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">闲聊</p><div class="bg-ad"><div>研究方向网安和人工智能交叉，目前研究大模型赋能渗透测试。<br>
+随缘更新随缘更新，一般闲了能写点东西（有时间且不想打游戏看动漫的话 XD）。</div></div></div><div class="t-t-r"><p class="ft-t t-l-t">导航</p><ul class="ft-links"><li><a href="https://nonbliss.github.io/about/">关于博主</a><a href="https://nonbliss.github.io/archives/">文章归档</a></li><li><a href="https://nonbliss.github.io/bangumis/">我的追番</a><a href="https://nonbliss.github.io/tags/">文章标签</a></li><li><a href="https://nonbliss.github.io/games/">我的游戏</a><a href="https://nonbliss.github.io/categories/">文章分类</a></li></ul></div></div></div></div><div class="copyright">&copy;2022 - 2024   <i id="heartbeat" class="fa fas fa-heartbeat"></i>  Nan6u</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-api-w8og.vercel.app',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-api-w8og.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer src="/live2d-widget/autoload.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="给我狠狠的学,熬熬熬,肝爆！" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
