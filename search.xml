@@ -3027,4 +3027,81 @@
         <tag>Agent</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SCOTT Self-Consistent Chain-of-Thought Distillation</title>
+    <url>/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/</url>
+    <content><![CDATA[<h1 id="COT"><a href="#COT" class="headerlink" title="COT"></a>COT</h1><p>COT简单形式就是向图中这个例子一样，目标是让模型写出对提问的解释。<br>图中的例子首先我们手里是有问题和答案的，我们需要让模型写出解释，所以构造图中这样的提示词。<br>先给出例子，说明我们想要什么样的输出，再给出问题和答案组成的真正问题的前缀，最后我们留空解释字段让模型来填，最后我们就拿到了我们想要的解释。</p>
+<p>但是COT的性能是需要一个较大的模型才能有用，小模型输出的解释的可读性很差</p>
+<h1 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h1><p>知识蒸馏主要专注于构建高效的模型，减少模型部署的开销。</p>
+<p>知识蒸馏简单来说就是把一个较大的模型的一部分知识提取出来训练一个小型模型，这种方法降低了开销，可以将大模型中我们需要的能力提取出来给小模型。</p>
+<p>但是小模型的效果很难达到大模型的程度，就好像老师教学生某个课程，学生学会了之后，在这门课程或者其他的学科依旧没有老师厉害。</p>
+<h1 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h1><p>COT可以让大模型对其输出附加详细的解释，但是通过COT提示词输出的解释有可能会出现不忠实于事实的情况，因此结合知识蒸馏，希望训练一个忠实的小模型。</p>
+<p>结合上面两个原因，我们最后可以想到把教师模型的COT能力给学生模型。</p>
+<p>但针对这个方法又存在两个问题，一个是教师模型的一致性问题，就是教师模型的输出不符合他自己的逻辑，再一个就是学生模型学出来了之后忠实性不好，推断结果不以问题的解释做依据。</p>
+<p>下面我们首先介绍文章是怎么把教师模型的COT能力蒸馏给小模型的，暂时不去考虑一致性和忠实性的问题。</p>
+<h1 id="原始KD方法"><a href="#原始KD方法" class="headerlink" title="原始KD方法"></a>原始KD方法</h1><h2 id="教师模型使用"><a href="#教师模型使用" class="headerlink" title="教师模型使用"></a>教师模型使用</h2><p>训练集：<br>  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="selector-tag">Q</span>：常识问题</span><br><span class="line">  <span class="selector-tag">A</span>：问题的标准回答</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>prompt:<br>  <figure class="highlight sas"><table><tr><td class="code"><pre><span class="line"># 利用了few-shot提问</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">Input</span>：常识问题1</span><br><span class="line">  <span class="keyword">Output</span>：答案1。解释1。</span><br><span class="line">  <span class="keyword">Input</span>：常识问题2</span><br><span class="line">  <span class="keyword">Output</span>：答案2。解释2。</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="keyword">Input</span>：训练数据</span><br><span class="line">  <span class="keyword">Output</span>：训练答案。</span><br><span class="line">&#125;</span><br><span class="line"># 让教师模型输出训练数据对应的答案</span><br></pre></td></tr></table></figure><br>教师模型使用Few-shot的语境学习方法输出针对问题和答案的解释<br>将教师模型输出的解释与原始训练数据拼接得到（Q，R，A）的数据作为学生模型的训练数据集。教师这里使用贪婪解码，即每次输出可能性最高的字符。</p>
+<h2 id="学生训练方法"><a href="#学生训练方法" class="headerlink" title="学生训练方法"></a>学生训练方法</h2><p>以往的方法要不就是将解释在答案后预测，要不就是将解释预测作为答案预测的辅助任务。这两种方法可能导致上文提到的学生模型可能将对问题生成答案和解释两个方面理解成独立的问题。</p>
+<p>本文针对问题首先让学生模型生成解释，然后基于问题和解释生成答案，这样可以缓解答案和解释生成任务的独立问题。<br>之后使用标准的语言模型损失（交叉熵损失）进行学生模型的微调。</p>
+<h2 id="两个待解决的问题"><a href="#两个待解决的问题" class="headerlink" title="两个待解决的问题"></a>两个待解决的问题</h2><ol>
+<li>教师模型的生成存在问题，一种<strong>不给出新的知识</strong>，另一种是<strong>不去证明答案</strong>。<br>  这个问题对应之前的一致性问题，就是教师模型的输出和我们输入的问题不属于同一个逻辑，存在幻觉现象，可以看下面的例子。</li>
+<li>学生模型可能将对问题生成答案和解释两个方面理解成独立的问题。可能会去直接学习问题和答案文本之间不合理的相关性.<br>  这个问题对应之前我们提到的忠实性问题，我们最开始说过我们希望学生模型的结果推理是以解释为依据的，但是学生可能直接“背题目”，我看到这个题目就生成这个结果。这显然不是我们想要的，如果之后来了个没见过的题目，那不就开始胡说答案了，所以我们需要确保答案是依据解释来生成的。</li>
+</ol>
+<h1 id="改进KD模型"><a href="#改进KD模型" class="headerlink" title="改进KD模型"></a>改进KD模型</h1><h2 id="问题1解决：对比解码-贪婪解码"><a href="#问题1解决：对比解码-贪婪解码" class="headerlink" title="问题1解决：对比解码+贪婪解码"></a>问题1解决：对比解码+贪婪解码</h2><p>首先说我们希望模型达到的效果，我希望他的输出完全符合我输入的逻辑，我说1就是1，说2就是2，所以我要让模型完全考虑我的决策。这里提出了对比解码，就是给一个正确答案和一个错误答案，在生成令牌的时候同时考虑两种。</p>
+<p>贪婪解码就是每次生成字符的时候选择可能性最高的字符</p>
+<p>对比解码就是<br>给了教师模型一个扰动的答案a’和正确的答案a*<br>让两个答案生成的原因的对应token的得分相减得到一个权重G。<br>这个权重越高说明教师模型越考虑了我的答案。</p>
+<p>两种设置a’的方法</p>
+<ol>
+<li>设置为空答案-惩罚生成的解释不考虑正确答案，只考虑问题内容</li>
+<li>设置为除a*之外的错误答案-鼓励教师模型生成更有区分度的解释</li>
+</ol>
+<p>这里解码策略变成了令牌得分加上G后输出最大的令牌</p>
+<h2 id="问题2解决：反事实推理"><a href="#问题2解决：反事实推理" class="headerlink" title="问题2解决：反事实推理"></a>问题2解决：反事实推理</h2><p>文章将学生生成答案只考虑问题的现象称作再问题和答案之间的一条通路，如右图所示。<br>文章希望的是学生根据问题生成解释，根据解释生成答案。所以我们需要移除上面的通路</p>
+<p>训练学生根据不同的解释生成不同的答案，可以移除问题和答案之间的通路。</p>
+<p>首先构建一个错误的答案a’，将其喂给教师模型，生成一个错误的解释，讲错误的解释给学生模型，直接放到学生模型的解释部分，让他根据这个解释直接生成答案，计算其生成的答案与a’的交叉熵损失。</p>
+<p>最后将事实部分和反事实部分放一起作为完整损失。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><ol>
+<li>CSQA 日常概念常识的五选一问答数据集。</li>
+<li>StrategyQA 二元(是&#x2F;否)问答数据集，问句中隐含了所需的推理步骤。</li>
+<li>CREAK 事实检查(真&#x2F;假)数据集</li>
+<li>QASC 八选一的问答数据集</li>
+</ol>
+<h2 id="LAS-metric"><a href="#LAS-metric" class="headerlink" title="LAS metric"></a>LAS metric</h2><p>计算了提供理解时的准确率减去没有提供理解的准确率，文章用这个来计算学生模型生成的解释和其生成的答案之间的关联性。<br>具体是用一个<strong>训练过的T5-large模型作为模拟器，输入为问题或者问题+原因，输出为结果（需要了解一下）</strong>计算准确性</p>
+<p>文章用了两个GPT-neox-20b作为老师，然后训练了学生模型T5-3b，simluator指的是评估用的模型，假设我们现在需要评估教师模型的效果，我们不能让他去完整的走一遍系统的流程，这个变量就涉及的太多了，所以我们引入第三个模型，让他去判断教师模型的一些效果。</p>
+<h2 id="实验一：教师一致性的实验"><a href="#实验一：教师一致性的实验" class="headerlink" title="实验一：教师一致性的实验"></a>实验一：教师一致性的实验</h2><p>实验要验证三个问题</p>
+<ol>
+<li>本文方法有没有让教师模型生成一致性更好</li>
+<li>一个一致性更好的教师模型和反事实推理可以使学生更加忠实</li>
+<li>我们是否可以通过修正学生模型生成的解释来影响其结果的生成</li>
+</ol>
+<p>第一个实验设计的是我们为给simlutar问题和问题+解释两种输入，然后评估其生成答案的准确率相减，这个差值越大说明解释对答案的支持性越好，也就说明我们在生成解释的时候教师模型确实是按照我们给的逻辑来走的</p>
+<h3 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h3><ol>
+<li>COT：直接用GPT-neox-20b直接生成的理据和结果计算</li>
+<li>用人类标记的理据和结果训练T5-3b，计算T5-3b生成的理据和结果效果</li>
+<li>Greedy：用贪婪解码生成解释，同时考虑了学生模型部分的反事实推理中需要的正确解释和错误解释</li>
+</ol>
+<p><strong>需要了解一下模型的一致性和其本身性能的定义和关系</strong><br>主要看图，结果是文章的对比学习方法效果更好，错误答案的对比比空答案更好<br>人工评判生成的解释，错误的解释更能支持结果的产生</p>
+<h2 id="实验二：一个一致性更好的教师能不能是学生更加忠实"><a href="#实验二：一个一致性更好的教师能不能是学生更加忠实" class="headerlink" title="实验二：一个一致性更好的教师能不能是学生更加忠实"></a>实验二：一个一致性更好的教师能不能是学生更加忠实</h2><p>还是用问题和问题+解释两种输入，然后评估其生成答案的准确率相减，这个差值越大说明学生模型生成的答案越忠实于解释。</p>
+<p>还是看图，这里可以只放一个数据集的大图，剩下三个小图放一边不介绍。<br>对比解码可以是学生更忠实，并且反事实推理也可以提升解释和答案的联系性</p>
+<h3 id="学生训练的对理解更加忠实之后，还能保持其模型本身的性能吗？"><a href="#学生训练的对理解更加忠实之后，还能保持其模型本身的性能吗？" class="headerlink" title="学生训练的对理解更加忠实之后，还能保持其模型本身的性能吗？"></a>学生训练的对理解更加忠实之后，还能保持其模型本身的性能吗？</h3><p><strong>没往PPT里做</strong><br>对比发现准确率些许下降，但是和之前性能几乎不变</p>
+<p>人工标记数据的性能表现是最好的，这是因为人类给出的理由和答案的一致性是最低的<br>因此学生学会更独立地生成理论基础并预测答案，这使其能够利用虚假的相关性并获得更好的性能。</p>
+<h2 id="实验三：能否通过控制解释部分来控制学生输出"><a href="#实验三：能否通过控制解释部分来控制学生输出" class="headerlink" title="实验三：能否通过控制解释部分来控制学生输出"></a>实验三：能否通过控制解释部分来控制学生输出</h2><p>这个实验是学生忠实性的一个体现，可以实验学生究竟是否是使用解释进行推理结果的。<br>对教师模型提供的解释进行两种操作，扰动和精化</p>
+<h3 id="扰动"><a href="#扰动" class="headerlink" title="扰动"></a>扰动</h3><p>随机替换50%的解释，计算正确解释和错误解释的准确率相减计算性能下降<br>人工标记数据的扰动几乎没有用，说明这种数据训练出来的学生模型并不忠实于解释<br>使用空答案和错误答案，以及加入反事实推理的学生模型对解释的忠实性更好</p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
+<li>给出了一个成本较低的生成问题解释的方法（教师模型）</li>
+<li>生成了一个小模型可以达到与大模型相似的生成解释效果</li>
+<li>提升了知识蒸馏的效果</li>
+</ol>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>该方法十分忠实教师模型的效果。学生模型会继承教师模型的缺点，比如一些偏见或错误的理解。<br>然后其实问题1是没有完全解决的，这里只解决了教师模型不去证明答案的情况，没有解决不给出新知识的情况，但是这种幻觉某种意义上来说是不能彻底根除的。</p>
+<p><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%872.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%873.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%874.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%875.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%876.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%877.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%878.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%879.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8710.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8711.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8712.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8713.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8714.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8715.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8716.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8717.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8718.PNG"><br><img src="/2024/11/25/SCOTT-Self-Consistent-Chain-of-Thought-Distillation/%E5%B9%BB%E7%81%AF%E7%89%8719.PNG"></p>
+]]></content>
+      <categories>
+        <category>论文阅读</category>
+      </categories>
+      <tags>
+        <tag>LLM</tag>
+        <tag>COT</tag>
+        <tag>知识蒸馏</tag>
+      </tags>
+  </entry>
 </search>
