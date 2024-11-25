@@ -3000,4 +3000,31 @@
         <tag>Agent</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Knowledge Graph Based Agent for Complex, Knowledge-Intensive QA in Medicine</title>
+    <url>/2024/11/25/Knowledge-Graph-Based-Agent-for-Complex-Knowledge-Intensive-QA-in-Medicine/</url>
+    <content><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>LLM两个问题</p>
+<p>1 )同时考虑输入问题中多个医学概念之间的依赖关系<br>2 )精确的、局部的、语义相似的概念的领域内知识，可以携带不同的医学含义</p>
+<p>RAG问题<br>回答的准确率很大依赖于收集的知识<br>缺乏检索后验证机制</p>
+<p>知识图谱问题<br>具有相似结构的蛋白质但存在于不同生物系统中在KG中不会有链接</p>
+<p>开发目标<br>( 1 )同时考虑多个医疗概念之间复杂关联的模型<br>( 2 )系统地整合多源知识<br>( 3 )有效地验证和地化检索信息，以确保上下文相关性和准确性的模型。</p>
+<p>工作流<br>1. 用LLM生成有关问题的三元组<br>2. 使用利用“KG completion”任务微调的LLM做验证。<br>3. 做一个纠正操作<br>4. 根据验证的三元组来识别正确的答案。</p>
+<p>可以根据答案自动选择合适的推理方法。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>1.Generate动作负责生成与输入问题相关的三元组。<br>2.Review动作评估每个生成的三元组的正确性<br>3.Revise动作纠正任何被认定为不正确的三元组。<br>4.Answer动作根据Review动作识别出的正确三元组输出最终答案。</p>
+<p><img src="/2024/11/25/Knowledge-Graph-Based-Agent-for-Complex-Knowledge-Intensive-QA-in-Medicine/3D4EKEEB.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;3D4EKEEB&quot; width=&quot;1292&quot; height=&quot;683&quot; src=&quot;3D4EKEEB.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><p>提示词<br><img src="/2024/11/25/Knowledge-Graph-Based-Agent-for-Complex-Knowledge-Intensive-QA-in-Medicine/W3VMGAMM.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;W3VMGAMM&quot; width=&quot;1055&quot; height=&quot;480&quot; src=&quot;W3VMGAMM.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h3><p>将结构向量和（基于关系转换的）语义向量做了一个链接，训练目标是两者是否存在关系（bool），使用LORA方法<br><img src="/2024/11/25/Knowledge-Graph-Based-Agent-for-Complex-Knowledge-Intensive-QA-in-Medicine/W52VSB5L.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;W52VSB5L&quot; width=&quot;778&quot; height=&quot;50&quot; src=&quot;W52VSB5L.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>如果三元组实体可以映射到图谱实体中且b&#x3D;0，则归类为错误知识<br>如果三元组实体不可以完全映射到图谱实体，则归类为不完全知识\ <span style="color: #ff2020">问题</span>：实体向量是用TransE计算的，如果三元组实体没有在图谱实体中，那结构向量是哪里来的</p>
+<h2 id="更正"><a href="#更正" class="headerlink" title="更正"></a>更正</h2><p>更正其实是生成新三元组， 新三元组还需要给检查动作检查</p>
+<p>Referred in <a href="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" rel="noopener noreferrer nofollow" zhref="zotero://note/u/5GK7B6WA/?ignore=1&#x26;line=-1" ztype="znotelink" class="internal-link">Agent</a></p>
+]]></content>
+      <categories>
+        <category>论文阅读</category>
+      </categories>
+      <tags>
+        <tag>知识图谱</tag>
+        <tag>LLM</tag>
+        <tag>Agent</tag>
+      </tags>
+  </entry>
 </search>
