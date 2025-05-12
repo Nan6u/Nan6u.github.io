@@ -24,6 +24,28 @@
       </categories>
   </entry>
   <entry>
+    <title>CADE: 检测和解释安全应用中的概念漂移样本</title>
+    <url>/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>概念漂移：因攻击者的行为变化，导致部署的模型出现重大失败<br>提出CADE：1&gt;可以检测偏离现有类别的样本 2&gt;提供解释来解释检测到的偏移</p>
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>为应对概念漂移，传统解决方法会定期重新训练安全模型，这样需要标注大量新样本，还需要其确定重新训练的时间，费时费力。</p>
+<h2 id="CADE"><a href="#CADE" class="headerlink" title="CADE"></a>CADE</h2><p>思想：判断一个样本在对某个分类的相似度与其他属于该分类的样本相比是否正常</p>
+<p>CADE：主要包含一个检测器用于检测输入的样本是否产生漂移，包含一个解释器解释检测器筛选出的样本的漂移<br><img src="/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/1.png"></p>
+<h3 id="检测器"><a href="#检测器" class="headerlink" title="检测器"></a>检测器</h3><p>采用对比学习，将高维的样本数据映射到低维，每个类形成紧密的群体。在这个隐空间中，距离函数可以有效地识别新样本从这些群体中漂移开的情况。</p>
+<p>首先使用编码器将所有训练样本映射到隐空间中（第2-4行）。对于每个类别 $ i $，我们计算其质心 $ {\mathbf{c}}<em>{i} $（通过在欧几里得空间中取每个维度的平均值，第5行）。给定一个测试样本 $ {\mathbf{x}}</em>{t}^{\left( k\right) } $，我们也使用编码器将其映射到隐空间表示 $ {\mathbf{z}}<em>{t}^{\left( k\right) } $（第14行）。然后，我们计算测试样本与其质心之间的欧氏距离：$ {d}</em>{i}^{\left( k\right) } &#x3D; {\begin{Vmatrix}{\mathbf{z}}<em>{t}^{\left( k\right) } - {\mathbf{c}}</em>{i}\end{Vmatrix}}_{2} $（第16行）。根据其到质心的距离，我们确定这个测试样本是否对于 $ N $ 个类别中的每一个都是分布外的。在这里，我们根据样本到质心的距离而不是样本到最近训练样本的距离做出决策。这是因为后一种选择很容易受到训练数据中的异常点的影响。</p>
+<p>为了根据 $ {d}<em>{i}^{\left( k\right) } $ 确定异常点，挑战在于不同类别的紧密度可能不同，因此需要不同的距离阈值。而不是手动为每个类别设置绝对距离阈值，我们使用了一种称为中位数绝对偏差（MAD）[40]的方法。想法是通过计算 $ {\mathrm}</em>{i} $（第6-10行）来估计每个类别的数据分布 $ i $，它是中位数距离 $ {d}<em>{i}^{\left( j\right) }\left( {j &#x3D; 1,\ldots ,{n}</em>{i}}\right) $ 的绝对偏差。在这里 $ {d}<em>{i}^{\left( j\right) } $ 表示类别 $ i $ 中每个样本与其质心的潜在距离，以及 $ {n}</em>{i} $ 是类别 $ i $ 中样本的数量（第7行）。然后基于 $ {\mathrm}<em>{i} $，我们可以确定 $ {d}</em>{i}^{\left( k\right) } $ 是否足够大，使得测试样本 $ {\mathbf{x}}_{t}^{\left( k\right) } $ 成为类别 $ i $ 的异常点（第15-24行）。如果测试样本对于所有 $ N $ 个类别都是异常点，那么它被确定为一个漂移样本。否则，我们确定它是一个内分布样本，并且其最近的质心由最近的质心确定（第26行）。MAD的优势在于每个类别都有自己的距离阈值来根据其内类分布确定异常点。例如，如果一个簇更分散，阈值就会更大。</p>
+<h3 id="解释器"><a href="#解释器" class="headerlink" title="解释器"></a>解释器</h3><p>因为很难移动一个漂移样本跨越决策边界，提出了一个专为漂移样本设计的解释器</p>
+
+首先需要设计一个特征扰动机制。大多数现有的扰动方法都是专门为图像设计的，这些图像的特征是数值值。在我们的情况下，$ {\mathbf{x}}_{t} $的特征可以是数值的也可以是分类的，因此直接应用现有的方法将产生不明确的特征值。为了确保扰动对于数值和分类特征都是有意义的，我们提出通过替换特征值来扰动 $ {\mathbf{x}}_{t} $，这个特征值对应于参考训练样本 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 中的特征值。这个 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 是训练样本，它与中心点 $ {\mathbf{c}}_ {{y}_ {t}} $ 的潜在距离最短。这样一来，我们的解释目标就是识别一组特征，使得用 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 中的特征替换它们，将对 $ f\left( {\mathbf{x}}_ {t}\right) $ 和 $ {\mathbf{c}}_  {{y}_ {t}} $ 之间的距离产生最大的影响
+
+]]></content>
+      <categories>
+        <category>论文阅读</category>
+      </categories>
+      <tags>
+        <tag>概念漂移</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF也要谈恋爱！</title>
     <url>/2022/11/23/CTF%E4%B9%9F%E8%A6%81%E8%B0%88%E6%81%8B%E7%88%B1%EF%BC%81/</url>
     <content><![CDATA[<h1 id="难点一：好感度判断"><a href="#难点一：好感度判断" class="headerlink" title="难点一：好感度判断"></a>难点一：好感度判断</h1><p>打开游戏正常进度，遇到第一个难点：好感度判断<br><img src="/2022/11/23/CTF%E4%B9%9F%E8%A6%81%E8%B0%88%E6%81%8B%E7%88%B1%EF%BC%81/11.23-1.png"><br>这里的对话是循环的，循环一次好感度加一，且此处快进快捷键被禁用了，只能一下一下点鼠标。<br>提示好感度需要权限来更改，此处循环的提示根据好感度的不同会变化</p>
@@ -51,28 +73,6 @@
         <tag>MISC</tag>
         <tag>游戏引擎</tag>
         <tag>文件隐藏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CADE: 检测和解释安全应用中的概念漂移样本</title>
-    <url>/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>概念漂移：因攻击者的行为变化，导致部署的模型出现重大失败<br>提出CADE：1&gt;可以检测偏离现有类别的样本 2&gt;提供解释来解释检测到的偏移</p>
-<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>为应对概念漂移，传统解决方法会定期重新训练安全模型，这样需要标注大量新样本，还需要其确定重新训练的时间，费时费力。</p>
-<h2 id="CADE"><a href="#CADE" class="headerlink" title="CADE"></a>CADE</h2><p>思想：判断一个样本在对某个分类的相似度与其他属于该分类的样本相比是否正常</p>
-<p>CADE：主要包含一个检测器用于检测输入的样本是否产生漂移，包含一个解释器解释检测器筛选出的样本的漂移<br><img src="/2024/07/14/CADE-%E6%A3%80%E6%B5%8B%E5%92%8C%E8%A7%A3%E9%87%8A%E5%AE%89%E5%85%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB%E6%A0%B7%E6%9C%AC/1.png"></p>
-<h3 id="检测器"><a href="#检测器" class="headerlink" title="检测器"></a>检测器</h3><p>采用对比学习，将高维的样本数据映射到低维，每个类形成紧密的群体。在这个隐空间中，距离函数可以有效地识别新样本从这些群体中漂移开的情况。</p>
-<p>首先使用编码器将所有训练样本映射到隐空间中（第2-4行）。对于每个类别 $ i $，我们计算其质心 $ {\mathbf{c}}<em>{i} $（通过在欧几里得空间中取每个维度的平均值，第5行）。给定一个测试样本 $ {\mathbf{x}}</em>{t}^{\left( k\right) } $，我们也使用编码器将其映射到隐空间表示 $ {\mathbf{z}}<em>{t}^{\left( k\right) } $（第14行）。然后，我们计算测试样本与其质心之间的欧氏距离：$ {d}</em>{i}^{\left( k\right) } &#x3D; {\begin{Vmatrix}{\mathbf{z}}<em>{t}^{\left( k\right) } - {\mathbf{c}}</em>{i}\end{Vmatrix}}_{2} $（第16行）。根据其到质心的距离，我们确定这个测试样本是否对于 $ N $ 个类别中的每一个都是分布外的。在这里，我们根据样本到质心的距离而不是样本到最近训练样本的距离做出决策。这是因为后一种选择很容易受到训练数据中的异常点的影响。</p>
-<p>为了根据 $ {d}<em>{i}^{\left( k\right) } $ 确定异常点，挑战在于不同类别的紧密度可能不同，因此需要不同的距离阈值。而不是手动为每个类别设置绝对距离阈值，我们使用了一种称为中位数绝对偏差（MAD）[40]的方法。想法是通过计算 $ {\mathrm}</em>{i} $（第6-10行）来估计每个类别的数据分布 $ i $，它是中位数距离 $ {d}<em>{i}^{\left( j\right) }\left( {j &#x3D; 1,\ldots ,{n}</em>{i}}\right) $ 的绝对偏差。在这里 $ {d}<em>{i}^{\left( j\right) } $ 表示类别 $ i $ 中每个样本与其质心的潜在距离，以及 $ {n}</em>{i} $ 是类别 $ i $ 中样本的数量（第7行）。然后基于 $ {\mathrm}<em>{i} $，我们可以确定 $ {d}</em>{i}^{\left( k\right) } $ 是否足够大，使得测试样本 $ {\mathbf{x}}_{t}^{\left( k\right) } $ 成为类别 $ i $ 的异常点（第15-24行）。如果测试样本对于所有 $ N $ 个类别都是异常点，那么它被确定为一个漂移样本。否则，我们确定它是一个内分布样本，并且其最近的质心由最近的质心确定（第26行）。MAD的优势在于每个类别都有自己的距离阈值来根据其内类分布确定异常点。例如，如果一个簇更分散，阈值就会更大。</p>
-<h3 id="解释器"><a href="#解释器" class="headerlink" title="解释器"></a>解释器</h3><p>因为很难移动一个漂移样本跨越决策边界，提出了一个专为漂移样本设计的解释器</p>
-
-首先需要设计一个特征扰动机制。大多数现有的扰动方法都是专门为图像设计的，这些图像的特征是数值值。在我们的情况下，$ {\mathbf{x}}_{t} $的特征可以是数值的也可以是分类的，因此直接应用现有的方法将产生不明确的特征值。为了确保扰动对于数值和分类特征都是有意义的，我们提出通过替换特征值来扰动 $ {\mathbf{x}}_{t} $，这个特征值对应于参考训练样本 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 中的特征值。这个 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 是训练样本，它与中心点 $ {\mathbf{c}}_ {{y}_ {t}} $ 的潜在距离最短。这样一来，我们的解释目标就是识别一组特征，使得用 $ {\mathbf{x}}_ {{y}_ {t}}^{\left( c\right) } $ 中的特征替换它们，将对 $ f\left( {\mathbf{x}}_ {t}\right) $ 和 $ {\mathbf{c}}_  {{y}_ {t}} $ 之间的距离产生最大的影响
-
-]]></content>
-      <categories>
-        <category>论文阅读</category>
-      </categories>
-      <tags>
-        <tag>概念漂移</tag>
       </tags>
   </entry>
   <entry>
@@ -955,6 +955,35 @@
       </categories>
   </entry>
   <entry>
+    <title>对百度网盘使用工具吧！</title>
+    <url>/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/</url>
+    <content><![CDATA[<p>百度网盘限速贼垃圾？</p>
+<p>账号被封禁下载超慢？</p>
+<h1 id="对他使用CE吧！"><a href="#对他使用CE吧！" class="headerlink" title="对他使用CE吧！"></a>对他使用CE吧！</h1><p>打开CE，选中process方式中的百度网盘host，这里有两个，肯定有一个是好用的<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/1.png"></p>
+<p>然后右边开启变速，直接拉到500差不多能跑满<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/2.png"></p>
+<p>你会发现百度网盘里好像没什么特别的变化</p>
+<p>但是打开任务浏览器看网络使用<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/3.png"></p>
+<p>直接拉满！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>看来百度不过就是在客户端做了个sleep，我的评价是不过如此。</p>
+<h1 id="2023-5-12更新"><a href="#2023-5-12更新" class="headerlink" title="2023-5-12更新"></a>2023-5-12更新</h1><p>CE方法被ban了，但是还有办法！</p>
+<h1 id="Motrix-Kubedown"><a href="#Motrix-Kubedown" class="headerlink" title="Motrix+Kubedown"></a>Motrix+Kubedown</h1><p>首先你需要下载一个Motrix，然后油猴脚本弄一个Kubedown,Kubedown是油猴脚本，所以你还需要一个油猴</p>
+<p><a href="https://scriptcat.org/script-show-page/952">Kubedown</a></p>
+<p><a href="https://github.com/agalwood/Motrix/releases">Motrix</a></p>
+<p>你首先需要将别人分享的文件保存到自己的网盘里，然后分享，再打开你自己分享的分享链接，紧接着你就能看见Kubedown按钮了</p>
+<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/5.png"></p>
+<p>选择一个你要下载的文件，点击Kubedown按钮，输入验证码后可以看见这样的界面</p>
+<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/6.png"></p>
+<p>上面的链接复制到Motrix的连接栏，下面的netdisk是agent</p>
+<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/7.png"></p>
+<p>然后添加就行，效果是这样的</p>
+<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/4.png"></p>
+<h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1><p>想限制我？我的评价是不过如此。</p>
+]]></content>
+      <categories>
+        <category>发癫产物~</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基于路径引导解释的上下文感知常识知识图谱推理</title>
     <url>/2024/09/11/%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E5%BC%95%E5%AF%BC%E8%A7%A3%E9%87%8A%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%84%9F%E7%9F%A5%E5%B8%B8%E8%AF%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/</url>
     <content><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>本次分享主要分为四点：<br>背景部分主要介绍问题来源，目前研究现状。<br>其次来介绍文章是怎么从路径中抽取其上下文信息<br>然后介绍文章对语言模型进行预训练的方法，以及文章设计了一个用于测试的评分机制<br>最后基于实验结果分析文章方法的效果，并对该方法的应用提出设想</p>
@@ -1009,35 +1038,6 @@
       </tags>
   </entry>
   <entry>
-    <title>对百度网盘使用工具吧！</title>
-    <url>/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/</url>
-    <content><![CDATA[<p>百度网盘限速贼垃圾？</p>
-<p>账号被封禁下载超慢？</p>
-<h1 id="对他使用CE吧！"><a href="#对他使用CE吧！" class="headerlink" title="对他使用CE吧！"></a>对他使用CE吧！</h1><p>打开CE，选中process方式中的百度网盘host，这里有两个，肯定有一个是好用的<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/1.png"></p>
-<p>然后右边开启变速，直接拉到500差不多能跑满<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/2.png"></p>
-<p>你会发现百度网盘里好像没什么特别的变化</p>
-<p>但是打开任务浏览器看网络使用<br><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/3.png"></p>
-<p>直接拉满！</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>看来百度不过就是在客户端做了个sleep，我的评价是不过如此。</p>
-<h1 id="2023-5-12更新"><a href="#2023-5-12更新" class="headerlink" title="2023-5-12更新"></a>2023-5-12更新</h1><p>CE方法被ban了，但是还有办法！</p>
-<h1 id="Motrix-Kubedown"><a href="#Motrix-Kubedown" class="headerlink" title="Motrix+Kubedown"></a>Motrix+Kubedown</h1><p>首先你需要下载一个Motrix，然后油猴脚本弄一个Kubedown,Kubedown是油猴脚本，所以你还需要一个油猴</p>
-<p><a href="https://scriptcat.org/script-show-page/952">Kubedown</a></p>
-<p><a href="https://github.com/agalwood/Motrix/releases">Motrix</a></p>
-<p>你首先需要将别人分享的文件保存到自己的网盘里，然后分享，再打开你自己分享的分享链接，紧接着你就能看见Kubedown按钮了</p>
-<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/5.png"></p>
-<p>选择一个你要下载的文件，点击Kubedown按钮，输入验证码后可以看见这样的界面</p>
-<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/6.png"></p>
-<p>上面的链接复制到Motrix的连接栏，下面的netdisk是agent</p>
-<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/7.png"></p>
-<p>然后添加就行，效果是这样的</p>
-<p><img src="/2023/03/19/%E5%AF%B9%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%BD%BF%E7%94%A8CE%E5%90%A7%EF%BC%81/4.png"></p>
-<h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1><p>想限制我？我的评价是不过如此。</p>
-]]></content>
-      <categories>
-        <category>发癫产物~</category>
-      </categories>
-  </entry>
-  <entry>
     <title>小小魔法 for UOOC</title>
     <url>/2023/05/15/%E5%B0%8F%E5%B0%8F%E9%AD%94%E6%B3%95-for-UOOC/</url>
     <content><![CDATA[<h1 id="直接开始魔法"><a href="#直接开始魔法" class="headerlink" title="直接开始魔法"></a>直接开始魔法</h1><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">eval</span>(function(p,a,c,k,e,r)&#123;e=function(c)&#123;return(c&lt;<span class="number">62</span>?&#x27;&#x27;:e(parseInt(c/<span class="number">62</span>)))+((c=c%<span class="number">62</span>)&gt;<span class="number">35</span>?String.fromCharCode(c+<span class="number">29</span>):c.toString(<span class="number">36</span>))&#125;;if(&#x27;<span class="number">0</span>&#x27;.replace(<span class="number">0</span>,e)==<span class="number">0</span>)&#123;while(c--)r[e(c)]=k[c];k=[function(e)&#123;return r[e]||e&#125;];e=function()&#123;return&#x27;[<span class="number">3</span>-<span class="number">9</span>a-zA-G]&#x27;&#125;;c=<span class="number">1</span>&#125;;while(c--)if(k[c])p=p.replace(new RegExp(&#x27;\\b&#x27;+e(c)+&#x27;\\b&#x27;,&#x27;g&#x27;),k[c]);return p&#125;(&#x27;<span class="number">8</span> s=<span class="number">800010000</span>;(<span class="number">5</span>(<span class="number">3</span>,$)&#123;<span class="number">3</span>.l=<span class="number">0</span>;<span class="number">3</span>.m=<span class="number">0</span>;<span class="number">3</span>.d=<span class="number">2000</span>;<span class="number">9</span>.a(\&#x27;start run.\&#x27;);<span class="number">3</span>.setInterval(<span class="number">5</span>()&#123;<span class="number">6</span>(e.f().g!=undefined)&#123;<span class="number">6</span>(!e.f().g.A)&#123;e.f().g.A=<span class="number">1</span>;<span class="number">3</span>.m+=<span class="number">1</span>;<span class="number">9</span>.a(c()+\&#x27;-&gt;m:\&#x27;+<span class="number">3</span>.m);$(<span class="string">&quot;html&quot;</span>).<span class="literal">off</span>(<span class="string">&quot;mouseleave blur visibilitychange&quot;</span>);<span class="number">8</span> <span class="number">4</span>=&#123;&#125;;<span class="number">4</span>.t=<span class="number">5</span>()&#123;<span class="number">3</span>.u(<span class="number">5</span>()&#123;<span class="number">9</span>.a(c()+\&#x27;-&gt;<span class="number">2</span>倍速度\&#x27;);$(\&#x27;.vjs-B\&#x27;).h(\&#x27;ul[role=<span class="string">&quot;B&quot;</span>]\&#x27;).<span class="number">7</span>().h(\&#x27;li\&#x27;).<span class="number">7</span>().n(\&#x27;o\&#x27;)&#125;,<span class="number">3</span>.d)&#125;;<span class="number">4</span>.b=<span class="number">5</span>()&#123;<span class="number">3</span>.u(<span class="number">5</span>()&#123;<span class="number">9</span>.a(c()+\&#x27;-&gt;播放下一个\&#x27;);<span class="number">8</span> v=$(\&#x27;p[q=<span class="string">&quot;w b-scope&quot;</span>]\&#x27;);<span class="number">6</span>(v.i&gt;<span class="number">0</span>)&#123;<span class="number">8</span> <span class="number">7</span>=v.<span class="number">7</span>();<span class="number">6</span>(<span class="number">7</span>.h(\&#x27;C[b-<span class="number">6</span>=<span class="string">&quot;D.E == 10&quot;</span>]\&#x27;).i&gt;<span class="number">0</span>)&#123;<span class="number">7</span>.n(\&#x27;o\&#x27;);<span class="number">4</span>.t()&#125;j <span class="number">6</span>(<span class="number">7</span>.h(\&#x27;C[b-<span class="number">6</span>=<span class="string">&quot;D.E == 80&quot;</span>]\&#x27;).i&gt;<span class="number">0</span>)&#123;<span class="number">4</span>.r();x(<span class="string">&quot;请完成测验&quot;</span>)&#125;j&#123;<span class="number">4</span>.r();x(<span class="string">&quot;r,请重试.&quot;</span>)&#125;&#125;j&#123;<span class="number">4</span>.k()&#125;&#125;,<span class="number">3</span>.d)&#125;;<span class="number">4</span>.r=<span class="number">5</span>()&#123;<span class="number">6</span>(s)&#123;<span class="number">8</span> F=\&#x27;tencent://message/?uin=\&#x27;+s;<span class="number">3</span>.open(F)&#125;&#125;;<span class="number">4</span>.k=<span class="number">5</span>()&#123;<span class="number">3</span>.u(<span class="number">5</span>()&#123;<span class="number">9</span>.a(c()+\&#x27;-&gt;下一个子节点\&#x27;);<span class="number">8</span> y=$(\&#x27;p[q=<span class="string">&quot;w k&quot;</span>]\&#x27;).h(\&#x27;p[q=<span class="string">&quot;oneline b-binding&quot;</span>]\&#x27;);<span class="number">6</span>(y.i&gt;<span class="number">0</span>)&#123;y.<span class="number">7</span>().n(\&#x27;o\&#x27;);<span class="number">4</span>.b()&#125;j&#123;<span class="number">4</span>.G()&#125;&#125;,<span class="number">3</span>.d)&#125;;<span class="number">4</span>.G=<span class="number">5</span>()&#123;<span class="number">9</span>.a(c()+\&#x27;-&gt;下一个章节\&#x27;);<span class="number">8</span> z=$(\&#x27;p[q=<span class="string">&quot;w chapter k&quot;</span>]\&#x27;);<span class="number">6</span>(z.i&gt;<span class="number">0</span>)&#123;z.<span class="number">7</span>().n(\&#x27;o\&#x27;);<span class="number">4</span>.k()&#125;j&#123;x(\&#x27;end\&#x27;)&#125;&#125;;e.f().g.<span class="literal">on</span>(<span class="string">&quot;pause&quot;</span>,<span class="number">5</span>()&#123;<span class="number">3</span>.l+=<span class="number">1</span>;<span class="number">9</span>.a(c()+\&#x27;-&gt;l:\&#x27;+<span class="number">3</span>.l);<span class="number">4</span>.b()&#125;);<span class="number">4</span>.t();e.f().g.play()&#125;&#125;&#125;,<span class="number">3</span>.d)&#125;)(<span class="number">3</span>,<span class="number">3</span>.jQuery);&#x27;,[],<span class="number">43</span>,&#x27;|||window|funObj|function|if|first|var|console|log|ng|Date|wait|videojs|getPlayers|player|find|length|else|uncomplete|countRun|countInit|trigger|click|div|class|error|qq|speed|setTimeout|ng_scope|basic|alert|ng_binging|chapter_uncomplete|executeFlag|menu|span|source|type|url|chapterUncomplete&#x27;.split(&#x27;|&#x27;),<span class="number">0</span>,&#123;&#125;))</span><br></pre></td></tr></table></figure>
@@ -1048,38 +1048,6 @@
 ]]></content>
       <categories>
         <category>学习资料</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>震惊！某985网安专业学生竟被网络诈骗，金额高达1800元！</title>
-    <url>/2023/04/15/%E9%9C%87%E6%83%8A%EF%BC%81%E6%9F%90985%E7%BD%91%E5%AE%89%E5%AD%A6%E7%94%9F%E7%AB%9F%E8%A2%AB%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97%EF%BC%8C%E9%87%91%E9%A2%9D%E9%AB%98%E8%BE%BE1000%E5%85%83%EF%BC%81/</url>
-    <content><![CDATA[<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>事情发生背景是这两天CS2快发布了，起源二引擎刚刚公布。</p>
-<p>然而，CS2可以继承CSGO饰品，我的一个好兄弟合理推断饰品将会大幅涨价，于是趁这个时间开始入手。</p>
-<p>于是我就以1200的价格入手了一款匕首</p>
-<p><img src="/2023/04/15/%E9%9C%87%E6%83%8A%EF%BC%81%E6%9F%90985%E7%BD%91%E5%AE%89%E5%AD%A6%E7%94%9F%E7%AB%9F%E8%A2%AB%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97%EF%BC%8C%E9%87%91%E9%A2%9D%E9%AB%98%E8%BE%BE1000%E5%85%83%EF%BC%81/1.png"></p>
-<p>这玩意就长这样，其实还是很好看的，买的久经沙场，刀面稍微有点污渍不过无伤大雅，性价比超高。</p>
-<p>现在已经涨价到1800左右，涨了整整50%，投资大成功！</p>
-<h1 id="诈骗过程"><a href="#诈骗过程" class="headerlink" title="诈骗过程"></a>诈骗过程</h1><p>我花一千多买了个饰品不能不拿在手里把玩啊，于是我就回坑CSGO</p>
-<p><del>也不算是回坑，因为我本来没咋玩过CSGO，上一次接触CS还是小学时的CS1.6</del></p>
-<p>鉴于我强大的FPS经验，打的还算可以<del>在60小时玩家里属于牛逼得了</del></p>
-<p>突然有一天有个哥们加我好友，一直在刷让我给tyloo投票，说在打什么比赛啥的，还发了好多链接。</p>
-<p>相信大伙已经能看出来这是怎么诈骗得了，纯纯的诈骗链接，但是我当时想法是</p>
-<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
-<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
-<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
-<p>现在想想我真的智障。</p>
-<p>当我否定了钓鱼链接的可能性后，我认为是哥们水平太高了有人想拉我进组之类的</p>
-<p>然后我就很高兴的打开了链接并登录了steam</p>
-<p>但是我登上之后发现没法跳转，页面无响应，我当时就想从别的地方投票吧，在网上搜索“CSGO tyloo投票”，然后就发现很多人写类似的贴子防诈骗。</p>
-<p>这时我才意识到，我被骗了。</p>
-<p>不过还好，我的反应属于迅速的，并没有对我造成实质性的损害。<del>目前</del></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>对于这种诈骗，首先如果你点了链接，并输入了账号密码。</p>
-<p>此时你需要及时重置你的API，并且更换密码，然后再次重置API</p>
-<p>理论上到这一步就可以了，但是建议继续做更多的，重新获得交易链接，并开启家庭监护，这样就算有你的API也没法进行真正的转移。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不要眼高手低，像钓鱼链接这种10年前就该淘汰的诈骗方法也不能忽视，虽然我不太懂为啥要用15年前的诈骗方法来搞我。可能现在大伙网安意识确实不高，这种诈骗方式很有效，<del>同时对于我这种B也很有效</del></p>
-]]></content>
-      <categories>
-        <category>发癫产物~</category>
       </categories>
   </entry>
   <entry>
@@ -1759,6 +1727,38 @@
 ]]></content>
       <categories>
         <category>学习资料</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>震惊！某985网安专业学生竟被网络诈骗，金额高达1800元！</title>
+    <url>/2023/04/15/%E9%9C%87%E6%83%8A%EF%BC%81%E6%9F%90985%E7%BD%91%E5%AE%89%E5%AD%A6%E7%94%9F%E7%AB%9F%E8%A2%AB%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97%EF%BC%8C%E9%87%91%E9%A2%9D%E9%AB%98%E8%BE%BE1000%E5%85%83%EF%BC%81/</url>
+    <content><![CDATA[<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>事情发生背景是这两天CS2快发布了，起源二引擎刚刚公布。</p>
+<p>然而，CS2可以继承CSGO饰品，我的一个好兄弟合理推断饰品将会大幅涨价，于是趁这个时间开始入手。</p>
+<p>于是我就以1200的价格入手了一款匕首</p>
+<p><img src="/2023/04/15/%E9%9C%87%E6%83%8A%EF%BC%81%E6%9F%90985%E7%BD%91%E5%AE%89%E5%AD%A6%E7%94%9F%E7%AB%9F%E8%A2%AB%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97%EF%BC%8C%E9%87%91%E9%A2%9D%E9%AB%98%E8%BE%BE1000%E5%85%83%EF%BC%81/1.png"></p>
+<p>这玩意就长这样，其实还是很好看的，买的久经沙场，刀面稍微有点污渍不过无伤大雅，性价比超高。</p>
+<p>现在已经涨价到1800左右，涨了整整50%，投资大成功！</p>
+<h1 id="诈骗过程"><a href="#诈骗过程" class="headerlink" title="诈骗过程"></a>诈骗过程</h1><p>我花一千多买了个饰品不能不拿在手里把玩啊，于是我就回坑CSGO</p>
+<p><del>也不算是回坑，因为我本来没咋玩过CSGO，上一次接触CS还是小学时的CS1.6</del></p>
+<p>鉴于我强大的FPS经验，打的还算可以<del>在60小时玩家里属于牛逼得了</del></p>
+<p>突然有一天有个哥们加我好友，一直在刷让我给tyloo投票，说在打什么比赛啥的，还发了好多链接。</p>
+<p>相信大伙已经能看出来这是怎么诈骗得了，纯纯的诈骗链接，但是我当时想法是</p>
+<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
+<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
+<p>现在都2023年了，怎么还会有人用钓鱼链接诈骗呢？</p>
+<p>现在想想我真的智障。</p>
+<p>当我否定了钓鱼链接的可能性后，我认为是哥们水平太高了有人想拉我进组之类的</p>
+<p>然后我就很高兴的打开了链接并登录了steam</p>
+<p>但是我登上之后发现没法跳转，页面无响应，我当时就想从别的地方投票吧，在网上搜索“CSGO tyloo投票”，然后就发现很多人写类似的贴子防诈骗。</p>
+<p>这时我才意识到，我被骗了。</p>
+<p>不过还好，我的反应属于迅速的，并没有对我造成实质性的损害。<del>目前</del></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>对于这种诈骗，首先如果你点了链接，并输入了账号密码。</p>
+<p>此时你需要及时重置你的API，并且更换密码，然后再次重置API</p>
+<p>理论上到这一步就可以了，但是建议继续做更多的，重新获得交易链接，并开启家庭监护，这样就算有你的API也没法进行真正的转移。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不要眼高手低，像钓鱼链接这种10年前就该淘汰的诈骗方法也不能忽视，虽然我不太懂为啥要用15年前的诈骗方法来搞我。可能现在大伙网安意识确实不高，这种诈骗方式很有效，<del>同时对于我这种B也很有效</del></p>
+]]></content>
+      <categories>
+        <category>发癫产物~</category>
       </categories>
   </entry>
   <entry>
